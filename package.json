@@ -1,0 +1,20 @@
+{
+  "name": "shiwori_app",
+  "version": "1.0.0",
+  "description": "shiwori's modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meister2018-prism/shiwori.git"
+  },
+  "author": "prism",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meister2018-prism/shiwori/issues"
+  },
+  "homepage": "https://github.com/meister2018-prism/shiwori#readme",
+  "dependencies": {}
+}
