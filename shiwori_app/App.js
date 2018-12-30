@@ -1,49 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React from "react";
+import { Button,View, Text } from "react-native";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+//initial page
+import WelcomeScreen from './screens/welcome/welcomeScreen';
+import LoginScreen from './screens/welcome/loginScreen';
+import TutorialScreen from './screens/welcome/tutorialScreen';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
+//home
+import HomeScreen from './screens/home/homeScreen';
+import EditScreen from './screens/home/editScreen';
+
+//search
+import SearchScreen from './screens/search/searchScreen';
+import CodeScanScreen from './screens/search/searchScreen';
+import CategoryScreen from './screens/search/categoryScreen';
+import KeywordsScreen from './screens/search/keywordsScreen';
+
+//mypage
+import MyPageScreen from './screens/myPage/myPageScreen';
+import BookMarkScreen from './screens/myPage/bookMarkScreen';
+
+//hamburger
+import HanbergerScreen from './screens/hamburger/hamburgerScreen';
+import SettingsScreen from './screens/hamburger/settingsScreen';
+import HelpScreen from './screens/hamburger/helpScreen';
+import ContactScreen from './screens/hamburger/contactScreen';
+
+//general screen
+import RankingScreen from './screens/rankingScreen'
+import BooksScreen from './screens/booksScreen'
+import DetailsScreen from './screens/detailsScreen'
+
+
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+  Edit: EditScreen,
 });
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+const SearchStack = createStackNavigator({
+  Search: SearchScreen,
+  Keyword: KeywordsScreen,
+  Category: CategoryScreen,
+  CodeScan: CodeScanScreen,
+  Ranking: RankingScreen,
+  Details: DetailsScreen,
+});
+
+const SubMenuesStack = createStackNavigator({
+  Settings: SettingsScreen,
+  Help: HelpScreen,
+  Contact: ContactScreen,
+});
+
+const MyPageStack = createStackNavigator({
+  MyPage: MyPageScreen,
+  BookMark: BookMarkScreen,
+  Books: BooksScreen,
+})
+
+const HamburgerStack = createStackNavigator({
+  Hanberger: HanbergerScreen,
+  Setting: SettingScreen,
+  Help: HelpScreen,
+  Contact: ContactScreen,
+})
+
+
+const TabNavigator = createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Search: SearchStack,
+    MyPage: MyPageStack,
+  },
+  {
+    initialRouteName: "Home"
   }
-}
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default createAppContainer(TabNavigator);
+
+// const AppNavigator = createStackNavigator(
+//   {
+//     Home: HomeScreen,
+//     Search: SearchScreen,
+//   },
+//   {
+//     initialRouteName: "Home"
+//   }
+// );
