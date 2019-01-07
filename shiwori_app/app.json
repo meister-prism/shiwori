@@ -1,6 +1,6 @@
 {
-  "name": "shiwori_app",
-  "displayName": "shiwori_app",
+  "name": "shiworiApp",
+  "displayName": "shiworiAapp",
   "expo": {
     "name": "shiworiApp",
     "slug": "shiworiApp",
@@ -10,6 +10,7 @@
       "ios",
       "android"
     ],
+    "appKey": "shiworiApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
