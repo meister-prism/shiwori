@@ -61,7 +61,7 @@ const MyPageStack = createStackNavigator({
 
 const HamburgerStack = createStackNavigator({
   Hanberger: HanbergerScreen,
-  Setting: SettingScreen,
+  Settings: SettingsScreen,
   Help: HelpScreen,
   Contact: ContactScreen,
 })
