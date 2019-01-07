@@ -8,11 +8,11 @@ class CategoryScreen extends React.Component {
         <Text>Search Category Screen</Text>
         <Button
           title="ct1"
-          onPress={() => this.props.navigation.navigate('Ranking')}
+          onPress={() => this.props.navigation.navigate('Books')}
         />
         <Button
           title="ct2"
-          onPress={() => this.props.navigation.navigate('Ranking')}
+          onPress={() => this.props.navigation.navigate('Books')}
         />
       </View>
     );

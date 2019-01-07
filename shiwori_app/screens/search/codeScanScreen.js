@@ -6,6 +6,10 @@ class CodeScanScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Search Barcode Screen</Text>
+        <Button
+          title="scancode"
+          onPress={() => this.props.navigation.navigate('Books')}
+        />
       </View>
     );
   }

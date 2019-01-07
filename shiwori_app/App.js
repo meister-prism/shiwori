@@ -28,6 +28,7 @@ import HelpScreen from './screens/hamburger/helpScreen';
 import ContactScreen from './screens/hamburger/contactScreen';
 
 //general screen
+import BookMarkDetailsScreen from './screens/bookMarkDetailsScreen'
 import RankingScreen from './screens/rankingScreen'
 import BooksScreen from './screens/booksScreen'
 import DetailsScreen from './screens/detailsScreen'
@@ -45,6 +46,8 @@ const SearchStack = createStackNavigator({
   CodeScan: CodeScanScreen,
   Ranking: RankingScreen,
   Details: DetailsScreen,
+  Books: BooksScreen,
+  BookMarkDetails: BookMarkDetailsScreen,
 });
 
 const SubMenuesStack = createStackNavigator({
@@ -57,6 +60,8 @@ const MyPageStack = createStackNavigator({
   MyPage: MyPageScreen,
   BookMark: BookMarkScreen,
   Books: BooksScreen,
+  Details: DetailsScreen,
+  BookMarkDetails: BookMarkDetailsScreen,
 })
 
 const HamburgerStack = createStackNavigator({
