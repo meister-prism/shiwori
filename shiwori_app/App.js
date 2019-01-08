@@ -13,7 +13,7 @@ import EditScreen from './screens/home/editScreen';
 
 //search
 import SearchScreen from './screens/search/searchScreen';
-import CodeScanScreen from './screens/search/searchScreen';
+import CodeScanScreen from './screens/search/codeScanScreen';
 import CategoryScreen from './screens/search/categoryScreen';
 import KeywordsScreen from './screens/search/keywordsScreen';
 
@@ -61,7 +61,7 @@ const MyPageStack = createStackNavigator({
 
 const HamburgerStack = createStackNavigator({
   Hanberger: HanbergerScreen,
-  Setting: SettingScreen,
+  Settings: SettingsScreen,
   Help: HelpScreen,
   Contact: ContactScreen,
 })
