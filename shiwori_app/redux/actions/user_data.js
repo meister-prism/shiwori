@@ -4,6 +4,7 @@ import { SET_USER_ID } from './type';
 import { SET_USER_NAME } from './type';
 import { SET_USER_EMAIL } from './type';
 import { SET_USER_PASS } from './type';
+import { SET_USER_DATA } from './type';
 
 import { CLEAR_USER_ID } from './type';
 import { CLEAR_USER_NAME } from './type';
@@ -33,6 +34,15 @@ export const set_uemail = (email) =>({
 // @param : str
 export const set_upass = (pass) =>({
     type : SET_USER_PASS,
+    pass : pass
+});
+
+// @param : str,str,str,str
+export const set_udata = (id,name,email,pass) =>({
+    type : SET_USER_DATA,
+    id : id,
+    name : name,
+    email : email,
     pass : pass
 });
 
