@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import ReduxChecker from '../components/debug/reduxchecker';
+import ReduxChecker from '../components/debug/reduxchecker_userdata';
 import { Provider } from 'react-redux';
 import { store,persistor } from '../redux/store';
 

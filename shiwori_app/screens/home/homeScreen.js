@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Provider } from 'react-redux';
 import { store,persistor } from '../../redux/store';
-import ReduxChecker from '../../components/debug/reduxchecker';
+import ReduxChecker from '../../components/debug/reduxchecker_bookdata';
 
 class HomeScreen extends React.Component {
   render() {

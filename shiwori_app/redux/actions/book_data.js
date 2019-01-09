@@ -11,18 +11,30 @@ import { ADD_NOW_BOOK } from './type';
  * @param {str} author 
  * @param {int} now_page 
  */
-export const add_nowBook = (id,title,author,now_page) =>({
+export const add_nowBook = (id,title,author) =>({
     type : ADD_NOW_BOOK,
     id : id,
     title : title,
-    author: author,
-    now_page : now_page
+    author: author
 });
 
 // @param : str
+/**
+ * idに対する本の情報を削除する（DB送信後の処理）
+ * @param {str} id 
+ */
 export const delete_nowBook = (id) =>({
     type : DELETE_NOW_BOOK,
     id : id
 });
 
-//UPDATEは後で実装
+/**
+ * idに対する本に対して、page_numページまで読んだことを保存する。
+ * @param {str} id 
+ * @param {int} page_num 
+ */
+export const update_nowBook = (id,page_num) => ({
+    type : UPDATE_NOW_BOOK,
+    id : id,
+    page_num : page_num
+})
