@@ -17,6 +17,9 @@ export const CLEAR_USER_PASS = 'CLEAR_USER_PASS';
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
 
 // action/now_reading
+export const SET_NOW_BOOK = 'SET_NOW_BOOK';
+export const CLEAR_NOW_BOOK = 'CLEAR_NOW_BOOK';
 export const ADD_NOW_BOOK = 'ADD_NOW_BOOK';
 export const DELETE_NOW_BOOK = 'DELETE_NOW_BOOK';
-export const UPDATE_NOW_BOOK = 'UPDATE_NOW_BOOK';
+export const START_NOW_BOOK = 'START_NOW_BOOK';
+export const STOP_NOW_BOOK = 'STOP_NOW_BOOK';
