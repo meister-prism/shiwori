@@ -60,7 +60,7 @@ const mapDispatchToProps = {
     delete_nowBook,
     update_nowBook
 }
-  
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps
