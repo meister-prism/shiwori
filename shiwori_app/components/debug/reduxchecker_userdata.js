@@ -82,3 +82,35 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(reduxChecker)
+
+/**
+
+<Button
+            onPress={() => this.props.set_udata('sho0126hiro','sho hirose','happy@gmail.com','password')}
+            title="set_userdata"
+          />
+          <Button
+            onPress={this.props.set_uid('userID')}
+            title="set_user_id"
+          />
+          <Button
+            onPress={this.props.set_uname('userNAME')}
+            title="set_user_name"
+          />
+          <Button
+            onPress={this.props.set_upass('passworld')}
+            title="set_user_password"
+          />
+          <Button
+            onPress={this.props.clear_uid()}
+            title="clear_userID"
+          /> 
+          <Button
+            onPress={this.props.clear_uname()}
+            title="clear_userNAME"
+          /> 
+          <Button
+            onPress={this.props.clear_uname()}
+            title="clear_userdata"
+          /> 
+ */
