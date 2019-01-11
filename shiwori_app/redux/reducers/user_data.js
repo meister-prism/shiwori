@@ -10,11 +10,11 @@ import { CLEAR_USER_PASS } from '../actions/type';
 import { CLEAR_USER_DATA } from '../actions/type';
 
 // 初期状態
-INITIAL_STATE = {
+const INITIAL_STATE = {
     id : '',
     name : '',
     email : '',
-    pass : ''
+    pass : '',
 }
 
 const user_reducer = (state = INITIAL_STATE, action) => {

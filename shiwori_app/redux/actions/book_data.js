@@ -1,11 +1,13 @@
 // 今読んでいる本に対する処理を行うメソッド群
 
 import { DELETE_NOW_BOOK } from './type';
-import { UPDATE_NOW_BOOK } from './type';
 import { ADD_NOW_BOOK } from './type';
-
+import { START_NOW_BOOK }from './type';
+import { STOP_NOW_BOOK }from './type';
+import { SET_NOW_BOOK } from './type';
+import { CLEAR_NOW_BOOK} from './type';
 /**
- * 今読んでいる本を追加する
+ * 今読んでいる本を追加する(初回起動、計測開始)
  * @param {str} id 
  * @param {str} title 
  * @param {str} author 
@@ -29,12 +31,29 @@ export const delete_nowBook = (id) =>({
 });
 
 /**
- * idに対する本に対して、page_numページまで読んだことを保存する。
+ * 読み始め（再開）
+ * @param {str} id 
+ */
+export const start_nowBook = () =>({
+    type : START_NOW_BOOK,
+})
+
+/**
+ * 読書終了 ここで、100%読了の場合、complete = true をセット
  * @param {str} id 
  * @param {int} page_num 
+ * @param {boolean} complete
  */
-export const update_nowBook = (id,page_num) => ({
-    type : UPDATE_NOW_BOOK,
-    id : id,
+export const stop_nowBook = (page_num) =>({
+    type : STOP_NOW_BOOK,
     page_num : page_num
+})
+
+export const set_nowBook=(id)=>({
+    type : SET_NOW_BOOK,
+    id : id
+})
+
+export const clear_nowBook=()=>({
+    type : CLEAR_NOW_BOOK,
 })
