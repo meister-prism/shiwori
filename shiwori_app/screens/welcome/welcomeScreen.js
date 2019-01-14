@@ -5,7 +5,11 @@ class WelcomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Search Barcode Screen</Text>
+        <Text>Welcome Screen</Text>
+        <Button
+          title="Login"
+          onPress={() => this.props.navigation.navigate('Login')}
+        />
       </View>
     );
   }

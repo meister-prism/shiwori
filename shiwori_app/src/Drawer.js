@@ -3,7 +3,8 @@ import { createDrawerNavigator } from 'react-navigation';
 import ContactScreen from '../screens/hamburger/contactScreen';
 import HelpScreen from '../screens/hamburger/helpScreen';
 import SettingsScreen from '../screens/hamburger/settingsScreen';
-
+import WelcomeScreen from '../screens/welcome/welcomeScreen';
+import LoginScreen from '../screens/welcome/loginScreen';
 
 export default createDrawerNavigator({
   Home: {
@@ -37,9 +38,15 @@ export default createDrawerNavigator({
       }
   },
   Login: {
-      screen: ContactScreen,
+      screen: LoginScreen,
       navigationOptions: {
           drawerLabel: "Login"
+      }
+  },
+  Logout: {
+      screen: WelcomeScreen,
+      navigationOptions: {
+          drawerLabel: "Logout"
       }
   }
 },{

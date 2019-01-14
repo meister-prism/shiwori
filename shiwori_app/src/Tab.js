@@ -38,6 +38,8 @@ const HomeStack = createStackNavigator({
   Edit: EditScreen,
   Detail: DetailsScreen,
   
+  Welcome: WelcomeScreen,
+  Tutorial: TutorialScreen,
   Login: LoginScreen,
   Settings: SettingsScreen,
   Help: HelpScreen,

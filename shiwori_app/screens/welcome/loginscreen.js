@@ -6,6 +6,10 @@ class LoginScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Login Screen</Text>
+        <Button
+          title="ゲストとしてログイン"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
       </View>
     );
   }
