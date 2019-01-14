@@ -1,7 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-
+import { Text, View, Button } from 'react-native';
+import HeaderIcon from '../../components/HeaderIcon';
 class BookMarkScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: 'ブックマーク一覧',
+    headerLeft: <HeaderIcon navigation={navigation}/>,
+  });
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>

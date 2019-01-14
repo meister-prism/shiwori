@@ -1,8 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
+import HeaderIcon from '../components/HeaderIcon';
 
 class DetailsScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: '本の詳細',
+    headerLeft: <HeaderIcon navigation={navigation}/>,
+  });
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>

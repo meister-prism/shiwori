@@ -1,7 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import HeaderIcon from '../../components/HeaderIcon';
 
 class KeywordScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: 'キーワード検索',
+    headerLeft: <HeaderIcon navigation={navigation}/>,
+  });
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
