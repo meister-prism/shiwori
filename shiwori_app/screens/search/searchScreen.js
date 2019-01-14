@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
-
+import { Provider } from 'react-redux';
+import { store,persistor } from '../../redux/store';
+import ReduxChecker from '../../components/debug/reduxchecker_userdata';
 class SearchScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '本の検索',
@@ -9,8 +11,10 @@ class SearchScreen extends React.Component {
   });
   render() {
     return (
+      <Provider store={store}>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Search Screen</Text>
+        {/*
         <Button
           title="Search on Keywords"
           onPress={() => this.props.navigation.navigate('Keyword')}
@@ -23,7 +27,6 @@ class SearchScreen extends React.Component {
           title="Search on Category"
           onPress={() => this.props.navigation.navigate('Category')}
         />
-
         <Text>Recommended</Text>
         <Button
           title="book1"
@@ -33,7 +36,10 @@ class SearchScreen extends React.Component {
           title="book2"
           onPress={() => this.props.navigation.navigate('Detail')}
         />
+        */}
+        <ReduxChecker />
       </View>
+      </Provider>
     );
   }
 }
