@@ -1,9 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store,persistor } from '../../redux/store';
 import ReduxChecker from '../../components/debug/reduxchecker_userdata';
 class SearchScreen extends React.Component {
+  static navigationOptions = ({navigation}) => ({
+    title: '本の検索',
+    headerLeft: <HeaderIcon navigation={navigation}/>,
+  });
   render() {
     return (
       <Provider store={store}>

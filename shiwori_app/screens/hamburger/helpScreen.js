@@ -6,6 +6,10 @@ class HelpScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Help Screen</Text>
+        <Button
+          title="tutorial"
+          onPress={() => this.props.navigation.navigate('Tutorial')}
+        />
       </View>
     );
   }

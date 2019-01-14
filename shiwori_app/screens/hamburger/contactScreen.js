@@ -1,13 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import {Linking} from 'react-native';
 
 class ContactScreen extends React.Component {
   render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Contact Screen</Text>
-      </View>
-    );
+    return Linking.openURL('https://nittc.tokyo-ct.ac.jp/web/j/hp/index.html').catch(err => console.error('URLを開けませんでした。', err));
   }
 }
 
