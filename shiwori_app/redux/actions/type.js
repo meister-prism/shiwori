@@ -16,6 +16,10 @@ export const CLEAR_USER_PASS = 'CLEAR_USER_PASS';
 // clear all
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
 
+// guest
+export const GUEST_SET = 'GUEST_SET';
+export const GUEST_CLEAR = 'GUEST_CLEAR';
+
 // action/now_reading
 export const SET_NOW_BOOK = 'SET_NOW_BOOK';
 export const CLEAR_NOW_BOOK = 'CLEAR_NOW_BOOK';

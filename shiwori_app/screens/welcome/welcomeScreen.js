@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, } from 'react-native';
+import Startup from '../../components/welcome/startup';
+import {Provider} from 'react-redux';
+import {store} from '../../redux/store'; 
 
 class WelcomeScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Welcome Screen</Text>
-        <Button
-          title="Login"
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
-      </View>
+      <Provider store={store}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+          <Startup navigation={this.props.navigation}/>
+        </View>
+      </Provider>
     );
   }
 }

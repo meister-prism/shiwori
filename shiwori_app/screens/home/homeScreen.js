@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
           title="読書記録の編集"
           onPress={() => this.props.navigation.navigate('Edit')}
         />
-          <ReduxChecker />
+        <ReduxChecker />
       </View>
       </Provider>
     );
