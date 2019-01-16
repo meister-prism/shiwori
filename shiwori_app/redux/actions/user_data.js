@@ -12,6 +12,7 @@ import { CLEAR_USER_EMAIL } from './type';
 import { CLEAR_USER_PASS } from './type';
 import { CLEAR_USER_DATA } from './type';
 
+import { GUEST_SET, GUEST_CLEAR } from './type';
 
 // @param : str
 export const set_uid = (id) =>({
@@ -66,11 +67,18 @@ export const clear_upass = () =>({
     pass : ''
 });
 
-// 未定
 export const clear_udata = () =>({
     type : CLEAR_USER_DATA,
     id : '',
     name : '',
     email : '',
     pass : ''
+});
+
+export const guest_set = () =>({
+    type : GUEST_SET,
+});
+
+export const guest_clear = () =>({
+    type : GUEST_CLEAR,
 });

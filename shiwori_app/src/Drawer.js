@@ -5,6 +5,7 @@ import HelpScreen from '../screens/hamburger/helpScreen';
 import SettingsScreen from '../screens/hamburger/settingsScreen';
 import WelcomeScreen from '../screens/welcome/welcomeScreen';
 import LoginScreen from '../screens/welcome/loginScreen';
+import LogoutScreen from '../screens/hamburger/logoutScreen';
 
 export default createDrawerNavigator({
   Home: {
@@ -28,7 +29,8 @@ export default createDrawerNavigator({
   Contact: {
       screen: ContactScreen,
       navigationOptions: {
-          drawerLabel: "Contact"
+          drawerLabel: "Contact",
+          logout : true
       }
   },
   Review: {
@@ -46,8 +48,8 @@ export default createDrawerNavigator({
   Logout: {
       screen: WelcomeScreen,
       navigationOptions: {
-          drawerLabel: "Logout"
-      }
+          drawerLabel: "Logout",
+      },
   }
 },{
     drawerWidth: 200

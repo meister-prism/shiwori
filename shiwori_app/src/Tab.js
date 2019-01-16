@@ -37,7 +37,6 @@ const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Edit: EditScreen,
   Detail: DetailsScreen,
-  
   Welcome: WelcomeScreen,
   Tutorial: TutorialScreen,
   Login: LoginScreen,
@@ -55,7 +54,6 @@ const SearchStack = createStackNavigator({
   Details: DetailsScreen,
   Books: BooksScreen,
   BookMarkDetails: BookMarkDetailsScreen,
-
   Settings: SettingsScreen,
   Help: HelpScreen,
   Contact: ContactScreen,

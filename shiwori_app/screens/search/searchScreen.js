@@ -14,7 +14,6 @@ class SearchScreen extends React.Component {
       <Provider store={store}>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Search Screen</Text>
-        {/*
         <Button
           title="Search on Keywords"
           onPress={() => this.props.navigation.navigate('Keyword')}
@@ -36,8 +35,6 @@ class SearchScreen extends React.Component {
           title="book2"
           onPress={() => this.props.navigation.navigate('Detail')}
         />
-        */}
-        <ReduxChecker />
       </View>
       </Provider>
     );
