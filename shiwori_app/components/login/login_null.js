@@ -2,6 +2,8 @@ import * as React from 'react';
 import { View, StyleSheet, Button,Text,Modal,TextInput} from 'react-native';
 import { connect } from 'react-redux';
 import {store} from '../../redux/store';
+import SHA256 from 'crypto-js/sha256'
+
 import { set_uemail,set_upass,set_uid,set_uname,guest_set } from '../../redux/actions/user_data';
 
 class Login_null extends React.Component {
@@ -20,6 +22,7 @@ class Login_null extends React.Component {
 	this._setModalVisible(!this.state.Login_null_modalVisible);
 	this.props.navigation.navigate('Home');
   }
+
 
   _modal_textinput(){
 	let ret = <View style={styles.container}>
@@ -42,7 +45,7 @@ class Login_null extends React.Component {
 				placeholder="パスワードを入力してください"
 				autoCorrect={false}
 				value={this.props.pass}
-				onChangeText={(upass) => this.props.set_upass(upass)}
+				onChangeText={(upass) =>this.props.set_upass(SHA256(upass).toString())}
 				style={styles.inputStyle}				
 				/>
 				<Button
