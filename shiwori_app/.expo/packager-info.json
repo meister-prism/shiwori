@@ -1,9 +1,9 @@
 {
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 3144,
+  "expoServerNgrokUrl": "https://my-hvg.anonymous.shiwori-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.my-hvg.anonymous.shiwori-app.exp.direct",
+  "ngrokPid": 14196,
   "devToolsPort": 19002,
-  "expoServerPort": null
+  "expoServerPort": 19000
 }
