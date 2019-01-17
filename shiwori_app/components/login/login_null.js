@@ -2,8 +2,8 @@ import * as React from 'react';
 import { View, StyleSheet, Button,Text,Modal,TextInput} from 'react-native';
 import { connect } from 'react-redux';
 import {store} from '../../redux/store';
-import SHA256 from 'crypto-js/sha256'
-
+import SHA256 from 'crypto-js/sha256';
+import {signup} from '../../api/showori_server/userdata';
 import { set_uemail,set_upass,set_uid,set_uname,guest_set } from '../../redux/actions/user_data';
 
 class Login_null extends React.Component {
@@ -16,9 +16,10 @@ class Login_null extends React.Component {
 	  this.setState({Login_null_modalVisible : visible});
 	  this.setState({Login_null_modalType    : type});
   }
-
-  _goHome(){
-	this.props.set_uid("hogehoge");
+  
+  async _goHome(){
+    let res = await signup(this.props.uname,this.props.uemail,this.props.upass);
+    this.props.set_uid(res.userinfo.user_id);
 	this._setModalVisible(!this.state.Login_null_modalVisible);
 	this.props.navigation.navigate('Home');
   }
