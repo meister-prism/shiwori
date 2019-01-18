@@ -7,7 +7,7 @@ import {SHIWORI_ROUTE} from '../address';
  * @param {str} name
  * @param {str} email
  * @param {str} password
- * @return {json} responce
+ * @return {json} response
  */
 export async function signup(name,email,password){
     return fetch(SHIWORI_ROUTE+'/signup', {
@@ -25,5 +25,32 @@ export async function signup(name,email,password){
         })
         .then((response)=>response.json())
         .then((responseJson)=>responseJson);
+}
+
+/**
+ * user sign_in (login) *async*
+ * @param {str} email
+ * @param {str} password
+ * @return {json} response
+ */
+export async function signin(email,password){
+    return fetch(SHIWORI_ROUTE+'/signin', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'X-SHIWORI-Signature' : 'prismprism'
+            },
+            body: JSON.stringify({
+                "email" : email,
+                "password": password,
+            })
+        })
+        .then((response)=>{
+            const status = response.status;
+            const responseJson = response.json();
+            const ret = {"status":status,"json":responseJson};
+            return ret;
+        }).then((ret)=>ret);
 }
 

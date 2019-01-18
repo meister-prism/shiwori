@@ -8,8 +8,8 @@ import { set_uemail,set_upass,set_uid,set_uname,guest_set } from '../../redux/ac
 
 class Login_null extends React.Component {
   state = {
-	Login_null_modalVisible : false,
-	Login_null_modalType:null
+	  Login_null_modalVisible : false,
+	  Login_null_modalType:null
   }
   _setModalVisible(visible,type = null) {
     // modalの状態を変える
