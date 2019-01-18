@@ -1,4 +1,7 @@
 // actionのtype一覧
+// stateの全削除（ログアウトの処理）
+export const CLEAR_STATE = 'CLEAR_STATE';
+
 // action/user_data
 // set
 export const SET_USER_ID = 'SET_USER_ID';
@@ -27,3 +30,8 @@ export const ADD_NOW_BOOK = 'ADD_NOW_BOOK';
 export const DELETE_NOW_BOOK = 'DELETE_NOW_BOOK';
 export const START_NOW_BOOK = 'START_NOW_BOOK';
 export const STOP_NOW_BOOK = 'STOP_NOW_BOOK';
+
+// action/backup
+export const CLEAR_BACKUP_DATA = 'CLEAR_BACKUP_DATA';
+export const PUSH_BACKUP_DATA = 'PUSH_BACKUP_DATA';
+export const PULL_BACKUP_DATA = 'PULL_BACKUP_DATA';

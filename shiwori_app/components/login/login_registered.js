@@ -1,10 +1,26 @@
 import * as React from 'react';
-import { View, StyleSheet, Button,Text} from 'react-native';
+import { View, StyleSheet, Alert,Text} from 'react-native';
 import { connect } from 'react-redux';
-import { set_uid,set_uname,guest_set } from '../../redux/actions/user_data';
+import { guest_clear,set_uid } from '../../redux/actions/user_data';
+import { state_clear } from '../../redux/actions/root';
+import { signin } from '../../api/showori_server/userdata';
 
 class Login_registered extends React.Component {
+  async _Certify(){
+    let  res = await signin(this.props.uemail,this.props.upass);
+    if(res.status!=200){
+      Alert.alert(
+        'error '+res.status,
+        res.json.message+'\n 再度ログインしてください。',
+        [{text: 'OK', onPress: () => {
+            this.props.state_clear();
+            this.props.navigation.navigate('Welcome');
+        }}]
+      )
+    }
+  }
   _goHome(){
+    this._Certify();
     this.props.navigation.navigate('Home');
   }
   render() {
@@ -26,15 +42,14 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  uid : state.user.id,
-  uname : state.user.name,
-  guest : state.user.guest,
+  uemail : state.user.email,
+  upass : state.user.pass,
 })
 
 const mapDispatchToProps = {
+  guest_clear,
   set_uid,
-  set_uname,
-  guest_set,
+  state_clear
 }
 
 export default connect(
