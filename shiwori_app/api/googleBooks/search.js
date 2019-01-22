@@ -4,8 +4,8 @@ import {GOOGLE_BOOKS} from '../address';
  * request,正常ならキーワードの検索結果が返ってきます。
  * googleBooksAPI keywords search
  * @param {string} key keyword
- * @return {resolve} responese {status_code:(int),"body":"(json)"}
- * @return {reject}  response {status_code:(int),"body":null}
+ * @return {Promise.resolve} responese {status_code:(int),"body":"(json)"}
+ * @return {Promise.reject}  response {status_code:(int),"body":null}
  */
 export function gbapi_search(key) {
     let response = {"status_code": "", "body": ""};
