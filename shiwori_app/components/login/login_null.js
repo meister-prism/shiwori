@@ -21,7 +21,7 @@ class Login_null extends React.Component {
     let res = await signup(this.props.uname,this.props.uemail,this.props.upass);
     this.props.set_uid(res.userinfo.user_id);
     this._setModalVisible(!this.state.Login_null_modalVisible);
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('Main');
   }
 
 

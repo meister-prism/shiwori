@@ -1,24 +1,25 @@
 import Drawer from "./src/Drawer";
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import WelcomeScreen from './screens/welcome/welcomeScreen';
+import LoginScreen from './screens/welcome/loginScreen';
 
-// const AppContainer = createStackNavigator({
-//     Welcome: {
-//       headerMode: 'none',
-//       screen: WelcomeScreen,
-//       navigationOptions: {
-//       headerVisible: false,
-//       }
-//     },
-//     Main: {
-//       headerMode: 'none',
-//       screen: Drawer,
-//       navigationOptions: {
-//       headerVisible: false,
-//       }
-//     },
-//   });
+const AppContainer = createStackNavigator({
+    Login: {
+      screen: LoginScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Main: {
+      screen: Drawer,
+      navigationOptions: {
+        header: null,
+      }
+    },
+  });
+// AppContainer.navigationOptions = {
+//   header: null,
+// }
   
-// export default createAppContainer(AppContainer);
+export default createAppContainer(AppContainer);
   
-export default createAppContainer(Drawer);
+//export default createAppContainer(Drawer);
