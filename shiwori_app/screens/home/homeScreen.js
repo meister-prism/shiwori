@@ -1,10 +1,11 @@
-import React from 'react';
-import {  StyleSheet, Text, View, Button } from 'react-native';
+import React, {Component} from 'react';
+import {  StyleSheet,Modal,  TouchableHighlight,Text, View, Button, Alert } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store,persistor } from '../../redux/store';
 import ReduxChecker from '../../components/debug/reduxchecker_bookdata';
-
+import WelcomeScreen from '../welcome/welcomeScreen';
+import Startup from '../../components/welcome/startup';
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
