@@ -1,0 +1,1 @@
+export const SHIWORI_SIG = 'prismprism' 

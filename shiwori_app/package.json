@@ -9,17 +9,18 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/vector-icons": "^9.0.0",
     "crypto-js": "^3.1.9-1",
     "expo": "^32.0.0",
     "moment": "^2.23.0",
     "react": "^16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
+    "react-native-vector-icons": "^6.2.0",
     "react-navigation": "^3.0.9",
     "react-persist": "^1.0.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
-    "redux-persist": "^5.10.0",
-    "sha256": "^0.2.0"
+    "redux-persist": "^5.10.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

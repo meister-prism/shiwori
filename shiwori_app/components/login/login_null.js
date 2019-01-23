@@ -45,7 +45,8 @@ class Login_null extends React.Component {
 				<TextInput
 				placeholder="パスワードを入力してください"
 				autoCorrect={false}
-				value={this.props.pass}
+        value={this.props.pass}
+        secureTextEntry={true}        
 				onChangeText={(upass) =>this.props.set_upass(SHA256(upass).toString())}
 				style={styles.inputStyle}				
 				/>

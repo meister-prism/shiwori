@@ -19,7 +19,7 @@ class SearchScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('Keyword')}
         />
         <Button
-          title="Search on Category"
+          title="Search on CodeScan"
           onPress={() => this.props.navigation.navigate('CodeScan')}
         />
         <Button

@@ -1,0 +1,3 @@
+rootProject.name = 'shiwori_app'
+
+include ':app'
