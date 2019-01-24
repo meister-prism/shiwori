@@ -5,6 +5,7 @@ import { SET_USER_NAME } from './type';
 import { SET_USER_EMAIL } from './type';
 import { SET_USER_PASS } from './type';
 import { SET_USER_DATA } from './type';
+import { SET_USER_TYPE } from './type';
 
 import { CLEAR_USER_ID } from './type';
 import { CLEAR_USER_NAME } from './type';
@@ -46,6 +47,12 @@ export const set_udata = (id,name,email,pass) =>({
     email : email,
     pass : pass
 });
+
+// @param enum{"register","guest","none"}
+export const set_utype = (utype) => ({
+    type : SET_USER_TYPE,
+    utype : utype
+})
 
 export const clear_uid = () =>({
     type : CLEAR_USER_ID,

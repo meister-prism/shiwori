@@ -1,9 +1,9 @@
 {
   "packagerPort": 19001,
-  "packagerPid": 14248,
-  "expoServerNgrokUrl": "https://my-hvg.anonymous.shiwori-app.exp.direct",
-  "packagerNgrokUrl": "https://packager.my-hvg.anonymous.shiwori-app.exp.direct",
-  "ngrokPid": 4276,
+  "packagerPid": 8448,
+  "expoServerNgrokUrl": "https://zc-8mc.anonymous.shiwori-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.zc-8mc.anonymous.shiwori-app.exp.direct",
+  "ngrokPid": 18408,
   "devToolsPort": 19002,
   "expoServerPort": 19000
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {  StyleSheet,ModalText, View, Button} from 'react-native';
+import {View,Text} from 'react-native';
 import Startup from '../../components/welcome/startup';
 import {Provider} from 'react-redux';
 import {store} from '../../redux/store'; 

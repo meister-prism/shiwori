@@ -2,6 +2,7 @@ import { SET_USER_ID, SET_USER_DATA, GUEST_SET, GUEST_CLEAR } from '../actions/t
 import { SET_USER_NAME } from '../actions/type';
 import { SET_USER_EMAIL } from '../actions/type';
 import { SET_USER_PASS } from '../actions/type';
+import { SET_USER_TYPE } from '../actions/type';
 
 import { CLEAR_USER_ID } from '../actions/type';
 import { CLEAR_USER_NAME } from '../actions/type';
@@ -16,6 +17,7 @@ const INITIAL_STATE = {
     email : '',
     pass : '',
     guest : false,
+    type : "none",
 }
 
 const user_reducer = (state = INITIAL_STATE, action) => {
@@ -34,6 +36,8 @@ const user_reducer = (state = INITIAL_STATE, action) => {
                         name : action.name,
                         email: action.email,
                         pass : action.pass }
+        case SET_USER_TYPE:
+            return { ...state,type:action.utype}
         case CLEAR_USER_ID:
             return { ...state, id: action.id }
         case CLEAR_USER_NAME:
