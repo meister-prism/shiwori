@@ -8,6 +8,7 @@ export const SET_USER_ID = 'SET_USER_ID';
 export const SET_USER_NAME = 'SET_USER_NAME';
 export const SET_USER_EMAIL = 'SET_USER_EMAIL';
 export const SET_USER_PASS = 'SET_USER_PASS';
+export const SET_USER_TYPE = 'SET_USER_TYPE';
 // set all
 export const SET_USER_DATA = 'SET_USER_DATA';
 // clear
