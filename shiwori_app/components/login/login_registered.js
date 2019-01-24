@@ -14,14 +14,14 @@ class Login_registered extends React.Component {
         res.json.message+'\n 再度ログインしてください。',
         [{text: 'OK', onPress: () => {
             this.props.state_clear();
-            this.props.navigation.navigate('Welcome');
+            this.props.navigation.navigate('Login');
         }}]
       )
     }
   }
   _goHome(){
     this._Certify();
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('Main');
   }
   render() {
     return (

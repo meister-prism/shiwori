@@ -5,7 +5,7 @@ import { set_uid,set_uname,guest_set } from '../../redux/actions/user_data';
 
 class Login_guest extends React.Component {
   _goHome(){
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate('Main');
   }
   render() {
     return (
