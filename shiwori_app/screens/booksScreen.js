@@ -1,32 +1,20 @@
 import React from 'react';
-import { Text, View, Button ,FlatList} from 'react-native';
+import { Text, View, Button ,FlatList,Image} from 'react-native';
 import HeaderIcon from '../components/HeaderIcon';
-import GbAPIChecker from '../components/debug/gbapi_test';
-
+import BookList_key from '../components/bookdata/bookList';
 class BooksScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '本棚',
     headerLeft: <HeaderIcon navigation={navigation}/>,
   });
 
-  _keyResult(result){
-    let titles=[];
-    for(let i=0;i<result.items.length;i++){
-      titles.push({title:result.items[i].volumeInfo.title});
-    }
-    let ret = <FlatList
-                data={titles}
-                renderItem={({item}) => <Text>{item.title}</Text>}
-              />
-    return ret;
-  }
   render() {
     let result = this.props.navigation.getParam('result');
     let type = this.props.navigation.getParam('type');
     let ResultList;
     switch(type){
       case "key":
-        ResultList = this._keyResult(result);
+        ResultList = <BookList_key result={result}/>
       default:
     }
     return (

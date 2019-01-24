@@ -1,10 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button,TextInput } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
-import {gbapi_search} from '../../api/googleBooks/search';
-
-
-
+import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
+import SearchBox from '../../components/searchBox';
 class KeywordScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'キーワード検索',
@@ -14,7 +12,9 @@ class KeywordScreen extends React.Component {
   state = {search_txt:null}
   
   async _get_result(){
-    let res = await gbapi_search(this.state.search_txt);
+    let config = Object.assign({}, INITIAL_CONFIG);
+    config.maxResults = 40;
+    let res = await gbapi_search(this.state.search_txt,config);
     this.props.navigation.navigate('Books',{result:res.body,type:"key"});
   }
   
@@ -24,20 +24,18 @@ class KeywordScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ flex:1, alignItems: "center", justifyContent: "center" }}>
         <Text>Search Keyword Screen</Text>
-        <TextInput
-          style={styles.inputStyle}
-          autoCorrect = {false}
-          onChangeText={text=>{this.setState({search_txt:text})}}
-          onClear={()=>this.setState({search_txt:null})}
-          placeholder='検索キーワード...' />
-        <Button
-          title="seach"
-          onPress={() => {
+        <SearchBox 
+          TextInput_style={styles.inputStyle}
+          TextInput_onChangeText={text=>{this.setState({search_txt:text})}}
+          TextInput_placeholder='検索キーワード...'
+          TextInput_autoCorrect = {false}
+          Button_Onpress = {() => {
             if(this.state.search_txt!=null)this._goBooks();
           }}
-        />
+          Button_title="seach"
+          />
       </View>
     );
   }
