@@ -1,0 +1,70 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 2038,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "IjZryAeasiMC",
+            "etag": "OVPVFZKBR20",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/IjZryAeasiMC",
+            "volumeInfo": {
+                "title": "こんにちは赤ちゃん",
+                "subtitle": "かぎ針あみ",
+                "authors": [
+                    "日本ヴォーグ社"
+                ],
+                "publisher": "日本ヴォーグ社",
+                "publishedDate": "1993",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "4529023737"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9784529023733"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 92,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.0.1.0.preview.1",
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=IjZryAeasiMC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=IjZryAeasiMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "ja",
+                "previewLink": "http://books.google.co.jp/books?id=IjZryAeasiMC&pg=PA92&dq=%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF&hl=&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.co.jp/books?id=IjZryAeasiMC&dq=%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF%E8%B5%A4%E3%81%A1%E3%82%83%E3%82%93.html?hl=&id=IjZryAeasiMC"
+            },
+            "saleInfo": {
+                "country": "JP",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "JP",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=IjZryAeasiMC&hl=&printsec=frontcover&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "\u003cb\u003eこんにちは\u003c/b\u003e赤ちゃん 05077 辛 835 巳発行日/ 1993 年 10 月 1 日第 1 刷 2008 年 4 月 \u003cbr\u003e\n4 日第 32 刷発行人/瀬戸忠信編集人/瀬戸信昭編集総轄/萩原喬司発行所/株式会社\u003cbr\u003e\n日本ヴォーグ社〒 16 卜 8705 東京都新宿区巿谷本村町 3 - 23 丁巳し.販売 03&nbsp;..."
+            }
+        },
