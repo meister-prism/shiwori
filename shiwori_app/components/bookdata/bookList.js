@@ -9,7 +9,7 @@ import Child from './bookList_child';
 export default class BookList extends React.Component{
     _createkeyList(item){
         // item.title:title
-        let image 
+        let image;
         if(item.imageLink!=undefined)image = <Image source={{uri: item.imageLink}}
                                                 style={{width: 100, height: 150}} />
         else image = <Image source={require('../../assets/img/noimage.png')}
