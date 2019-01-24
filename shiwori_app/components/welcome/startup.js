@@ -1,40 +1,81 @@
 import * as React from 'react';
-import { View, StyleSheet, Button,Text} from 'react-native';
+import { View, StyleSheet, Button,Text,Modal,  TouchableHighlight,Alert} from 'react-native';
 import LogoTitle from './logotitle';
 import { connect } from 'react-redux';
 import {store} from '../../redux/store';
 class Startup extends React.Component {
+  state = {
+    modalVisible: true,
+  };
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
   render() {
     const _getNextpage = () => {
       if(this.props.guest){
-        return <Button
-                  title="ゲストとしてログイン"
-                  onPress={() => this.props.navigation.navigate('Login',{type:"guest"})}
-                />
+        return <TouchableHighlight>
+                <Button
+                  title='ゲストとしてログイン' 
+                  onPress={() => {
+                    //this.props.navigation.navigate('Login',{type:"guest"})
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}>
+                </Button>
+              </TouchableHighlight>
       }else{
         if(this.props.uid == ""){
-          return <Button
-                    title="ようこそ"
-                    onPress={() => this.props.navigation.navigate('Login',{type:"null"})}
-                  />
+          return <TouchableHighlight>
+                    <Button
+                      title='ようこそ' 
+                      onPress={() => {
+                        this.setModalVisible(!this.state.modalVisible);
+                      }}>
+                    </Button>
+                  </TouchableHighlight>
+                  // <Button
+                  //   title="ようこそ"
+                  //   onPress={() => this.props.navigation.navigate('Login',{type:"null"})}
+                  // />
         }else{
           let name = this.props.uname;
-            return <Button
-                    title={"こんにちは"+name+"さん"}
-                    onPress={() => this.props.navigation.navigate('Login',{type:"registered"})}
-                  />
+            return <TouchableHighlight>
+                      <Button
+                        title={"こんにちは"+name+"さん"}
+                        onPress={() => {
+                          this.setModalVisible(!this.state.modalVisible);
+                        }}>
+                      </Button>
+                    </TouchableHighlight>
+                  // <Button
+                  //   title={"こんにちは"+name+"さん"}
+                  //   onPress={() => this.props.navigation.navigate('Login',{type:"registered"})}
+                  // />
           }
       }
     }
     
     return (
         <View style={styles.container}>
-            <LogoTitle />
-            {_getNextpage()}        
+            <Modal
+              animationType="slide"
+              transparent={false}
+              visible={this.state.modalVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+              }}>
+              <View style={{marginTop: 22}}>
+                <View>
+                <LogoTitle />
+                  {_getNextpage()} 
+                </View>
+              </View>
+            </Modal>
+                   
         </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
