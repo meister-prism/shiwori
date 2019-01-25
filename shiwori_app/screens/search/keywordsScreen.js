@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button,TextInput } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
 import SearchBox from '../../components/searchBox';
+
 class KeywordScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'キーワード検索',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList,Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList,Image,Button } from 'react-native';
 import { getBooksData } from '../../api/googleBooks/getBooksData';
 import Child from './bookList_child';
 /*
@@ -7,18 +7,26 @@ import Child from './bookList_child';
 * @prpps result : googleBooksからのres.body
 */
 export default class BookList extends React.Component{
-    _createkeyList(item){
+    _createkeyList(item,navigation){
         // item.title:title
         if(item == "none")return <Text>見つかりませんでした</Text>;
         let image;
-        if(item.imageLink!=undefined)image = <Image source={{uri: item.imageLink}}
-                                                style={{width: 100, height: 150}} />
-        else image = <Image source={require('../../assets/img/noimage.png')}
-                        style={{width: 100, height: 150}} />
-        let ret =   <Child item={item} image = {image}/>
+        if(item.imageLink_large != null){
+            image=<Image source={{uri: item.imageLink_large}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        }else if(item.imageLink_medium !=null){
+            image=<Image source={{uri: item.imageLink_medium}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        }else if(item.imageLink_thumbnail!=null){
+            image=<Image source={{uri: item.imageLink_thumbnail}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        }else if(item.imageLink_smallThumbnail!=null){
+            image=<Image source={{uri: item.imageLink_smallThumbnail}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        }else {
+            image= <Image source={require('../../assets/img/noimage.png')} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        }
+        let ret =   <Child item={item} image = {image} navigation={navigation}/>
         return ret;
     }
     render(){
+        let navigation = this.props.navigation;
         let data=[];
         let result = this.props.result;
         if(result.totalItems==0)data.push("none");
@@ -33,7 +41,7 @@ export default class BookList extends React.Component{
                 <View style={styles.flatlist}></View>
                   <FlatList
                     data={data}
-                    renderItem={({item}) => this._createkeyList(item)}
+                    renderItem={({item}) => this._createkeyList(item,navigation)}
                 />
             </View>
         );

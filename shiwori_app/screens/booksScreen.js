@@ -14,21 +14,12 @@ class BooksScreen extends React.Component {
     let ResultList;
     switch(type){
       case "key":
-        ResultList = <BookList_key result={result}/>
+        ResultList = <BookList_key result={result} navigation={this.props.navigation}/>
       default:
     }
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Books Screen</Text>
         {ResultList}
-        <Button
-          title="book1"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-        <Button
-          title="book2"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
       </View>
     );
   }
