@@ -70,10 +70,7 @@ export function gbapi_search(key,config=INITIAL_CONFIG) {
  */
 export function gbapi_search_specific(id) {
     let response = {"status_code": "", "body": ""};
-    let target = GOOGLE_BOOKS+"/"+id; //default
-    if(config!=undefined){
-      
-    }
+    let target = GOOGLE_BOOKS+"/"+id;
     return new Promise(function(resolve, reject) {
       fetch(target)
         .then((res) => {
