@@ -35,7 +35,7 @@ class KeywordScreen extends React.Component {
           Button_Onpress = {() => {
             if(this.state.search_txt!=null)this._goBooks();
           }}
-          Button_title="seach"
+          Button_title="search"
           />
       </View>
     );
