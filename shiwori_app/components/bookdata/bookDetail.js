@@ -15,26 +15,26 @@ class BookDetail extends React.Component{
         let data = this.props.data; //data:(obj)
         let image,modal_image;
         if(data.imageLink_large != null){
-            image=<Image source={{uri: data.imageLink_large}} style={{width: 150, height: 250,resizeMode : 'contain'}} />
-            modal_image=<Image source={{uri: data.imageLink_large}} style={{width: 300, height: 500,resizeMode : 'contain'}} />
+            image=<Image source={{uri: data.imageLink_large}} style={styles.img} />
+            modal_image=<Image source={{uri: data.imageLink_large}} style={styles.modalimg} />
         }else if(data.imageLink_medium !=null){
-            image=<Image source={{uri: data.imageLink_medium}} style={{width: 150, height: 250,resizeMode : 'contain'}} />
-            modal_image=<Image source={{uri: data.imageLink_medium}} style={{width: 300, height: 500,resizeMode : 'contain'}} />
+            image=<Image source={{uri: data.imageLink_medium}} style={styles.img} />
+            modal_image=<Image source={{uri: data.imageLink_medium}} style={styles.modalimg} />
         }else if(data.imageLink_thumbnail!=null){
-            image=<Image source={{uri: data.imageLink_thumbnail}} style={{width: 150, height: 250,resizeMode : 'contain'}} />
-            modal_image=<Image source={{uri: data.imageLink_thumbnail}} style={{width: 300, height: 500,resizeMode : 'contain'}} />
+            image=<Image source={{uri: data.imageLink_thumbnail}} style={styles.img} />
+            modal_image=<Image source={{uri: data.imageLink_thumbnail}} style={styles.modalimg} />
         }else if(data.imageLink_smallThumbnail!=null){
-            image=<Image source={{uri: data.imageLink_smallThumbnail}} style={{width: 150, height: 250,resizeMode : 'contain'}} />
-            modal_image=<Image source={{uri: data.imageLink_smallThumbnail}} style={{width: 300, height: 500,resizeMode : 'contain'}} />
+            image=<Image source={{uri: data.imageLink_smallThumbnail}} style={styles.img} />
+            modal_image=<Image source={{uri: data.imageLink_smallThumbnail}} style={styles.modalimg} />
         }else {
-            image= <Image source={require('../../assets/img/noimage.png')} style={{width: 150, height: 250}} />
-            modal_image=<Image source={{uri: data.imageLink_large}} style={{width: 300, height: 500,resizeMode : 'contain'}} />
+            image= <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+            modal_image=<Image source={{uri: data.imageLink_large}} style={styles.modalimg} />
         }
         return  (
                 <View style={styles.container}>
                     <View style={styles.InfoContainer}>
                         <TouchableOpacity onPress={() => {this.setModalVisible2(true);}}>
-                            <View style={styles.img}>{image}</View>
+                            <View style={styles.imgContainer}>{image}</View>
                         </TouchableOpacity>
                             <View style={styles.info}>
                                 <Text style={styles.title}>{data.title}</Text>
@@ -97,9 +97,14 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         backgroundColor: '#f0f0f0',
     },
-    img:{
+    imgContainer:{
         backgroundColor: 'powderblue',
         padding :5,
+    },
+    img:{
+        width: 150, 
+        height: 250,
+        resizeMode : 'contain',
     },
     info:{
         flex:1,
@@ -146,6 +151,11 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         padding:20,
         backgroundColor:'#dfdfdf'
+    },
+    modalimg:{
+        width: 300, 
+        height: 500,
+        resizeMode : 'contain',
     },
     hidebutton_txt:{
         fontSize:15,
