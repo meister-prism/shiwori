@@ -6,6 +6,7 @@ import { store,persistor } from '../../redux/store';
 import ReduxChecker from '../../components/debug/reduxchecker_bookdata';
 import WelcomeScreen from '../welcome/welcomeScreen';
 import Startup from '../../components/welcome/startup';
+import BleExample from "../../components/BleExample";
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -16,12 +17,13 @@ class HomeScreen extends React.Component {
     return (
       <Provider  store={store}>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
+        {/* <Text>Home Screen</Text>
         <Button
           title="読書記録の編集"
           onPress={() => this.props.navigation.navigate('Edit')}
         />
-        <ReduxChecker />
+        <ReduxChecker /> */}
+        <BleExample/>
       </View>
       </Provider>
     );
