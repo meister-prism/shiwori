@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://zc-8mc.anonymous.shiwori-app.exp.direct",
   "packagerNgrokUrl": "https://packager.zc-8mc.anonymous.shiwori-app.exp.direct",
-  "ngrokPid": 17328,
+  "ngrokPid": 19084,
   "devToolsPort": 19002,
   "packagerPort": 19001,
-  "packagerPid": 40888
+  "packagerPid": 25180
 }
