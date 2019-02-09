@@ -42,6 +42,7 @@ export default class BookList extends React.Component{
                   <FlatList
                     data={data}
                     renderItem={({item}) => this._createkeyList(item,navigation)}
+                    keyExtractor={(item,index)=>index.toString()}
                 />
             </View>
         );

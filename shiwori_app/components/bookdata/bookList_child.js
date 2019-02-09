@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import {gbapi_search_specific} from '../../api/googleBooks/search'
+import { connect } from 'react-redux';
+import {add_recentlyViewed,delete_recentlyViewed} from '../../redux/actions/search'
 class BookList_Child extends React.Component{
     async _get_data_andGo(id){
         let res = await gbapi_search_specific(id);
+        // error処理
+        this.props.add_recentlyViewed(id);
         this.props.navigation.navigate('Details',{type:"keyword",bookdata:res.body});
     }
 
@@ -33,7 +37,18 @@ class BookList_Child extends React.Component{
     }
 }
 
-export default BookList_Child;
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = {
+    // importしたactionCreator
+    add_recentlyViewed,delete_recentlyViewed,
+}
+  
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BookList_Child)
 
 const styles = StyleSheet.create({
     container: {

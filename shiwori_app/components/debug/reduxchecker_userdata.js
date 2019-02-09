@@ -6,6 +6,7 @@ import {
     set_uid  , set_uname  , set_uemail  , set_upass, set_udata,
     clear_uid, clear_uname, clear_uemail, clear_upass, clear_udata,
 } from '../../redux/actions/user_data';
+import {add_searchHistory,delete_searchHistory}from  '../../redux/actions/search';
 import {store} from '../../redux/store';
 
 export class reduxChecker extends Component {
@@ -31,23 +32,13 @@ export class reduxChecker extends Component {
             title="set_user_name"
           />
         </View>
-        <View style={{flexDirection: 'row'}}>
         <Button
-            onPress={() => this.props.set_upass('passworld')}
-            title="set_user_password"
-          />
+            onPress={() => this.props.add_searchHistory('aaa')}
+            title="検索履歴を追加aaa"
+          /> 
           <Button
-            onPress={() => this.props.clear_uid()}
-            title="clear_userID"
-          /> 
-        </View>
-        <Button
-            onPress={() => this.props.clear_uname()}
-            title="clear_userNAME"
-          /> 
-        <Button
-            onPress={() => this.props.clear_udata()}
-            title="clear_userdata"
+            onPress={() => this.props.delete_searchHistory()}
+            title="検索履歴を削除"
           /> 
         {/* getState() : storeの情報を表示 */}
         <Text style={{marginBottom: 100}}>store: {JSON.stringify(store.getState())}</Text>
@@ -76,6 +67,7 @@ const mapDispatchToProps = {
     clear_uemail,
     clear_upass,
     clear_udata,
+    add_searchHistory,delete_searchHistory,
 }
   
 export default connect(

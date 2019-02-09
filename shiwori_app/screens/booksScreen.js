@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, View, Button ,FlatList,Image} from 'react-native';
 import HeaderIcon from '../components/HeaderIcon';
 import BookList_key from '../components/bookdata/bookList';
+import {store} from '../redux/store';
+import {Provider} from 'react-redux';
 class BooksScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '本棚',
@@ -18,9 +20,11 @@ class BooksScreen extends React.Component {
       default:
     }
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        {ResultList}
-      </View>
+      <Provider store={store}>
+          <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+          {ResultList}
+          </View>
+      </Provider>
     );
   }
 }
