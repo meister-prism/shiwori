@@ -7,10 +7,12 @@ import { ADD_SEARCH_HISTORY,DELETE_SEARCH_HISTORY }from './type';
 /**
  * 最近見た本に追加する（最大50件）、それを超えると古い順に破棄される
  * @param {str} volumeid
+ * @param {str} volumeimg 
  */
-export const add_recentlyViewed = (volumeid)=>({
+export const add_recentlyViewed = (volumeid,volumeimg)=>({
     type:ADD_RECENTLY_VIEWED,
-    volumeid:volumeid
+    volumeid:volumeid,
+    volumeimg:volumeimg
 });
 
 /**
