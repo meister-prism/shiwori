@@ -10,19 +10,32 @@ const INITIAL_STATE = {
     searchHistory : [],
 }
 
+// 最近読んだ本にidを追加
 const _add_recentlyViewed = (state,action) => {
     let ret=state.recentlyViewed;
-    if(ret.length==MAX_RV){
-        ret.push(action.recentlyViewed);
+    // 同じ本を検索したときは、いまのidの場所を削除=末尾に再び追加
+    for(let i=0;i<ret.length;i++){
+        if(action.volumeid==ret[i]){
+            ret.splice(i,1);
+        }
+    }
+    ret.push(action.volumeid);
+    if(ret.length==MAX_RV+1){
         ret.shift();
     }
     return {...state,recentlyViewed:ret}
 }
 
+// 検索履歴の追加
 const _add_searchHistory = (state,action) => {
     let ret= state.searchHistory;
-    if(ret.length==MAX_ST){
-        ret.push(action.text);
+    for(let i=0;i<ret.length;i++){
+        if(action.text==ret[i]){
+            ret.splice(i,1);
+        }
+    }
+    ret.push(action.text);
+    if(ret.length==MAX_ST+1){
         ret.shift();
     }
     return {...state,searchHistory:ret}

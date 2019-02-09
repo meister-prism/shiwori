@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button,TextInput } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
-import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
-import SearchBox from '../../components/searchBox';
+import Key_Child from './keywordsScreen_child';
+import { store,persistor } from '../../redux/store';
+import { Provider } from 'react-redux';
+
 
 class KeywordScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -10,37 +12,17 @@ class KeywordScreen extends React.Component {
     headerLeft: <HeaderIcon navigation={navigation}/>,
   });
 
-  state = {search_txt:null}
-  
-  async _get_result(){
-    let config = Object.assign({}, INITIAL_CONFIG);
-    config.maxResults = 40;
-    let res = await gbapi_search(this.state.search_txt,config);
-    this.props.navigation.navigate('Books',{result:res.body,type:"key"});
-  }
-  
-  _goBooks(){
-    this._get_result();
-  }
-
   render() {
     return (
-      <View style={{ flex:1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Search Keyword Screen</Text>
-        <SearchBox 
-          TextInput_style={styles.inputStyle}
-          TextInput_onChangeText={text=>{this.setState({search_txt:text})}}
-          TextInput_placeholder='検索キーワード...'
-          TextInput_autoCorrect = {false}
-          Button_Onpress = {() => {
-            if(this.state.search_txt!=null)this._goBooks();
-          }}
-          Button_title="search"
-          />
-      </View>
+      <Provider  store={store}>
+        <View style={{ flex:1, alignItems: "center", justifyContent: "center" }}>
+          <Key_Child navigation={this.props.navigation}/>
+        </View>
+      </Provider>
     );
   }
 }
+
 export default KeywordScreen;
 
 const styles = StyleSheet.create({
