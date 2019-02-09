@@ -5,6 +5,7 @@ var { width, height, scale } = Dimensions.get('window'); //get window size
 import RecentlyViewedList from './recentlyViewedList'
 import { Provider } from 'react-redux';
 import {store} from '../../redux/store'
+import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
 class BookDetail extends React.Component{
     state = {modalVisible:false,modalVisible2:false}
     setModalVisible(visible) {
@@ -13,6 +14,19 @@ class BookDetail extends React.Component{
     setModalVisible2(visible) {
         this.setState({modalVisible2: visible});
     }
+
+    /**
+     * 著者絞り込み検索をして本棚ページに繊維させます。
+     */
+    async _authorSearch(authors){
+        let config = Object.assign({}, INITIAL_CONFIG);
+        config.maxResults = 40;
+        config.inauthor=true; // 著者絞り込み検索
+        let res = await gbapi_search(authors,config);
+        // error処理はここ
+        this.props.navigation.navigate('Books',{result:res.body,type:"author"});
+    }
+
     render(){
         let data = this.props.data; //data:(obj)
         let image,modal_image;
@@ -41,7 +55,9 @@ class BookDetail extends React.Component{
                         </TouchableOpacity>
                             <View style={styles.info}>
                                 <Text style={styles.title}>{data.title}</Text>
-                                <Text style={styles.author}>{data.authors}</Text>
+                                <TouchableOpacity onPress={()=>{this._authorSearch(data.authors)}}>
+                                    <Text style={styles.author}>{data.authors}</Text>
+                                </TouchableOpacity>                                
                                 <Text style={styles.publiserDate}>{data.publishedDate}</Text>
                                 <Text style={styles.publisher}>{data.publisher}</Text>
                             </View>
@@ -91,6 +107,7 @@ class BookDetail extends React.Component{
         );
     }
 }
+
 
 export default BookDetail;
 

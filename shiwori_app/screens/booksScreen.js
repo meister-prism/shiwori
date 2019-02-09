@@ -16,6 +16,7 @@ class BooksScreen extends React.Component {
     let ResultList;
     switch(type){
       case "key":
+      case "author":
         ResultList = <BookList_key result={result} navigation={this.props.navigation}/>
       default:
     }
