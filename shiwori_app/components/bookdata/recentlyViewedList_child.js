@@ -45,6 +45,7 @@ class RecentlyViewedChild extends React.Component{
                     renderItem={({item}) => this._createkeyList(item)}
                     keyExtractor={(item,index)=>index.toString()}
                     horizontal={true}
+                    showsHorizontalScrollIndicator={false}
                     />
                 </View>
         );
