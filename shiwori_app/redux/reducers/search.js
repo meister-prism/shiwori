@@ -6,7 +6,7 @@ const MAX_ST = 10; // 検索履歴に入れる最大数
 
 // どちらも、先頭が古い、新しい情報は末尾に追加されていく。
 const INITIAL_STATE = {
-    recentlyViewed : [],
+    recentlyViewed : {id:[],img:[]},
     searchHistory : [],
 }
 
@@ -14,14 +14,17 @@ const INITIAL_STATE = {
 const _add_recentlyViewed = (state,action) => {
     let ret=state.recentlyViewed;
     // 同じ本を検索したときは、いまのidの場所を削除=末尾に再び追加
-    for(let i=0;i<ret.length;i++){
-        if(action.volumeid==ret[i]){
-            ret.splice(i,1);
+    for(let i=0;i<ret.id.length;i++){
+        if(action.volumeid==ret.id[i]){
+            ret.id.splice(i,1);
+            ret.img.splice(i,1);
         }
     }
-    ret.push(action.volumeid);
-    if(ret.length==MAX_RV+1){
-        ret.shift();
+    ret.id.push(action.volumeid);
+    ret.img.push(action.volumeimg);
+    if(ret.id.length==MAX_RV+1){
+        ret.id.shift();
+        ret.img.shift();
     }
     return {...state,recentlyViewed:ret}
 }

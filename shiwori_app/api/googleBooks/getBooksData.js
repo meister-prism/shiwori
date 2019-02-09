@@ -61,6 +61,7 @@ export function getBooksData_specific(result){
         imageLink_medium=null,
         imageLink_large=null,
         imageLink_extraLarge=null;
+    // alert(JSON.stringify(result));
     if("imageLinks" in result.volumeInfo ){
         if('smallThumbnail' in result.volumeInfo.imageLinks)imageLink_smallThumbnail = result.volumeInfo.imageLinks.smallThumbnail;
         if( 'thumbnail' in result.volumeInfo.imageLinks)imageLink_thumbnail  = result.volumeInfo.imageLinks.thumbnail;

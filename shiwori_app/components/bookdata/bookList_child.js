@@ -4,22 +4,22 @@ import {gbapi_search_specific} from '../../api/googleBooks/search'
 import { connect } from 'react-redux';
 import {add_recentlyViewed,delete_recentlyViewed} from '../../redux/actions/search'
 class BookList_Child extends React.Component{
-    async _get_data_andGo(id){
+    async _get_data_andGo(id,img){
         let res = await gbapi_search_specific(id);
         // error処理
-        this.props.add_recentlyViewed(id);
+        this.props.add_recentlyViewed(id,img);
         this.props.navigation.navigate('Details',{type:"keyword",bookdata:res.body});
     }
 
-    _goDetail(id){
-        this._get_data_andGo(id);
+    _goDetail(id,img){
+        this._get_data_andGo(id,img);
     }
     render(){
         let item = this.props.item;
         let image = this.props.image;
         return  (
                 <View style={styles.container}>
-                <TouchableOpacity onPress={()=>this._goDetail(this.props.item.id)}>
+                <TouchableOpacity onPress={()=>this._goDetail(this.props.item.id,this.props.img_uri)}>
                     <View style={styles.container2}>
                         <View style={styles.img}>{image}</View>
                         <View style={styles.infoContainer}>
@@ -42,7 +42,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     // importしたactionCreator
-    add_recentlyViewed,delete_recentlyViewed,
+    add_recentlyViewed,
+    delete_recentlyViewed,
 }
   
 export default connect(

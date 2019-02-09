@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity,Image,Modal } from 'react-native';
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
-
+import RecentlyViewedList from './recentlyViewedList'
+import { Provider } from 'react-redux';
+import {store} from '../../redux/store'
 class BookDetail extends React.Component{
     state = {modalVisible:false,modalVisible2:false}
     setModalVisible(visible) {
@@ -31,6 +33,7 @@ class BookDetail extends React.Component{
             modal_image=<Image source={{uri: data.imageLink_large}} style={styles.modalimg} />
         }
         return  (
+            <Provider store={store}>
                 <View style={styles.container}>
                     <View style={styles.InfoContainer}>
                         <TouchableOpacity onPress={() => {this.setModalVisible2(true);}}>
@@ -44,11 +47,14 @@ class BookDetail extends React.Component{
                             </View>
                     </View>
                     <View style={styles.detailsContainer}>
-                    <Text style={styles.bookdetail}>本の詳細</Text>
-                    <TouchableOpacity　onPress={() => {this.setModalVisible(true);}}>
-                        <Text numberOfLines={5} style={styles.bookdetail_txt}>{data.description}</Text>
-                    </TouchableOpacity>
+                        <Text style={styles.bookdetail}>本の詳細</Text>
+                        <TouchableOpacity　onPress={() => {this.setModalVisible(true);}}>
+                            <Text numberOfLines={5} style={styles.bookdetail_txt}>{data.description}</Text>
+                        </TouchableOpacity>
+                        {/* 最近読んだ本 */}
+                        <RecentlyViewedList navigation={this.props.navigation}/>
                     </View>
+
                     {/* Modal */}
                     <Modal
                         animationType="none"
@@ -81,6 +87,7 @@ class BookDetail extends React.Component{
                             </View>
                     </Modal>
                 </View>
+                </Provider>
         );
     }
 }

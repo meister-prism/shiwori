@@ -19,7 +19,7 @@ class DetailsScreen extends React.Component {
     let data = getBooksData_specific(detail);
     switch(this.props.navigation.getParam('type')){
       case "keyword":
-        return <BookDetail data={data} />
+        return <BookDetail data={data} navigation={this.props.navigation} />
       default:
     }
   }

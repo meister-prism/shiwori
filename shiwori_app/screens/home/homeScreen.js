@@ -6,6 +6,7 @@ import { store,persistor } from '../../redux/store';
 import ReduxChecker from '../../components/debug/reduxchecker_bookdata';
 import WelcomeScreen from '../welcome/welcomeScreen';
 import Startup from '../../components/welcome/startup';
+import RecentlyViewedList from '../../components/bookdata/recentlyViewedList'
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
@@ -21,6 +22,8 @@ class HomeScreen extends React.Component {
           title="読書記録の編集"
           onPress={() => this.props.navigation.navigate('Edit')}
         />
+        {/* 最近読んだ本 */}
+        <RecentlyViewedList navigation={this.props.navigation}/>
         <ReduxChecker />
       </View>
       </Provider>
