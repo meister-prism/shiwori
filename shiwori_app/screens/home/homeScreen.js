@@ -7,7 +7,7 @@ import ReduxChecker from '../../components/debug/reduxchecker_bookdata';
 import WelcomeScreen from '../welcome/welcomeScreen';
 import Startup from '../../components/welcome/startup';
 import RecentlyViewedList from '../../components/bookdata/recentlyViewedList'
-
+import ProgressCircle from '../../components/charts/progressCircle'
 class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
@@ -23,8 +23,9 @@ class HomeScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('Edit')}
         />
         {/* 最近読んだ本 */}
-        <RecentlyViewedList navigation={this.props.navigation}/>
-        <ReduxChecker />
+        {/* <RecentlyViewedList navigation={this.props.navigation}/> */}
+        
+        {/* <ReduxChecker /> */}
       </View>
       </Provider>
     );
