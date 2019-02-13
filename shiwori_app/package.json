@@ -9,12 +9,15 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "art": "^0.10.3",
     "crypto-js": "^3.1.9-1",
     "expo": "^32.0.0",
     "moment": "^2.23.0",
+    "paths-js": "^0.4.7",
     "react": "^16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-navigation": "^3.0.9",
+    "react-native-percentage-circle": "^1.0.7",
+    "react-navigation": "^3.2.1",
     "react-persist": "^1.0.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
