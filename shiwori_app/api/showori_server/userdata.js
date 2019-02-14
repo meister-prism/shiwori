@@ -23,8 +23,12 @@ export async function signup(name,email,password){
                 "password": password,
             }),
         })
-        .then((response)=>response.json())
-        .then((responseJson)=>responseJson);
+        .then((response)=>{
+            const status = response.status;
+            const responseJson = response.json();
+            const ret = {"status":status,"json":responseJson};
+            return ret;
+        }).then((ret)=>ret);
 }
 
 /**

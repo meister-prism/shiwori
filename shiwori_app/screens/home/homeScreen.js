@@ -24,12 +24,12 @@ class HomeScreen extends React.Component {
           title="読書記録の編集"
           onPress={() => this.props.navigation.navigate('Edit')}
         /> 
-        <BarChart/>
+        {/* <BarChart/> */}
         {/* 最近読んだ本 */}        
         {/* <RecentlyViewedList type='Home' navigation={this.props.navigation}/> */}
-
+        <ReduxChecker />
         </View>
-        {/* <ReduxChecker /> */}
+        
       </Provider>
     );
   }

@@ -79,7 +79,8 @@ export const clear_udata = () =>({
     id : '',
     name : '',
     email : '',
-    pass : ''
+    pass : '',
+    _type : "none"
 });
 
 export const guest_set = () =>({

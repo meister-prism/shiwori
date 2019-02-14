@@ -48,10 +48,11 @@ const user_reducer = (state = INITIAL_STATE, action) => {
             return { ...state, pass: action.pass }
         case CLEAR_USER_DATA:
             return { ...state,
-                        id : action.id,
+                        id   : action.id,
                         name : action.name,
-                        email : action.email,
-                        pass  : action.pass}
+                        email: action.email,
+                        pass : action.pass,
+                        type : action._type }
         case GUEST_SET:
             return {...state, guest : true}
         case GUEST_CLEAR:
