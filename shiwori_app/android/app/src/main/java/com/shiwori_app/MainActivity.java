@@ -1,7 +1,7 @@
 package com.shiwori_app;
 
 import com.facebook.react.ReactActivity;
-
+import it.innove.BleManagerPackage;
 public class MainActivity extends ReactActivity {
 
     /**
@@ -11,5 +11,11 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "shiwori_app";
+    }
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+            new MainReactPackage(),
+            new BleManagerPackage() 
+        );
     }
 }

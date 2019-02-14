@@ -22,8 +22,9 @@ class BleExample extends Component {
     }
 
     componentDidMount() {
-        BleManager.start({showAlert: false});
+        BleManager.start({showAlert: true});
         this.handleDiscoverPeripheral = this.handleDiscoverPeripheral.bind(this);
+        console.log(this.handleDiscoverPeripheral);
 
         NativeAppEventEmitter
             .addListener('BleManagerDiscoverPeripheral', this.handleDiscoverPeripheral );
@@ -91,4 +92,4 @@ class BleExample extends Component {
 }
 
 AppRegistry.registerComponent('BleExample', () => BleExample);
-export default BleExample             ;
+export default BleExample;

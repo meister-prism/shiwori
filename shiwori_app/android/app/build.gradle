@@ -99,7 +99,7 @@ android {
 
     defaultConfig {
         applicationId "com.shiwori_app"
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdkVersion  19
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"

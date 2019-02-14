@@ -16,6 +16,7 @@ const AppContainer = createStackNavigator({
       }
     },
   });
+  
 // AppContainer.navigationOptions = {
 //   header: null,
 // }
