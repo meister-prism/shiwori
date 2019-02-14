@@ -8,6 +8,8 @@ import WelcomeScreen from '../welcome/welcomeScreen';
 import Startup from '../../components/welcome/startup';
 import RecentlyViewedList from '../../components/bookdata/recentlyViewedList'
 import ProgressCircle from '../../components/charts/progressCircle'
+import BarChart from '../../components/charts/barChart';
+
 class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'Home',
@@ -21,12 +23,13 @@ class HomeScreen extends React.Component {
         <Button
           title="読書記録の編集"
           onPress={() => this.props.navigation.navigate('Edit')}
-        />
-        {/* 最近読んだ本 */}
-        {/* <RecentlyViewedList navigation={this.props.navigation}/> */}
-        
+        /> 
+        <BarChart/>
+        {/* 最近読んだ本 */}        
+        {/* <RecentlyViewedList type='Home' navigation={this.props.navigation}/> */}
+
+        </View>
         {/* <ReduxChecker /> */}
-      </View>
       </Provider>
     );
   }

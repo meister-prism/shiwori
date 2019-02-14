@@ -18,20 +18,30 @@ class RecentlyViewed extends React.Component {
             img.push(this.props.recentlyViewed.img[i]);
             id.push(this.props.recentlyViewed.id[i])
             // error処理はここ
-        }this.setState({recently_img:img,recently_id:id});
+        }
+        await this.setState({recently_img:img,recently_id:id});
     }
     componentDidMount(){
-        // this._init();
-        this.interval = setInterval(() => this._init(), 1000);
+        this._init();
+
+        // this.interval = setInterval(() => this._init(), 1000);
+    }
+    _update(){
+        this._init();
     }
     render() {
         /*let data=[];
         for(let i=0;i<this.state.recently_data.length;i++){
             data.push(getBooksData_specific(this.state.recently_data[i]))
-        } */       
+        } */
+        let update=[];
+        update.push(<Text>最近チェックした本</Text>);
+        if(this.props.type=='Home'){
+            update.push(<Button title='更新する'　onPress={()=>{this._update()}}/>)
+        }
         return (
-        <View style={{ flex:1, alignItems: "center",marginTop:10 }}>
-            <Text>最近読んだ本</Text>
+        <View style={{ flex:1,height:150, alignItems: "center",marginTop:10 }}>
+            <View style={{flexDirection:'row'}}>{update}</View>
             <RecentlyViewedChild 
                 img={this.state.recently_img}
                 id ={this.state.recently_id}
