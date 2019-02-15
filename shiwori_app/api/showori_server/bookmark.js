@@ -80,3 +80,32 @@ export async function get(user_id) {
       });
 }
 
+
+/**
+ * change bookmart (change) *async*
+ * @param {str} user_id 
+ * @param {str} bookmark_id
+ * @param {str} memo 
+ * @return {json} status , 
+ */
+export async function chenge(user_id, bookmark_id, memo) {
+    return fetch(SHIWORI_ROUTE + '/bookmark/change', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-SHIWORI-Signature': SHIWORI_SIG
+        },
+        body: JSON.stringify({
+            "user_id": user_id,
+            "insertId" : bookmark_id,
+            "memo" : memo
+        }),
+    })
+        .then((response) => {
+            const status = response.status;
+            const responseJson = response.json();
+            const ret = { "status": status, "json": responseJson };
+            return ret;
+        }).then((ret) => ret);
+}
