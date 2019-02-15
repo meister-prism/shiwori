@@ -10,7 +10,6 @@ class WelcomeScreen extends React.Component {
       <Provider store={store}>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
           <Startup navigation={this.props.navigation} state={this.state}/>
-          <Text>WelcomeScreen</Text>
         </View>
       </Provider>
     );
