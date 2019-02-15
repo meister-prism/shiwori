@@ -67,7 +67,7 @@ export async function del(user_id, bookmark_id) {
 export async function get(user_id) {
     let response = {"status": "", "body": ""};
     return new Promise(function(resolve, reject) {
-        fetch(SHIWORI_ROUTE + '/bookmark/list+q='+user_id)
+        fetch(SHIWORI_ROUTE + '/bookmark/list+?q='+user_id)
           .then((res) => {
             response.status = res.status
             if(res.status != 200) reject(null);

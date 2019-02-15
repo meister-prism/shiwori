@@ -1,8 +1,6 @@
 import { SHIWORI_ROUTE } from '../address';
 import { SHIWORI_SIG } from '../signatures';
 
-// 本の登録
-
 /**
  * 本の登録
  * @param {str} user_id 

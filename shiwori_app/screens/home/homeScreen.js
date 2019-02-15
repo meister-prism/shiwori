@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import {  StyleSheet,Modal,  TouchableHighlight,Text, View, Button, Alert } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store,persistor } from '../../redux/store';
 import ReduxChecker from '../../components/debug/reduxchecker_bookdata';
-import WelcomeScreen from '../welcome/welcomeScreen';
-import Startup from '../../components/welcome/startup';
 import RecentlyViewedList from '../../components/bookdata/recentlyViewedList'
 import ProgressCircle from '../../components/charts/progressCircle'
 import BarChart from '../../components/charts/barChart';
@@ -27,7 +25,6 @@ class HomeScreen extends React.Component {
         <BarChart/>
         {/* 最近読んだ本 */}        
         {/* <RecentlyViewedList type='Home' navigation={this.props.navigation}/> */}
-
         </View>
         {/* <ReduxChecker /> */}
       </Provider>

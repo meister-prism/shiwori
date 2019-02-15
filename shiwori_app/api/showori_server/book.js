@@ -9,7 +9,7 @@ import { SHIWORI_SIG } from '../signatures';
 export async function get(book_id) {
     let response = {"status": "", "body": ""};
     return new Promise(function(resolve, reject) {
-        fetch(SHIWORI_ROUTE + '/bookmark/list+q='+book_id)
+        fetch(SHIWORI_ROUTE + '/book+?q='+book_id)
           .then((res) => {
             response.status = res.status
             if(res.status != 200) reject(null);
