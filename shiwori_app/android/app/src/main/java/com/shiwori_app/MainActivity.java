@@ -7,13 +7,13 @@ public class MainActivity extends ReactActivity {
     private ReactInstanceManager mReactInstanceManager;
     private @Nullable   Callback mPermissionsCallback;
     private @Nullable PermissionListener mPermissionListener;
- @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ......
-}
+    }
 
-  @Override
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -26,7 +26,7 @@ public class MainActivity extends ReactActivity {
         }
     }
 
- @Override
+    @Override
     @TargetApi(Build.VERSION_CODES.M)
     public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
         mPermissionListener = listener;
