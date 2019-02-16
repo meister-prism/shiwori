@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, Button,Text,Modal,  TouchableHighlight,Alert} from 'react-native';
 import LogoTitle from './logotitle';
 import { connect } from 'react-redux';
+import BleExample from "../../components/BleExample";
 import {store} from '../../redux/store';
 class Startup extends React.Component {
   state = {
@@ -65,8 +66,9 @@ class Startup extends React.Component {
               }}>
               <View style={{marginTop: 22}}>
                 <View>
-                <LogoTitle />
+                  <LogoTitle />
                   {_getNextpage()} 
+                  <BleExample/>
                 </View>
               </View>
             </Modal>

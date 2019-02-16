@@ -8,6 +8,7 @@ import {
   Platform,
   PermissionsAndroid
 } from 'react-native';
+
 import BleManager from 'react-native-ble-manager';
 
 class BleExample extends Component {
@@ -20,11 +21,12 @@ class BleExample extends Component {
             scanning:false,
         }
     }
-
+    message="";
     componentDidMount() {
         BleManager.start({showAlert: true});
+        
         this.handleDiscoverPeripheral = this.handleDiscoverPeripheral.bind(this);
-        console.log(this.handleDiscoverPeripheral);
+        //console.log(this.handleDiscoverPeripheral);
 
         NativeAppEventEmitter
             .addListener('BleManagerDiscoverPeripheral', this.handleDiscoverPeripheral );
@@ -44,7 +46,14 @@ class BleExample extends Component {
                 }
           });
         }
+        
+
     }
+
+
+    
+    
+
 
     handleScan() {
         BleManager.scan([], 30, true)
@@ -65,22 +74,15 @@ class BleExample extends Component {
         console.log('Got ble data', data);
         this.setState({ ble: data })
     }
-
+    
     render() {
-
-        const container = {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#F5FCFF',
-        }
-
         const bleList = this.state.ble
             ? <Text> Device found: {this.state.ble.name} </Text>
             : <Text>no devices nearby</Text>
 
         return (
-            <View style={container}>
+            <View>
+                <Text>bluetooth connection</Text>
                 <TouchableHighlight style={{padding:20, backgroundColor:'#ccc'}} onPress={() => this.toggleScanning(!this.state.scanning) }>
                     <Text>Scan Bluetooth ({this.state.scanning ? 'on' : 'off'})</Text>
                 </TouchableHighlight>
