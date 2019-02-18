@@ -1,5 +1,5 @@
 import {SHIWORI_ROUTE} from '../address';
- import {SHIWORI_SIG} from '../signatures';
+import {SHIWORI_SIG} from '../signatures';
 //user情報に関するrequest
 
 /**

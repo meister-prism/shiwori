@@ -1,9 +1,6 @@
 import Drawer from "./src/Drawer";
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import LoginScreen from './screens/welcome/loginScreen';
-import BleManager from 'react-native-ble-manager';
-
-
 
 const AppContainer = createStackNavigator({
     Login: {

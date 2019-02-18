@@ -3,6 +3,7 @@ package com.shiwori_app;
 import android.app.Application;
 import it.innove.BleManagerPackage;
 import com.facebook.react.ReactApplication;
+import it.innove.BleManagerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;

@@ -37,3 +37,4 @@ task wrapper(type: Wrapper) {
     distributionUrl = distributionUrl.replace("bin", "all")
 }
 
+compile ("com.facebook.react:react-native:your-react-native-version") { force = true } // From node_modules
