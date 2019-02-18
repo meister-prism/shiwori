@@ -16,6 +16,7 @@ class MyPageScreen_Child extends React.Component {
     async _goBookmarkScreen() {
         let res = await get('6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a'); // bookmark_get
         //** ここでerorr処理 */
+        // alert(res);
         if(res.status == 100) alert('[Err stat:100]　もう一度ボタンを押してください')
         if(res.status == 200) this.props.navigation.navigate('BookMark',{res:res.body}); // >> ブックマーク一覧画面
     }

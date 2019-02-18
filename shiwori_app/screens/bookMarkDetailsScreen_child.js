@@ -7,9 +7,8 @@ var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
 
 /**
- * bookmarkDetailsScreen >> here 
+ * bookmarkDetailsScreen >> here  
  * here >> screen/detailsScreen.js 本の詳細へ
- * here >> goback(BookMarkScreen)
  */
 class BookMarkDitailsScreen_Child extends React.Component {
     // 本の詳細へ
@@ -18,9 +17,6 @@ class BookMarkDitailsScreen_Child extends React.Component {
         // error処理
         this.props.add_recentlyViewed(id, img);
         this.props.navigation.navigate('Details', { type: "bookmark", bookdata: res.body });
-    }
-    _goBookMarkScreen() {
-        this.props.navigation.goBack();
     }
     render() {
         let item = this.props.item;

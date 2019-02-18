@@ -1,26 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity,Image,Modal ,ScrollView} from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity,Image,Modal ,Button,ScrollView} from 'react-native';
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
+import { connect } from 'react-redux';
 import RecentlyViewedList from './recentlyViewedList'
-import { Provider } from 'react-redux';
-import {store} from '../../redux/store'
+
 import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
 
 /**
  * 本の詳細表示
  * screen/detailsScreen.js >> here
  * here >> BooksScreen.js (著者絞込検索 type:author)
+ * here >> BookMarkRegisterScreen.js (ブックマーク登録画面)
  */
 class BookDetail extends React.Component{
     state = {   modalVisible_discription:false,
                 modalVisible_img:false,
             }
     setModalVisible_discription(visible) {
-        this.setState({modalVisible: visible});
+        this.setState({modalVisible_discription: visible});
     }
     setModalVisible_img(visible) {
-        this.setState({modalVisible2: visible});
+        this.setState({modalVisible_img: visible});
     }
 
     /**
@@ -33,6 +34,13 @@ class BookDetail extends React.Component{
         let res = await gbapi_search(authors,config);
         // error処理はここ
         this.props.navigation.navigate('Books',{result:res.body,type:"author",title:authors+'の検索結果'});
+    }
+
+    /**
+     * bookMark登録画面に遷移する
+     */
+    _goBookMarkRegisterScreen(){
+        this.props.navigation.navigate('BookMarkRegister',{bookdata:this.props.data});
     }
 
     render(){
@@ -55,7 +63,6 @@ class BookDetail extends React.Component{
             modal_image=<Image source={{uri: data.imageLink_large}} style={styles.modalimg} />
         }
         return  (
-            <Provider store={store}>
                 <View style={styles.container}>
                     <View style={styles.InfoContainer}>
                         <TouchableOpacity onPress={() => {this.setModalVisible_img(true);}}>
@@ -64,12 +71,15 @@ class BookDetail extends React.Component{
                             <View style={styles.info}>
                                 <Text style={styles.title}>{data.title}</Text>
                                 <TouchableOpacity onPress={()=>{this._authorSearch(data.authors)}}>
-                                    <Text style={styles.author}>{data.authors}</Text>
+                                    <Text style={styles.author}>{data.authors} >> </Text>
                                 </TouchableOpacity>                                
                                 <Text style={styles.publiserDate}>{data.publishedDate}</Text>
                                 <Text style={styles.publisher}>{data.publisher}</Text>
+                                <Button title="ブックマークを登録" 
+                                        onPress = {()=>this._goBookMarkRegisterScreen()}/>
                             </View>
                     </View>
+                    {/* description */}
                     <View style={styles.detailsContainer}>
                         <Text style={styles.bookdetail}>本の詳細</Text>
                         <TouchableOpacity　onPress={() => {this.setModalVisible_discription(true);}}>
@@ -111,13 +121,21 @@ class BookDetail extends React.Component{
                             </View>
                     </Modal>
                 </View>
-                </Provider>
         );
     }
 }
 
+const mapStateToProps = state => ({
+    // jsonから取って来たデータを代入 
+})
 
-export default BookDetail;
+const mapDispatchToProps = {
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(BookDetail);
 
 const styles = StyleSheet.create({
     container: {
