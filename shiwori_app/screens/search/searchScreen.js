@@ -4,6 +4,10 @@ import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store,persistor } from '../../redux/store';
 import ReduxChecker from '../../components/debug/reduxchecker_userdata';
+
+/**
+ * tabnavigation >> here
+ */
 class SearchScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '本の検索',

@@ -5,7 +5,10 @@ import Key_Child from './keywordsScreen_child';
 import { store,persistor } from '../../redux/store';
 import { Provider } from 'react-redux';
 
-
+/**
+ * serchScreen.js => here
+ * here => keywordScreen_child.js
+ */
 class KeywordScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'キーワード検索',

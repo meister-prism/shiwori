@@ -1,29 +1,30 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
+import BookMark_Child from './bookMarkScreen_child';
+import { Provider } from 'react-redux';
+import { store, persistor } from '../../redux/store';
+
+/**
+ * myPageScreen_child.js >> here
+ * this.props.navigation.goBack() => MypageScreen.js
+ * here >> bookmarkscreen_child.js
+ */
 class BookMarkScreen extends React.Component {
-  static navigationOptions = ({navigation}) => ({
-    title: 'ブックマーク一覧',
-    headerLeft: <HeaderIcon navigation={navigation}/>,
-  });
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>BookMark Screen</Text>
-        <Button
-          title="bookmark1"
-          onPress={() => this.props.navigation.navigate('BookMarkDetails')}
-        />
-        <Button
-          title="bookmark1"
-          onPress={() => this.props.navigation.navigate('BookMarkDetails')}
-        />
-        <Button
-          title="Go back"
-          onPress={() => this.props.navigation.goBack()}
-        />
-      </View>
-    );
-  }
+    static navigationOptions = ({ navigation }) => ({
+        title: 'ブックマーク一覧',
+        headerLeft: <HeaderIcon navigation={navigation} />,
+    });
+    
+    render() {
+        let body = this.props.navigation.getParam('res');
+        return (
+            <Provider store={store}>
+                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                    <BookMark_Child navigation={this.props.navigation} bookmarks={body}/>
+                </View>
+            </Provider>
+        );
+    }
 }
 export default BookMarkScreen;

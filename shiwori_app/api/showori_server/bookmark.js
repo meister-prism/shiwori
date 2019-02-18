@@ -39,24 +39,28 @@ export async function register(user_id, book_id, page_num, memo) {
  * @return {json} status , bookmark_id
  */
 export async function del(user_id, bookmark_id) {
-    return fetch(SHIWORI_ROUTE + '/bookmark/delete', {
-        method: 'DELETE',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            'X-SHIWORI-Signature': SHIWORI_SIG
-        },
-        body: JSON.stringify({
-            "bm_id" : bookmark_id,
-            "user_id": user_id,
-        }),
-    })
-        .then((response) => {
-            const status = response.status;
-            const responseJson = response.json();
-            const ret = { "status": status, "json": responseJson };
-            return ret;
-        }).then((ret) => ret);
+    let response = {"status": "", "body": ""};
+    return new Promise(function(resolve, reject){
+        fetch(SHIWORI_ROUTE + '/bookmark/delete', {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'X-SHIWORI-Signature': SHIWORI_SIG
+            },
+            body: JSON.stringify({
+                "bm_id" : bookmark_id,
+                "user_id": user_id,
+            }), 
+        })
+            .then((res) => {
+                if(res.status != 200) reject(res.status);
+                return res.status;
+            })
+            .then((status) => {
+                resolve(status);
+            });
+    });
 }
 
 /**
@@ -67,10 +71,16 @@ export async function del(user_id, bookmark_id) {
 export async function get(user_id) {
     let response = {"status": "", "body": ""};
     return new Promise(function(resolve, reject) {
-        fetch(SHIWORI_ROUTE + '/bookmark/list+q='+user_id)
+        fetch(SHIWORI_ROUTE + '/bookmark/list?user_id='+user_id,{
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'X-SHIWORI-Signature': SHIWORI_SIG 
+            }
+        })
           .then((res) => {
             response.status = res.status
-            if(res.status != 200) reject(null);
+            if(res.status != 200) reject(res.status);
             return res.json();
           })
           .then((resJson) => {

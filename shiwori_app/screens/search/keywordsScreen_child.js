@@ -27,7 +27,7 @@ class KeywordScreen extends React.Component {
         this.props.add_searchHistory(this.state.search_txt);
         this.setState({ searchHistoryList:this.props.searchHistory,
                         searchHistoryUpdate:this.state.searchHistoryUpdate+1});
-        this.props.navigation.navigate('Books',{result:res.body,type:"key"});
+        this.props.navigation.navigate('Books',{result:res.body,type:"key",title : this.state.search_txt+'の検索結果'});
     }
     
     _goBooks(){
