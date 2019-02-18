@@ -40,6 +40,9 @@ export default class App extends Component {
     
   }
   componentDidMount() {
+    console.log(BleManager);
+    //const blem = bleManager;
+
     AppState.addEventListener('change', this.handleAppStateChange);
     BleManager.start({showAlert: false});
     this.handlerDiscover = bleManagerEmitter.addListener('BleManagerDiscoverPeripheral', this.handleDiscoverPeripheral );
@@ -109,6 +112,7 @@ export default class App extends Component {
   }
 
   startScan(){
+    console.log("==============");
     if (!this.state.scanning) {
         this.setState({peripherals: new Map()});
         BleManager.scan([], 30, true).then((results) => {
@@ -120,7 +124,6 @@ export default class App extends Component {
             console.log(error);
         });
     }
-    
   }
 
   retrieveConnected(){

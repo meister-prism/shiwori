@@ -1,9 +1,9 @@
 {
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://7i-piy.akari.shiwori-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.7i-piy.akari.shiwori-app.exp.direct",
+  "ngrokPid": 9408,
   "devToolsPort": 19002,
   "expoServerPort": null
 }
