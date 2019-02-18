@@ -4,7 +4,11 @@ import HeaderIcon from '../components/HeaderIcon';
 import {getBooksData_specific} from '../api/googleBooks/getBooksData';
 import BookDetail from '../components/bookdata/bookDetail';
 /**
+ * component/book/bookList_child >> here @type keyword
+ * screen/bookMarkDetailsScreen_child >> here @type bookmark
+ * here >> component/book/bookDetail.js
  * @prop type: "keyword" : 呼び出し先：keyword:キーワード検索
+ * @prop type: "bookmark" : 呼び出し先 : bookmark ブックマーク詳細ページ
  * @prop bookdata : 呼び出し元でdataを取得し、this.propsに格納してください。
  */
 class DetailsScreen extends React.Component {
@@ -19,6 +23,7 @@ class DetailsScreen extends React.Component {
     let data = getBooksData_specific(detail);
     switch(this.props.navigation.getParam('type')){
       case "keyword":
+      case "bookmark":
         return <BookDetail data={data} navigation={this.props.navigation} />
       default:
     }
@@ -27,18 +32,7 @@ class DetailsScreen extends React.Component {
     let detail = this._renderConfig();
     return (
       <View style={{flex:1, alignItems: "center", justifyContent: "center" }}>
-        {/* <Text>{JSON.stringify(detail)}</Text> */}
         {detail}
-        {/*
-        <Button
-          title="ブックマークを登録"
-          onPress={() => this.props.navigation.navigate('BookMarkDetails')}
-        />
-        <Button
-          title="ブックマーク一覧"
-          onPress={() => this.props.navigation.navigate('BookMark')}
-        />
-        */}
       </View>
     );
   }

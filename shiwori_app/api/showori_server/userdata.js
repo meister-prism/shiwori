@@ -61,13 +61,12 @@ export async function signin(email, password) {
 
 /**
  * get user data *async*
- * @param {str} email
- * @param {str} password
+ * @param {str} user_id
  * @return {json} response{status: , json}
  */
-export async function get(id) {
+export async function get(user_id) {
     let response = { "status": "", "body": "" };
-    return fetch(SHIWORI_ROUTE + '/user?q=' + id)
+    return fetch(SHIWORI_ROUTE + '/user?user_id=' + user_id)
         .then((res) => {
             response.status = res.status;
             if(res.status != 200) reject(null);

@@ -3,12 +3,18 @@ import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import {gbapi_search_specific} from '../../api/googleBooks/search'
 import { connect } from 'react-redux';
 import {add_recentlyViewed,delete_recentlyViewed} from '../../redux/actions/search'
+
+/**
+ * 本のリスト表示の中身
+ * BookList.js >> here
+ * here >> screen/detailsScreen.js
+ */
 class BookList_Child extends React.Component{
     async _get_data_andGo(id,img){
         let res = await gbapi_search_specific(id);
         // error処理
         this.props.add_recentlyViewed(id,img);
-        this.props.navigation.navigate('Details',{type:"keyword",bookdata:res.body});
+        this.props.navigation.navigate('Details',{type:"bookmark",bookdata:res.body});
     }
 
     _goDetail(id,img){

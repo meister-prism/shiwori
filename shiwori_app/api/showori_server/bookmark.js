@@ -67,10 +67,16 @@ export async function del(user_id, bookmark_id) {
 export async function get(user_id) {
     let response = {"status": "", "body": ""};
     return new Promise(function(resolve, reject) {
-        fetch(SHIWORI_ROUTE + '/bookmark/list+q='+user_id)
+        fetch(SHIWORI_ROUTE + '/bookmark/list?user_id='+user_id,{
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'X-SHIWORI-Signature': SHIWORI_SIG 
+            }
+        })
           .then((res) => {
             response.status = res.status
-            if(res.status != 200) reject(null);
+            if(res.status != 200) reject(res.status);
             return res.json();
           })
           .then((resJson) => {

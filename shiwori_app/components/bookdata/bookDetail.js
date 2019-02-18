@@ -1,22 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity,Image,Modal } from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity,Image,Modal ,ScrollView} from 'react-native';
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
 import RecentlyViewedList from './recentlyViewedList'
 import { Provider } from 'react-redux';
 import {store} from '../../redux/store'
 import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
+
+/**
+ * 本の詳細表示
+ * screen/detailsScreen.js >> here
+ * here >> BooksScreen.js (著者絞込検索 type:author)
+ */
 class BookDetail extends React.Component{
-    state = {modalVisible:false,modalVisible2:false}
-    setModalVisible(visible) {
+    state = {   modalVisible_discription:false,
+                modalVisible_img:false,
+            }
+    setModalVisible_discription(visible) {
         this.setState({modalVisible: visible});
     }
-    setModalVisible2(visible) {
+    setModalVisible_img(visible) {
         this.setState({modalVisible2: visible});
     }
 
     /**
-     * 著者絞り込み検索をして本棚ページに繊維させます。
+     * 著者絞り込み検索をして本棚ページに遷移させます。
      */
     async _authorSearch(authors){
         let config = Object.assign({}, INITIAL_CONFIG);
@@ -24,7 +32,7 @@ class BookDetail extends React.Component{
         config.inauthor=true; // 著者絞り込み検索
         let res = await gbapi_search(authors,config);
         // error処理はここ
-        this.props.navigation.navigate('Books',{result:res.body,type:"author"});
+        this.props.navigation.navigate('Books',{result:res.body,type:"author",title:authors+'の検索結果'});
     }
 
     render(){
@@ -50,7 +58,7 @@ class BookDetail extends React.Component{
             <Provider store={store}>
                 <View style={styles.container}>
                     <View style={styles.InfoContainer}>
-                        <TouchableOpacity onPress={() => {this.setModalVisible2(true);}}>
+                        <TouchableOpacity onPress={() => {this.setModalVisible_img(true);}}>
                             <View style={styles.imgContainer}>{image}</View>
                         </TouchableOpacity>
                             <View style={styles.info}>
@@ -64,7 +72,7 @@ class BookDetail extends React.Component{
                     </View>
                     <View style={styles.detailsContainer}>
                         <Text style={styles.bookdetail}>本の詳細</Text>
-                        <TouchableOpacity　onPress={() => {this.setModalVisible(true);}}>
+                        <TouchableOpacity　onPress={() => {this.setModalVisible_discription(true);}}>
                             <Text numberOfLines={5} style={styles.bookdetail_txt}>{data.description}</Text>
                         </TouchableOpacity>
                         {/* 最近読んだ本 */}
@@ -75,14 +83,14 @@ class BookDetail extends React.Component{
                     <Modal
                         animationType="none"
                         transparent={true}
-                        visible={this.state.modalVisible}>
+                        visible={this.state.modalVisible_discription}>
                         {/* description */}
                         <View style={styles.modalScreen}>
                         <View style={styles.modalContainer}>
                             <Text style={styles.bookdetail}>本の詳細（全文）</Text>
                             <Text style={styles.bookdetail_txt}>{data.description}</Text>
                             <TouchableOpacity 
-                                onPress={() => {this.setModalVisible(!this.state.modalVisible);}}>
+                                onPress={() => {this.setModalVisible_discription(!this.state.modalVisible_discription);}}>
                                 <Text style={styles.hidebutton_txt}>Close</Text>
                             </TouchableOpacity>
                         </View>
@@ -91,12 +99,12 @@ class BookDetail extends React.Component{
                     <Modal
                         animationType="none"
                         transparent={true}
-                        visible={this.state.modalVisible2}>
+                        visible={this.state.modalVisible_img}>
                             <View style={styles.modalContainer}>
                                 <View style={styles.modalImgContainer}>
                                     {modal_image}
                                     <TouchableOpacity 
-                                        onPress={() => {this.setModalVisible2(!this.state.modalVisible2);}}>
+                                        onPress={() => {this.setModalVisible_img(!this.state.modalVisible_img);}}>
                                         <Text style={styles.hidebutton_txt}>Close</Text>
                                     </TouchableOpacity>
                                 </View>

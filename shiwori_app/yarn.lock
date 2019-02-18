@@ -5986,7 +5986,7 @@ react-native-gesture-handler@~1.0.14:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-"react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
+react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
@@ -6127,10 +6127,10 @@ react-navigation-drawer@1.1.0:
   dependencies:
     react-native-tab-view "^1.2.0"
 
-react-navigation-stack@1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.0.9.tgz#cbdcc224f709202ea62b3f2a2d84561cd199493a"
-  integrity sha512-N1h0Kkz8WmSHbBbPHEpVh+ss/1NwWoWk6v2L68kxbpTcEH986t5mz0abp4KHY8pb0nHGbY0jkn5IYiOJBfN0tQ==
+react-navigation-stack@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.0.10.tgz#cf1f4f222bddbfae134cfb28362bafd42a64c485"
+  integrity sha512-p+1oJ6lQYzblidOopIX0Tt+0ZvzaTyoPrBU9erMI04LEoa37BovYpWd1NXBIkV5+wfRt/o5R2x+RZ3LUeWpjeA==
 
 react-navigation-tabs@1.0.2:
   version "1.0.2"
@@ -6142,15 +6142,15 @@ react-navigation-tabs@1.0.2:
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.0.0"
 
-react-navigation@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.2.1.tgz#83873d5fe25ec870455d9760b98df6e915fe2d65"
-  integrity sha512-l0vm1orpEAeMdPxTLbe0xxqUDtCVAcgT8q0+xwGnmRT1+2QhRYXSAjQ1md3RJaeg1wCnlfxtMbLUnkf5z4cDkw==
+react-navigation@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-3.2.3.tgz#9775f0e0ab9f248312443f937927f0d582dc1f26"
+  integrity sha512-0A+cJF+B2uj3bWB4/UKptl1MjT/OcnwRHea0Sbndl0ueA+yqwzd036s6+tQnEP+OhqfLWnKkvzdb13qP3FeSOg==
   dependencies:
     "@react-navigation/core" "3.1.1"
     "@react-navigation/native" "3.1.4"
     react-navigation-drawer "1.1.0"
-    react-navigation-stack "1.0.9"
+    react-navigation-stack "1.0.10"
     react-navigation-tabs "1.0.2"
 
 react-persist@^1.0.2:
@@ -6204,7 +6204,7 @@ react-transform-hmr@^1.0.4:
     global "^4.3.0"
     react-proxy "^1.1.7"
 
-react@^16.3.2, react@^16.6.0-alpha.8af6728:
+react@^16.3.2:
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.1.tgz#ae11831f6cb2a05d58603a976afc8a558e852c4a"
   integrity sha512-wLw5CFGPdo7p/AgteFz7GblI2JPOos0+biSoxf1FPsGxWQZdN/pj6oToJs1crn61DL3Ln7mN86uZ4j74p31ELQ==
@@ -6213,6 +6213,16 @@ react@^16.3.2, react@^16.6.0-alpha.8af6728:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.1"
+
+react@^16.8.2:
+  version "16.8.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.8.2.tgz#83064596feaa98d9c2857c4deae1848b542c9c0c"
+  integrity sha512-aB2ctx9uQ9vo09HVknqv3DGRpI7OIGJhCx3Bt0QqoRluEjHSaObJl+nG12GDdYH6sTgE7YiPJ6ZUyMx9kICdXw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.13.2"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -6571,6 +6581,14 @@ scheduler@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.1.tgz#1a217df1bfaabaf4f1b92a9127d5d732d85a9591"
   integrity sha512-VJKOkiKIN2/6NOoexuypwSrybx13MY7NSy9RNt8wPvZDMRT1CW6qlpF5jXRToXNHz3uWzbm2elNpZfXfGPqP9A==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.2.tgz#969eaee2764a51d2e97b20a60963b2546beff8fa"
+  integrity sha512-qK5P8tHS7vdEMCW5IPyt8v9MJOHqTrOUgPXib7tqm9vh834ibBX5BNhwkplX/0iOzHW5sXyluehYfS9yrkz9+w==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
