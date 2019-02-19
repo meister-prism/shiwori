@@ -7,8 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "node-pre-gyp": "^0.10.3",
     "react": "16.6.3",
-    "react-native": "0.58.4"
+    "react-native": "0.58.4",
+    "react-navigation": "^3.0.9"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
