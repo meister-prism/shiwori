@@ -1,64 +1,69 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput,Button,KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, Button ,TextInput,KeyboardAvoidingView} from 'react-native';
 import { connect } from 'react-redux';
+import {insert} from '../../api/showori_server/record'
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
-import {register} from '../api/showori_server/bookmark'
+
 /**
- * bookmarkRegisterScreen.js >> here 
+ * recordScreen.js >> here
  */
-class BookMarkRegisterScreen_Child extends React.Component {
+class RecordRegisterScreen_Child extends React.Component {
     state = {   Screentype: 'input', // 登録画面：input >> finish(登録完了)
-                bookmark_page_num   : '',
-                bookmark_body       : '',
+                record_star   : '',
+                record_body   : '',
     }
     setScreenType(type){
         this.setState({Screentype:type});
     }
-    setBookmark_page(num){
-        this.setState({bookmark_page_num:num});
+    setRecord_star(num){
+        this.setState({record_star:num});
     }
-    setBookmark_body(text){
-        this.setState({bookmark_body:text});
+    setRecord_body(text){
+        this.setState({record_body:text});
     }
+
     /**
-     * ブックマークを登録する
+     * 感想を登録する
      */
     async _register(){
-        if(this.state.bookmark_page_num > this.props.bookdata.pageCount){
-            alert("ページ数の上限を超えています。")
+        let readtime = null;
+        let readspead = null;
+        if(this.state.record_star > 5.0){
+            alert('0~5の数値を入力してください')
         }else{
-            let res = await register(   '6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',
-            this.props.bookdata.id,
-            this.state.bookmark_page_num,
-            this.state.bookmark_body);
+            let res = await insert( '6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',
+                                    this.props.bookdata.id,
+                                    'ゆるゆる',
+                                    this.state.record_star,
+                                    this.state.record_body,
+                                    readtime,readspead
+                                    );
+            alert(JSON.stringify(res));
             if(res.status==200) this.setScreenType('finish');
         }
-        
     }
-    
     _renderConfig(){
         switch(this.state.Screentype){
             case "input":
-                let pageCount = "ページ数(0~" + this.props.bookdata.pageCount +")を入力";
                 return  <View>
                             <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
                             <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
                             <TextInput
-                                placeholder={pageCount}
+                                placeholder="評価値を入力(0.0~5.0)"
                                 autoCorrect={false}
-                                value={this.state.bookmark_page_num}  
+                                value={this.state.record_page_num}  
                                 style={styles.inputpage}
-                                keyboardType='number-pad'
-                                onChangeText={(num)=>this.setBookmark_page(num)}			
+                                keyboardType='numeric'
+                                onChangeText={(num)=>this.setRecord_star(num)}			
                             />
                             <TextInput
-                                placeholder="ブックマークの内容を入力"
+                                placeholder="感想・レビューを入力"
                                 autoCorrect={false}
                                 multiline={true}
-                                value={this.state.bookmark_body}  
+                                value={this.state.record_body}  
                                 style={styles.inputbody}
-                                onChangeText={(text)=>this.setBookmark_body(text)}				
+                                onChangeText={(text)=>this.setRecord_body(text)}				
                             />
                             <Button title="登録"
                                     onPress={()=>this._register()}/>
@@ -66,11 +71,10 @@ class BookMarkRegisterScreen_Child extends React.Component {
             case "finish":
                 return <View>  
                             <Text>登録が完了しました。</Text>
-                            <Button title="さらにブックマークを追加する"
-                                    onPress={()=>this.setScreenType('input')}/>
                         </View>
         }
     }
+    
     render() {
         let Screen = this._renderConfig();
         return (
@@ -83,6 +87,21 @@ class BookMarkRegisterScreen_Child extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    // jsonから取って来たデータを代入 
+    user_id: state.user.id,
+    user_name: state.user.name,
+})
+
+const mapDispatchToProps = {
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RecordRegisterScreen_Child);
+
 
 const styles = StyleSheet.create({
     container: {
@@ -113,15 +132,3 @@ const styles = StyleSheet.create({
         borderColor: '#333'
       }
 });
-
-const mapStateToProps = state => ({
-    user_id : state.user.id,
-})
-
-const mapDispatchToProps = {
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(BookMarkRegisterScreen_Child);

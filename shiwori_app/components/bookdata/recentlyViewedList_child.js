@@ -20,10 +20,12 @@ class RecentlyViewedChild extends React.Component{
         let image;
         image=  <Image source={{uri: item.img}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
         // child
-        let ret =  <TouchableHighlight
-                        onPress={()=>{this._goDetail(item.id,item.img)}}>
-                        {image}
-                    </TouchableHighlight>
+        let ret =  <View style={styles.listContainer}>
+                        <TouchableHighlight
+                            onPress={()=>{this._goDetail(item.id,item.img)}}>
+                            {image}
+                        </TouchableHighlight>
+                    </View>
         return ret;
     }
 
@@ -41,6 +43,7 @@ class RecentlyViewedChild extends React.Component{
         return  (
                 <View>
                   <FlatList
+                    key={data.img}
                     data={data}
                     renderItem={({item}) => this._createkeyList(item)}
                     keyExtractor={(item,index)=>index.toString()}
@@ -66,4 +69,7 @@ export default connect(
 )(RecentlyViewedChild)
 
 const styles = StyleSheet.create({
+    listContainer:{
+        height:150
+    }
 });

@@ -19,6 +19,8 @@ import KeywordsScreen from '../screens/search/keywordsScreen';
 //mypage
 import MyPageScreen from '../screens/myPage/myPageScreen';
 import BookMarkScreen from '../screens/myPage/bookMarkScreen';
+import RecordDetailScreen from '../screens/search/recordDetailScreen';
+import RecordRegisterScreen from '../screens/search/recordRegisterScreen';
 
 //hamburger
 import HanbergerScreen from '../screens/hamburger/hamburgerScreen';
@@ -56,6 +58,8 @@ const SearchStack = createStackNavigator({
   Books: BooksScreen,
   BookMarkDetails: BookMarkDetailsScreen,
   BookMarkRegister : BookMarkRegisterScreen,
+  RecordDetail: RecordDetailScreen,
+  RecordRegister : RecordRegisterScreen,
   Settings: SettingsScreen,
   Help: HelpScreen,
   Contact: ContactScreen,

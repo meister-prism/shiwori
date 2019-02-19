@@ -40,9 +40,10 @@ class RecentlyViewed extends React.Component {
             update.push(<Button title='更新する'　onPress={()=>{this._update()}}/>)
         }
         return (
-        <View style={{ flex:1,height:150, alignItems: "center",marginTop:10 }}>
+        <View style={{ height:150, alignItems: "center",marginTop:10 }}>
             <View style={{flexDirection:'row'}}>{update}</View>
-            <RecentlyViewedChild 
+            <RecentlyViewedChild
+                key={this.state.recently_id}
                 img={this.state.recently_img}
                 id ={this.state.recently_id}
                 navigation={this.props.navigation}

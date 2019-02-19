@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button ,ScrollView} from 'react-native';
 import HeaderIcon from '../components/HeaderIcon';
 import { getBooksData_specific } from '../api/googleBooks/getBooksData';
 import BookDetail from '../components/bookdata/bookDetail';
@@ -22,21 +22,21 @@ class DetailsScreen extends React.Component {
     _renderConfig() {
         let detail = this.props.navigation.getParam('bookdata'); // res.bodyが入っている。
         // detail (res.body >> 必要情報の抽出)
-        let data = getBooksData_specific(detail);
+        let google_data = getBooksData_specific(detail);
         switch (this.props.navigation.getParam('type')) {
             case "keyword":
             case "bookmark":
-                return <BookDetail data={data} navigation={this.props.navigation} />
+                return <BookDetail google_data={google_data} navigation={this.props.navigation} />
             default:
         }
     }
     render() {
         let detail = this._renderConfig();
         return (
-            <Provider store={store}>
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    {detail}
-                </View>
+            <Provider store={store}>            
+                    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                        {detail}
+                    </View>
             </Provider>
         );
     }
