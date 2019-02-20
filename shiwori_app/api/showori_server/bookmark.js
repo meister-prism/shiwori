@@ -39,8 +39,7 @@ export async function register(user_id, book_id, page_num, memo) {
  * @return {json} status , bookmark_id
  */
 export async function del(user_id, bookmark_id) {
-    return new Promise(function(resolve, reject){
-        fetch(SHIWORI_ROUTE + '/bookmark/delete', {
+    return fetch(SHIWORI_ROUTE + '/bookmark/delete', {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',
@@ -52,11 +51,8 @@ export async function del(user_id, bookmark_id) {
                 "user_id": user_id,
             }), 
         })
-            .then((res) => {
-                if(res.status != 200) reject(res.status);
-                resolve(res.status);
-            });
-    });
+            .then((res) => res.status)
+            .then((stat) => stat);
 }
 
 /**

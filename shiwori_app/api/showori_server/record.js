@@ -14,7 +14,7 @@ import { SHIWORI_SIG } from '../signatures';
  * @param {moment*?*} readspeed 
  */
 export async function insert(user_id,book_id,user_name,star,impression,readtime,readspeed) {
-    return fetch(SHIWORI_ROUTE + '/recode/insert', {
+    return fetch(SHIWORI_ROUTE + '/record/insert', {
         method: 'POST',
         headers: {
             Accept: 'application/json',

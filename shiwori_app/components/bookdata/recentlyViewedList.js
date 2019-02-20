@@ -23,11 +23,13 @@ class RecentlyViewed extends React.Component {
     }
     componentDidMount(){
         this._init();
-
-        // this.interval = setInterval(() => this._init(), 1000);
+        this.interval = setInterval(() => this._init(), 500);
     }
     _update(){
         this._init();
+    }
+    componentWillReceiveProps(){
+        this.setState({recentlyViewed:this.props.recentlyViewed});
     }
     render() {
         /*let data=[];
@@ -35,13 +37,13 @@ class RecentlyViewed extends React.Component {
             data.push(getBooksData_specific(this.state.recently_data[i]))
         } */
         let update=[];
-        update.push(<Text>最近チェックした本</Text>);
+        update.push(<Text style={{fontSize:18,fontWeight:'bold',padding:5, textAlign:'left'}}>最近チェックした本</Text>);
         if(this.props.type=='Home'){
             update.push(<Button title='更新する'　onPress={()=>{this._update()}}/>)
         }
         return (
-        <View style={{ height:150, alignItems: "center",marginTop:10 }}>
-            <View style={{flexDirection:'row'}}>{update}</View>
+        <View style={{ height:150, alignItems: "left", }}>
+            <View style={{}}>{update}</View>
             <RecentlyViewedChild
                 key={this.state.recently_id}
                 img={this.state.recently_img}

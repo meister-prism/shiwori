@@ -49,28 +49,36 @@ class RecordRegisterScreen_Child extends React.Component {
                 return  <View>
                             <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
                             <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
-                            <TextInput
-                                placeholder="評価値を入力(0.0~5.0)"
-                                autoCorrect={false}
-                                value={this.state.record_page_num}  
-                                style={styles.inputpage}
-                                keyboardType='numeric'
-                                onChangeText={(num)=>this.setRecord_star(num)}			
-                            />
-                            <TextInput
-                                placeholder="感想・レビューを入力"
-                                autoCorrect={false}
-                                multiline={true}
-                                value={this.state.record_body}  
-                                style={styles.inputbody}
-                                onChangeText={(text)=>this.setRecord_body(text)}				
-                            />
-                            <Button title="登録"
-                                    onPress={()=>this._register()}/>
+                            <View style={{ alignItems:"center" }}>
+                                <TextInput
+                                    placeholder="評価値を入力(0.0~5.0)"
+                                    autoCorrect={false}
+                                    value={this.state.record_page_num}  
+                                    style={styles.inputpage}
+                                    keyboardType='numeric'
+                                    onChangeText={(num)=>this.setRecord_star(num)}			
+                                />
+                                <TextInput
+                                    placeholder="感想・レビューを入力"
+                                    autoCorrect={false}
+                                    multiline={true}
+                                    value={this.state.record_body}  
+                                    style={styles.inputbody}
+                                    onChangeText={(text)=>this.setRecord_body(text)}				
+                                />
+                                <Button title="登録"
+                                         onPress={()=>{  if(this.state.record_star != '' || this.state.record_body != ''){
+                                                            this._register();
+                                                        }else{
+                                                            alert('評価値と感想を入力してください。')    
+                                                        }}}/>
+                            </View>
                         </View>
             case "finish":
                 return <View>  
                             <Text>登録が完了しました。</Text>
+                            <Button title = "戻る"
+                                    onPress={()=>{this.props.navigation.goBack();}} />
                         </View>
         }
     }
@@ -83,7 +91,6 @@ class RecordRegisterScreen_Child extends React.Component {
                     {Screen}
                 </View>
             </KeyboardAvoidingView>
-            
         );
     }
 }

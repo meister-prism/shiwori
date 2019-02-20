@@ -18,7 +18,7 @@ class RecordRegisterScreen extends React.Component {
     return (
       <Provider store={store}>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <RecordRegister_child bookdata={bookdata}/>
+        <RecordRegister_child bookdata={bookdata} navigation={this.props.navigation}/>
       </View>
       </Provider>
     );

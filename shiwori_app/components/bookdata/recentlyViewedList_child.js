@@ -45,6 +45,7 @@ class RecentlyViewedChild extends React.Component{
                   <FlatList
                     key={data.img}
                     data={data}
+                    extraData={data}
                     renderItem={({item}) => this._createkeyList(item)}
                     keyExtractor={(item,index)=>index.toString()}
                     horizontal={true}
