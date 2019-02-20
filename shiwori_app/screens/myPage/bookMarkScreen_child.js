@@ -32,6 +32,7 @@ class BookMarkScreen_Child extends React.Component {
     async _delete(item,index){
         let res = del('6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',item.bm_id);
         // error処理
+        // alert(JSON.stringify(res));
         // refresh
         let tmp = this.state.bookmarks;
         tmp.splice(index,1);

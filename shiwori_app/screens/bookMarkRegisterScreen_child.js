@@ -5,13 +5,11 @@ var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
 import {register} from '../api/showori_server/bookmark'
 /**
- * bookmarkDetailsScreen >> here 
- * here >> screen/detailsScreen.js 本の詳細へ
- * here >> goback(BookMarkScreen)
+ * bookmarkRegisterScreen.js >> here 
  */
 class BookMarkRegisterScreen_Child extends React.Component {
     state = {   Screentype: 'input', // 登録画面：input >> finish(登録完了)
-                bookmark_page_num   : '0',
+                bookmark_page_num   : '',
                 bookmark_body       : '',
     }
     setScreenType(type){
@@ -27,37 +25,55 @@ class BookMarkRegisterScreen_Child extends React.Component {
      * ブックマークを登録する
      */
     async _register(){
-        let res = await register(   '6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',
-                                    this.props.bookdata.id,
-                                    this.state.bookmark_page_num,
-                                    this.state.bookmark_body);
-        if(res.status==200) this.setScreenType('finish');
+        if(this.state.bookmark_page_num > this.props.bookdata.pageCount){
+            alert("ページ数の上限を超えています。");
+            this.setBookmark_page('');
+        }else{
+            let res = await register(   '6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',
+                                        this.props.bookdata.id,
+                                        this.state.bookmark_page_num,
+                                        this.state.bookmark_body);
+            if(res.status==200) {
+                this.setBookmark_page('');
+                this.setBookmark_body('');
+                this.setScreenType('finish');
+            }
+        }
+
+        
     }
     
     _renderConfig(){
         switch(this.state.Screentype){
             case "input":
+                let pageCount = "ページ数(0~" + this.props.bookdata.pageCount +")を入力";
                 return  <View>
                             <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
                             <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
-                            <TextInput
-                                placeholder="ページ数を入力"
-                                autoCorrect={false}
-                                value={this.state.bookmark_page_num}  
-                                style={styles.inputpage}
-                                keyboardType='number-pad'
-                                onChangeText={(num)=>this.setBookmark_page(num)}			
-                            />
-                            <TextInput
-                                placeholder="ブックマークの内容を入力"
-                                autoCorrect={false}
-                                multiline={true}
-                                value={this.state.bookmark_body}  
-                                style={styles.inputbody}
-                                onChangeText={(text)=>this.setBookmark_body(text)}				
-                            />
-                            <Button title="登録"
-                                    onPress={()=>this._register()}/>
+                            <View style={{alignItems:"center"}}>
+                                <TextInput
+                                    placeholder={pageCount}
+                                    autoCorrect={false}
+                                    value={this.state.bookmark_page_num}  
+                                    style={styles.inputpage}
+                                    keyboardType='number-pad'
+                                    onChangeText={(num)=>this.setBookmark_page(num)}			
+                                />
+                                <TextInput
+                                    placeholder="ブックマークの内容を入力"
+                                    autoCorrect={false}
+                                    multiline={true}
+                                    value={this.state.bookmark_body}  
+                                    style={styles.inputbody}
+                                    onChangeText={(text)=>this.setBookmark_body(text)}				
+                                />
+                                <Button title="登録"
+                                        onPress={()=>{  if(this.state.bookmark_body != '' || this.state.bookmark_page_num != ''){
+                                                            this._register();
+                                                        }else{
+                                                            alert('ページ数とブックマークを入力してください。')    
+                                                        }}}/>
+                            </View>
                         </View>
             case "finish":
                 return <View>  
@@ -93,7 +109,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 23,
         height: 30,
-        width:width*0.8,
+        width:width*0.9,
         borderWidth: 1,
         borderColor: '#333'
     },
@@ -104,7 +120,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 23,
         height:120,
-        width:width*0.8,
+        width:width*0.9,
         borderWidth: 1,
         borderColor: '#333'
       }

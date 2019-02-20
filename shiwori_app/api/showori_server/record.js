@@ -8,13 +8,13 @@ import { SHIWORI_SIG } from '../signatures';
  * @param {str} user_id 
  * @param {str} book_id 
  * @param {str} uname 
- * @param {str} star             評価
- * @param {str} impression       感想？
+ * @param {double} star             評価(0~5)
+ * @param {str} impression       感想
  * @param {moment} readtime 
  * @param {moment*?*} readspeed 
  */
 export async function insert(user_id,book_id,user_name,star,impression,readtime,readspeed) {
-    return fetch(SHIWORI_ROUTE + '/recode/insert', {
+    return fetch(SHIWORI_ROUTE + '/record/insert', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -44,8 +44,8 @@ export async function insert(user_id,book_id,user_name,star,impression,readtime,
  * @param {str} user_id 
  * @param {str} book_id 
  * @param {str} uname 
- * @param {str} star             評価
- * @param {str} impression       感想？
+ * @param {double} star          評価(0~5.0)
+ * @param {str} impression       感想
  * @param {moment} readtime 
  * @param {moment*?*} readspeed 
  * @param key??

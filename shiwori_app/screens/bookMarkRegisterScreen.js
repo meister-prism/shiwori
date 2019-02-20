@@ -5,6 +5,11 @@ import { Provider } from 'react-redux';
 import { store, persistor } from '../redux/store';
 import BookMarkRegisterChild from './bookMarkRegisterScreen_child';
 
+/**
+ * componnt/bookmarkDetail.js >> here
+ * here >> bookMarkRegisterScreen_child.js
+ * @param 'bookdata' : googleBooksData
+ */
 class BookMarkRegisterScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'ブックマーク登録画面',
