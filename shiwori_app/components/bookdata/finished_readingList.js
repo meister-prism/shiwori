@@ -52,7 +52,7 @@ class FinishedReadingList extends React.Component {
         return ret;
 	}
 	async _getFinished(){
-        let res = await get('6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a');
+        let res = await get(this.props.user_id);
         // alert(JSON.stringify(res.body.records));
         if(res.status==200){
             this.setState({ readingList:res.body.records });

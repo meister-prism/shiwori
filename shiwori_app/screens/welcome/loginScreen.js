@@ -7,6 +7,10 @@ import {Provider} from 'react-redux';
 import {store} from '../../redux/store';
 import Startup from '../../components/welcome/startup';
 
+/**
+ * 起動 >> here
+ * here >> componrnt/~/startup.js
+ */
 export default class LoginScreen extends React.Component {
   _judge(){
     this.props.navigation.type = 'guest';
@@ -19,13 +23,17 @@ export default class LoginScreen extends React.Component {
         return <Login_null navigation={this.props.navigation} state={this.state}/>
     }
   }
+  _back(){
+    this.props.navigation.navigate('Home');
+  }
+  componentDidMount(){
+    this.interval = setInterval(() => {if(this.props.navigation.isFocused())this._back()}, 200);
+  }
   render() {
     return (
       <Provider store={store}>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Startup navigation={this.props.navigation} state={this.state}/>
-        <Text>login screen</Text>
-        {this._judge()}
         <Login_guest navigation={this.props.navigation} state={this.state}/>
         </View>
       </Provider>

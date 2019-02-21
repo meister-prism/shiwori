@@ -1,13 +1,14 @@
 // 起動画面　（ロゴとタイトル）
 import * as React from 'react';
 import {View, StyleSheet, Image,} from 'react-native';
-
+let icon = require('../../assets/icons/shiwori-icon.png')
+let text = require('../../assets/icons/shiwori-text.png')
 export default class LogoTitle extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={require('../../assets/icons/shiwori-icon.png')} />
-        <Image style={styles.text} source={require('../../assets/icons/shiwori-text.png')} />
+        <Image style={styles.logo} source={icon} />
+        <Image style={styles.text} source={text} />
       </View>
     );
   }
