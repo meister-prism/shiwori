@@ -9,7 +9,6 @@ const AppContainer = createStackNavigator({
       }
     }
   });
-
 export default createAppContainer(AppContainer);
 
 

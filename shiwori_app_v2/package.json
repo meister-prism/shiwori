@@ -10,6 +10,8 @@
     "node-pre-gyp": "^0.10.3",
     "react": "16.6.3",
     "react-native": "0.58.4",
+    "react-native-ble-manager": "^6.2.8",
+    "react-native-webview": "^5.2.1",
     "react-navigation": "^3.0.9"
   },
   "devDependencies": {
