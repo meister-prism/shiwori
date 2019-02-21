@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button,TextInput,FlatList } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
-
+// import SHA256 from 'crypto-js/sha256';
 import { connect } from 'react-redux';
 import {add_searchHistory,delete_searchHistory} from '../../redux/actions/search';
 
@@ -55,6 +55,7 @@ class KeywordScreen extends React.Component {
                 placeholder='検索キーワード...'
                 autoCorrect = {false}
                 onSubmitEditing={()=>{if(this.state.search_txt!=null)this._goBooks();}}
+                // onSubmitEditing={()=>{alert(SHA256(this.state.search_txt).toString())}}
                 />
             {/* search history */}
             <View style={{}}>

@@ -32,9 +32,9 @@ class RecordRegisterScreen_Child extends React.Component {
         if(this.state.record_star > 5.0){
             alert('0~5の数値を入力してください')
         }else{
-            let res = await insert( '6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',
+            let res = await insert( this.props.user_id,
                                     this.props.bookdata.id,
-                                    'ゆるゆる',
+                                    this.props.user_name,
                                     this.state.record_star,
                                     this.state.record_body,
                                     readtime,readspead

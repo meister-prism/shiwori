@@ -4,7 +4,7 @@ import {persistStore,persistReducer}from "redux-persist";
 import rootReducer from './reducers/index';
 import storage from "redux-persist/lib/storage";
 
-export const store = createStore(rootReducer);
+
 const config = {
     key: 'root',
     version:0,
@@ -14,6 +14,10 @@ const pReducer = persistReducer(config,rootReducer);
 const _store = () =>{
     createStore(rootReducer);
 }
-// export const store = createStore(pReducer);
+
+// データを保存したくないときはこれ
+// export const store = createStore(rootReducer);
+//  データを保存したいときはこれ
+export const store = createStore(pReducer);
 
 export const persistor = persistStore(store);

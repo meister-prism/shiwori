@@ -10,6 +10,11 @@ class Startup extends React.Component {
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
+
+  componentDidMount(){
+    setTimeout(()=>{this.setModalVisible(!this.state.modalVisible)},1500);
+  }
+
   render() {
     const _getNextpage = () => {
       if(this.props.guest){
@@ -38,15 +43,18 @@ class Startup extends React.Component {
                   // />
         }else{
           let name = this.props.uname;
-            return <TouchableHighlight>
-                      <Button
-                        title={"こんにちは"+name+"さん"}
-                        onPress={() => {
-                          this.setModalVisible(!this.state.modalVisible);
-                        }}>
-                      </Button>
-                    </TouchableHighlight>
-                  // <Button
+          return <View　style={styles.helloContainer}>
+			  		<Text style={styles.hello}>こんにちは{name}さん</Text>
+				</View>
+			// return <TouchableHighlight>
+            //           <Button
+            //             title={"こんにちは"+name+"さん"}
+            //             onPress={() => {
+            //               this.setModalVisible(!this.state.modalVisible);
+            //             }}>
+            //           </Button>
+            //         </TouchableHighlight>
+            //       // <Button
                   //   title={"こんにちは"+name+"さん"}
                   //   onPress={() => this.props.navigation.navigate('Login',{type:"registered"})}
                   // />
@@ -84,6 +92,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 24,
   },
+  helloContainer:{
+	alignItems: 'center',
+    justifyContent: 'center',
+  },
+  hello:{
+    fontSize:15,
+  }
 });
 
 const mapStateToProps = state => ({

@@ -3,14 +3,14 @@ import { StyleSheet, Text, View, TextInput,Button,KeyboardAvoidingView } from 'r
 import { connect } from 'react-redux';
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
-import {register} from '../api/showori_server/bookmark'
+import {change} from '../api/showori_server/bookmark'
 /**
  * bookmarkRegisterScreen.js >> here 
  */
-class BookMarkRegisterScreen_Child extends React.Component {
+class BookMarkChangeScreen extends React.Component {
     state = {   Screentype: 'input', // 登録画面：input >> finish(登録完了)
-                bookmark_page_num   : '',
-                bookmark_body       : '',
+                bookmark_page_num   : this.props.navigation.getParam('item').page_num,
+                bookmark_body       : this.props.navigation.getParam('item').memo,
     }
     setScreenType(type){
         this.setState({Screentype:type});
@@ -29,10 +29,9 @@ class BookMarkRegisterScreen_Child extends React.Component {
             alert("ページ数の上限を超えています。");
             this.setBookmark_page('');
         }else{
-            let res = await register(   this.props.user_id,
-                                        this.props.bookdata.id,
-                                        this.state.bookmark_page_num,
-                                        this.state.bookmark_body);
+            let res = await change(     this.props.user_id,
+                                        this.props.navigation.getParam('item').memo,
+                                        this.props.navigation.getParam('item').bm_id,);
             if(res.status==200) {
                 this.setBookmark_page('');
                 this.setBookmark_body('');
@@ -67,7 +66,7 @@ class BookMarkRegisterScreen_Child extends React.Component {
                                     style={styles.inputbody}
                                     onChangeText={(text)=>this.setBookmark_body(text)}				
                                 />
-                                <Button title="登録"
+                                <Button title="変更"
                                         onPress={()=>{  if(this.state.bookmark_body == '' || this.state.bookmark_page_num == ''){
                                                             alert('ページ数とブックマークを入力してください。')    
                                                         }else{
@@ -77,9 +76,7 @@ class BookMarkRegisterScreen_Child extends React.Component {
                         </View>
             case "finish":
                 return <View>  
-                            <Text>登録が完了しました。</Text>
-                            <Button title="さらにブックマークを追加する"
-                                    onPress={()=>this.setScreenType('input')}/>
+                            <Text>変更が完了しました。</Text>
                         </View>
         }
     }
@@ -136,4 +133,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(BookMarkRegisterScreen_Child);
+)(BookMarkChangeScreen);
