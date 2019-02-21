@@ -68,10 +68,10 @@ class BookMarkRegisterScreen_Child extends React.Component {
                                     onChangeText={(text)=>this.setBookmark_body(text)}				
                                 />
                                 <Button title="登録"
-                                        onPress={()=>{  if(this.state.bookmark_body != '' || this.state.bookmark_page_num != ''){
-                                                            this._register();
-                                                        }else{
+                                        onPress={()=>{  if(this.state.bookmark_body == '' || this.state.bookmark_page_num == ''){
                                                             alert('ページ数とブックマークを入力してください。')    
+                                                        }else{
+                                                            this._register();
                                                         }}}/>
                             </View>
                         </View>

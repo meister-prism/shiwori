@@ -12,12 +12,14 @@ import { CLEAR_NOW_BOOK} from './type';
  * @param {str} title 
  * @param {str} author 
  * @param {int} now_page 
+ * @param {str} imgLink ない場合は'none'
  */
-export const add_nowBook = (id,title,author) =>({
+export const add_nowBook = (id,title,author,imgLink) =>({
     type : ADD_NOW_BOOK,
     id : id,
     title : title,
-    author: author
+    author: author,
+    imgLink : imgLink
 });
 
 // @param : str

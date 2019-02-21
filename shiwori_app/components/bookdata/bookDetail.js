@@ -10,7 +10,6 @@ import RecentlyViewedList from './recentlyViewedList'
 import { get } from '../../api/showori_server/book'
 import { gbapi_search, INITIAL_CONFIG } from '../../api/googleBooks/search';
 import recordRegisterScreen_child from '../../screens/search/recordRegisterScreen_child';
-
 /**
  * 本の詳細表示
  * screen/detailsScreen.js >> here
@@ -93,10 +92,6 @@ class BookDetail extends React.Component {
     componentDidMount() {
         this._getRecords();
     }
-    /* propsの変更があったら（recentlyView)に入った場合 */
-    componentWillReceiveProps() {
-        alert(this.props.google_data.id)
-    }
     render() {
         let data = this.props.google_data; //data:(obj)
         let image, modal_image;
@@ -173,7 +168,6 @@ class BookDetail extends React.Component {
                             <RecentlyViewedList navigation={this.props.navigation}/>
                         </View> */}
                     </View>
-
                     {/* user review */}
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.record}>レビュー</Text>
@@ -183,6 +177,7 @@ class BookDetail extends React.Component {
                     </View>
                     {recordlist}
                     {/* Modal */}
+                    
                     <Modal
                         animationType="none"
                         transparent={true}
