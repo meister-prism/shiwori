@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   View,
   TouchableHighlight,
@@ -217,17 +216,17 @@ export default class BleManagerScreen extends Component {
 
 
     return (
-      <View style={styles.container}>
-        <TouchableHighlight style={{marginTop: 40,margin: 20, padding:20, backgroundColor:'#ccc'}} onPress={() => this.startScan() }>
+      <View>
+        <TouchableHighlight onPress={() => this.startScan() }>
           <Text>Scan Bluetooth ({this.state.scanning ? 'on' : 'off'})</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={{marginTop: 0,margin: 20, padding:20, backgroundColor:'#ccc'}} onPress={() => this.retrieveConnected() }>
+        <TouchableHighlight onPress={() => this.retrieveConnected() }>
           <Text>Retrieve connected peripherals</Text>
         </TouchableHighlight>
-        <ScrollView style={styles.scroll}>
+        <ScrollView>
           {(list.length == 0) &&
-            <View style={{flex:1, margin: 20}}>
-              <Text style={{textAlign: 'center'}}>No peripherals</Text>
+            <View>
+              <Text>No peripherals</Text>
             </View>
           }
           <ListView
@@ -237,9 +236,9 @@ export default class BleManagerScreen extends Component {
               const color = item.connected ? 'green' : '#fff';
               return (
                 <TouchableHighlight onPress={() => this.test(item) }>
-                  <View style={[styles.row, {backgroundColor: color}]}>
-                    <Text style={{fontSize: 12, textAlign: 'center', color: '#333333', padding: 10}}>{item.name}</Text>
-                    <Text style={{fontSize: 8, textAlign: 'center', color: '#333333', padding: 10}}>{item.id}</Text>
+                  <View>
+                    <Text>{item.name}</Text>
+                    <Text>{item.id}</Text>
                   </View>
                 </TouchableHighlight>
               );
