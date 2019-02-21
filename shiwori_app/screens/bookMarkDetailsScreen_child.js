@@ -20,7 +20,7 @@ class BookMarkDitailsScreen_Child extends React.Component {
     }
     render() {
         let item = this.props.item;
-        //* imageLink処理
+        //** imageLink処理
         let image,image_uri;
         if(item.book.imgUrl.large != null){
             image=<Image source={{uri: item.book.imgUrl.large}} style={styles.img} />
