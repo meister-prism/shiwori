@@ -31,6 +31,7 @@ import ContactScreen from '../screens/hamburger/contactScreen';
 //general screen
 import BookMarkDetailsScreen from '../screens/bookMarkDetailsScreen'
 import BookMarkRegisterScreen from '../screens/bookMarkRegisterScreen'
+import BookMarkChangeScreen from '../screens/myPage/bookMarkChangeScreen'
 import RankingScreen from '../screens/rankingScreen'
 import BooksScreen from '../screens/booksScreen'
 import DetailsScreen from '../screens/detailsScreen'
@@ -78,6 +79,7 @@ const MyPageStack = createStackNavigator({
   Details: DetailsScreen,
   BookMarkDetails: BookMarkDetailsScreen,
   BookMarkRegister:BookMarkRegisterScreen,
+  BookMarkChange : BookMarkChangeScreen,
   Settings: SettingsScreen,
   Help: HelpScreen,
   Contact: ContactScreen,

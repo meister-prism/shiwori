@@ -16,8 +16,8 @@ const _store = () =>{
 }
 
 // データを保存したくないときはこれ
-// export const store = createStore(rootReducer);
+export const store = createStore(rootReducer);
 //  データを保存したいときはこれ
-export const store = createStore(pReducer);
+// export const store = createStore(pReducer);
 
 export const persistor = persistStore(store);
