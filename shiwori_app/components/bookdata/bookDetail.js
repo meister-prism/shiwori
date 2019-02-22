@@ -175,12 +175,12 @@ class BookDetail extends React.Component {
                     <View　style={{flex: 1, flexDirection: 'row'}} >
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goBookMarkRegisterScreen()}>
                             <View style={ styles.record_button }>
-                                <Text style={styles.record_txt}>ブックマークを登録</Text>
+                                <Text style={styles.record_txt}>ブックマーク{"\n"}を登録</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._addNowReadingBook(imgLink)}>
                             <View style={ styles.record_button}>
-                                <Text style={styles.record_txt}>読んでいる本に登録</Text>
+                                <Text style={styles.record_txt}>読んでいる本{"\n"}に登録</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goRecordRegisterScreen()}>
