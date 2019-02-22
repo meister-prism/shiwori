@@ -14,6 +14,9 @@ class BookMarkRegisterScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'ブックマーク登録画面',
         headerLeft: <HeaderIcon navigation={navigation} />,
+        headerStyle: {
+            backgroundColor: '#FAE4EB',
+          }
     });
     
     render() {

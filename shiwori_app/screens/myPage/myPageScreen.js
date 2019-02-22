@@ -13,6 +13,9 @@ class MyPageScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'マイページ',
         headerLeft: <HeaderIcon navigation={navigation} />,
+        headerStyle: {
+            backgroundColor: '#FAE4EB',
+          }
     });
 
     render() {

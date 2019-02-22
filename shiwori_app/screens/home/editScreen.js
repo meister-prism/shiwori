@@ -6,6 +6,9 @@ class EditScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '読書記録の編集',
     headerLeft: <HeaderIcon navigation={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#FAE4EB',
+    },
   });
   render() {
     return (

@@ -13,6 +13,9 @@ class KeywordScreen extends React.Component {
     static navigationOptions = ({navigation}) => ({
         title: 'キーワード検索',
         headerLeft: <HeaderIcon navigation={navigation}/>,
+        headerStyle: {
+            backgroundColor: '#FAE4EB',
+        },
     });
 
     state = { search_txt:null,

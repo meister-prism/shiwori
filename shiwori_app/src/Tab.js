@@ -98,7 +98,14 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     initialRouteName: "Home",
+    tabBarOptions: {
+      activeTintColor: '#000000',
+      activeBackgroundColor: '#F8BCCF',
+      inactiveTintColor: '#4D4D4D',
+      inactiveBackgroundColor: '#FAE4EB',
+    }
   }
+  
 );
 
 export default TabNavigator

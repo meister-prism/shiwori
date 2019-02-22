@@ -15,8 +15,11 @@ import { store } from '../redux/store'
  */
 class DetailsScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        title: '本の詳細',
+        title: '詳細',
         headerLeft: <HeaderIcon navigation={navigation} />,
+        headerStyle: {
+            backgroundColor: '#FAE4EB',
+        }
     });
 
     _renderConfig() {
