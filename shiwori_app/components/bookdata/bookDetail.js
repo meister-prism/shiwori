@@ -176,16 +176,19 @@ class BookDetail extends React.Component {
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goBookMarkRegisterScreen()}>
                             <View style={ styles.record_button }>
                                 <Text style={styles.record_txt}>ブックマーク{"\n"}を登録</Text>
+                                <Image source={require('../../assets/icons/bookmark-icon.png')} style={styles.icon}  />
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._addNowReadingBook(imgLink)}>
                             <View style={ styles.record_button}>
                                 <Text style={styles.record_txt}>読んでいる本{"\n"}に登録</Text>
+                                <Image source={require('../../assets/icons/pin-icon.png')} style={styles.icon}  />
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goRecordRegisterScreen()}>
                             <View style={ styles.record_button}>
-                                <Text style= { styles.record_txt }>感想を書く</Text>
+                                <Text style= { styles.record_txt }>感想を書く{"\n"} </Text>
+                                <Image source={require('../../assets/icons/pen-icon.png')} style={styles.icon}  />
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -271,6 +274,11 @@ const styles = StyleSheet.create({
     imgContainer: {
         padding: 5,
     },
+    icon: {
+        width: 25,
+        height: 25,
+        resizeMode: 'contain',
+    },
     img: {
         width: 150,
         height: 250,
@@ -315,10 +323,11 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     record_button: {
+        alignItems: 'center',
         backgroundColor: '#67C175' ,
         margin: 5,
         width: '100%',
-        height: 70,
+        height: 90,
     },
     record_txt: {
         fontSize: 12,

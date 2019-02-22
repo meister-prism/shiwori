@@ -72,8 +72,9 @@ class BookMarkScreen_Child extends React.Component {
                             <TouchableOpacity onPress={() => {this._goBookMarkDetails(item)}}>
                                 <View style={styles.container2}>
                                     <View style={styles.infoContainer}>
+                                        <Text numberOfLines={1}style={styles.date}>{item.update_date}</Text>
                                         <Text numberOfLines={1}style={styles.title}>{item.book.title}</Text>
-                                        <Text style={styles.page_num}>{item.page_num}</Text>
+                                        <Text style={styles.page_num}>{item.page_num}ページ</Text>
                                         {/* <Text styles={styles.button}>本の詳細へ</Text> */}
                                     </View>
                                     <View style={styles.memoContainer}>
@@ -114,30 +115,31 @@ export default connect(
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom:3,
-        paddingTop:3,
-        paddingHorizontal:6,
+        paddingBottom: 5,
+        padding:5,
+        margin: 5,
+        backgroundColor: '#fff',
     },
     container2: {
         flexDirection:'row',
-        height:50
+        height:80,
     },
     infoContainer:{
-        backgroundColor: '#f0f0f0',
-        marginRight:3
+        width: '40%',
+        padding:5,
     },
     title:{
-        width:width/2.1,
         flex:1,
         fontSize:15,
         paddingTop:5,
         // fontWeight:'bold',
     },
+    date: {
+        color: '#3C914A',
+        fontSize:11,
+    },
     page_num:{
-        flex:1,
-        fontSize:18,
-        paddingLeft:40,
-        marginBottom:5
+        fontSize:13,
         // fontWeight:'bold',
     },
     button:{
@@ -145,9 +147,8 @@ const styles = StyleSheet.create({
         color:'#666666',
     },
     memoContainer:{
-        width:width/2.1,
-        marginLeft:3,
-        backgroundColor: '#f0f0f0',
+        width: '58%',
+        padding: 5,
     },
     memo:{
         flex:1,

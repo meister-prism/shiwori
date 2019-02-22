@@ -1,5 +1,5 @@
 import React from "react";
-import { Button,View, Text, DrawerNavigator,TouchableOpacity, Image } from "react-native";
+import { Button,View, Text, DrawerNavigator,TouchableOpacity, Image, StyleSheet } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 //initial page
 import WelcomeScreen from '../screens/welcome/welcomeScreen';
@@ -96,9 +96,33 @@ const HamburgerStack = createStackNavigator({
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: HomeStack,
-    Search: SearchStack,
-    MyPage: MyPageStack,
+    Home: {
+      screen: HomeStack,
+      navigationOptions: {
+        tabBarLabel:"Home",
+        tabBarIcon: ({ tintColor }) => (
+          <Image source={require('../assets/icons/home-icon.png')} style={styles.icon}  />
+        )
+      }
+    },
+    Search: {
+      screen: SearchStack,
+      navigationOptions: {
+        tabBarLabel:"Search",
+        tabBarIcon: ({ tintColor }) => (
+          <Image source={require('../assets/icons/book-icon.png')} style={styles.icon}  />
+        )
+      }
+    },
+    MyPage:{
+      screen: MyPageStack,
+      navigationOptions: {
+        tabBarLabel:"MyPage",
+        tabBarIcon: ({ tintColor }) => (
+          <Image source={require('../assets/icons/mypage-icon.png')} style={styles.icon}  />
+        )
+      }
+    },
   },
   {
     initialRouteName: "Home",
@@ -112,4 +136,12 @@ const TabNavigator = createBottomTabNavigator(
   
 );
 
+
+const styles = StyleSheet.create({
+  icon: {
+      margin: 10,
+      width: 25,
+      height: 25,
+  }
+});
 export default TabNavigator
