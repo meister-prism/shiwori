@@ -12,6 +12,9 @@ class RecordRegisterScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '感想の登録',
     headerLeft: <HeaderIcon navigation={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#FAE4EB',
+    },
   });
   render() {
     let bookdata = this.props.navigation.getParam('bookdata')

@@ -12,6 +12,9 @@ class SearchScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: '本の検索',
     headerLeft: <HeaderIcon navigation={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#FAE4EB',
+    },
   });
   render() {
     return (

@@ -14,6 +14,9 @@ class BookMarkScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'ブックマーク一覧',
         headerLeft: <HeaderIcon navigation={navigation} />,
+        headerStyle: {
+            backgroundColor: '#FAE4EB',
+          }
     });
     
     render() {

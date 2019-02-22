@@ -17,6 +17,9 @@ class BookMarkScreen_Child extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'ブックマーク一覧',
         headerLeft: <HeaderIcon navigation={navigation} />,
+        headerStyle: {
+            backgroundColor: '#FAE4EB',
+          }
     });
     state={
         bookmarks : this.props.bookmarks,

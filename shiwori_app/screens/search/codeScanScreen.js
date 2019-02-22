@@ -9,6 +9,9 @@ class CodeScanScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'バーコードスキャン',
     headerLeft: <HeaderIcon navigation={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#FAE4EB',
+    },
   });
   render() {
     return (

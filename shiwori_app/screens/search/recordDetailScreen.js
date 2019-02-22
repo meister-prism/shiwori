@@ -12,6 +12,9 @@ class RecordRegisterScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({
     title: 'レビュー詳細画面',
     headerLeft: <HeaderIcon navigation={navigation}/>,
+    headerStyle: {
+      backgroundColor: '#FAE4EB',
+    },
   });
   render() {
     return (

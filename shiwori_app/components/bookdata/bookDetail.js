@@ -76,11 +76,10 @@ class BookDetail extends React.Component {
                 <View styles={styles.recordlistContainer2}>
                     {/* <View styles={{flexDirection:'row',height:100}}> */}
                     <View style={styles.record_infoContainer}>
-                        <Text numberOfLines={1} style={styles.record_username}>ユーザー名：{item.user_name}</Text>
+                        <Text numberOfLines={1} style={styles.record_username}>{item.user_name ? item.user_name : '名無し'}さん</Text>
                         <Text numberOfLines={1} style={styles.record_star}>評価：{item.star}</Text>
-                        <Text numberOfLines={1} style={styles.record_update}>更新日：{item.update_date}</Text>
+                        <Text numberOfLines={1} style={styles.record_update}>{item.update_date}</Text>
                     </View>
-
                     <View style={styles.record_bodyContainer}>
                         <Text numberOfLines={5} style={styles.record_body}>{item.impression}</Text>
                     </View>
@@ -116,7 +115,7 @@ class BookDetail extends React.Component {
         if (this.state.records_data == null) {
             ave = '読み込み中';
             if (this.state.fetchfinish) recordlist = <Text>読み込み中</Text>
-            else recordlist = <Text>読み込み中</Text>
+            else recordlist = <Text style={{backgroundColor:'#f0f0f0'}} >読み込み中</Text>
         } else {
             if (this.state.records_data.records == "") {
                 ave = '情報なし';
@@ -147,19 +146,35 @@ class BookDetail extends React.Component {
                         </TouchableOpacity>
                         <View style={styles.info}>
                             <Text style={styles.title}>{data.title}</Text>
+                            <Text style={styles.star_average}>平均評価 : {ave}</Text>
                             <TouchableOpacity onPress={() => { this._authorSearch(data.authors) }}>
                                 <Text style={styles.author}>{data.authors} >> </Text>
                             </TouchableOpacity>
-                            <Text style={styles.publiserDate}>{data.publishedDate}</Text>
-                            <Text style={styles.publisher}>{data.publisher}</Text>
-                            <Button title="ブックマークを登録"
-                                onPress={() => this._goBookMarkRegisterScreen()} />
-                            <Text style={styles.star_average}>平均評価値 : {ave}</Text>
+                            <Text style={styles.info_txt}>{data.publishedDate}</Text>
+                            <Text style={styles.info_txt}>{data.publisher}</Text>
                         </View>
                     </View>
+                    
+                    <View　style={{flex: 1, flexDirection: 'row'}} >
+                        <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goBookMarkRegisterScreen()}>
+                            <View style={ styles.record_button }>
+                                <Text style={styles.record_txt}>ブックマークを登録</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goBookMarkRegisterScreen()}>
+                            <View style={ styles.record_button}>
+                                <Text style={styles.record_txt}>読んでいる本に登録</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goRecordRegisterScreen()}>
+                            <View style={ styles.record_button}>
+                                <Text style= { styles.record_txt }>感想を書く</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+
                     {/* description */}
                     <View style={styles.detailsContainer}>
-                        <Text style={styles.bookdetail}>本の詳細</Text>
                         <TouchableOpacity onPress={() => { this.setModalVisible_discription(true); }}>
                             <Text numberOfLines={5} style={styles.bookdetail_txt}>{data.description}</Text>
                         </TouchableOpacity>
@@ -168,14 +183,13 @@ class BookDetail extends React.Component {
                             <RecentlyViewedList navigation={this.props.navigation}/>
                         </View> */}
                     </View>
+
                     {/* user review */}
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={{ backgroundColor: '#f0f0f0' }}>
                         <Text style={styles.record}>レビュー</Text>
-                        <Button style={{ textAlign: 'right' }}
-                            title="感想を登録"
-                            onPress={() => this._goRecordRegisterScreen()} />
+                        {recordlist}
                     </View>
-                    {recordlist}
+                    
                     {/* Modal */}
                     
                     <Modal
@@ -228,17 +242,15 @@ export default connect(
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor:'#f0f0f0',
+        backgroundColor:'#FFFF',
         flex: 1,
         width: width,
         height: height
     },
     InfoContainer: {
         flexDirection: 'row',
-        backgroundColor: '#f0f0f0',
     },
     imgContainer: {
-        backgroundColor: 'powderblue',
         padding: 5,
     },
     img: {
@@ -248,23 +260,30 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
-        padding: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 30,
         flexWrap: 'wrap',
     },
     title: {
+        paddingBottom: 10,
         fontSize: 18,
         fontWeight: 'bold',
     },
     author: {
         fontSize: 13,
+        paddingBottom: 2,
         color: '#666666',
     },
-    publisher: {
+    star_average: {
+        color: '#3C914A',
+        paddingBottom: 5,
     },
-    publiserDate: {
+    info_txt: {
+        color: '#666666',
+        paddingBottom: 2,
     },
     detailsContainer: {
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#FFFF',
         padding: 10,
         // height: 310,
     },
@@ -274,7 +293,20 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     bookdetail_txt: {
-        height: 90
+        height: 90,
+        padding: 10,
+    },
+    record_button: {
+        backgroundColor: '#67C175' ,
+        margin: 5,
+        width: '100%',
+        height: 70,
+    },
+    record_txt: {
+        fontSize: 12,
+        textAlign: 'center',
+        color: '#FFFF',
+        padding: 10,
     },
     record_is_not_found: {
         width: width/1.1, 
@@ -282,7 +314,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
     },
     record: {
-        marginTop: 10,
+        margin: 10,
         fontSize: 18,
         fontWeight: 'bold',
         padding: 5,
@@ -290,6 +322,7 @@ const styles = StyleSheet.create({
     recordlistContainer: {
         flex: 1,
         paddingBottom: 3,
+        backgroundColor: '#FFFF',
         paddingTop: 3,
         paddingHorizontal: 6,
     },
@@ -299,7 +332,7 @@ const styles = StyleSheet.create({
     record_infoContainer: {
         width: width / 1.1,
         flexDirection: 'row',
-        backgroundColor: '#dfdfdf',
+        backgroundColor: '#FFFF',
         padding: 2,
     },
     record_username: {
@@ -319,7 +352,7 @@ const styles = StyleSheet.create({
     },
     record_bodyContainer: {
         width: width / 1.1,
-        backgroundColor: '#dfdfdf',
+        backgroundColor: '#FFFF',
     },
     record_body: {
         flex: 1,
