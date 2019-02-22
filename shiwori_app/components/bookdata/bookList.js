@@ -41,7 +41,6 @@ export default class BookList extends React.Component{
         }
         return  (
             <View>
-                <View style={styles.flatlist}></View>
                   <FlatList
                     data={data}
                     renderItem={({item}) => this._createkeyList(item,navigation)}
@@ -53,7 +52,4 @@ export default class BookList extends React.Component{
 }
 
 const styles = StyleSheet.create({
-    flatlist: {
-      flex:1
-    }
   });

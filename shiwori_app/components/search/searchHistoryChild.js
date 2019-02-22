@@ -23,8 +23,8 @@ class SearchHistoryChild extends React.Component {
     render() {
         let item = this.props.item;
         return (
-            <View style={{}}>
-                <TouchableOpacity 
+            <View style={styles.history_box}>
+                <TouchableOpacity
                     onPress = {()=>{this._onPress(item)}} >
                     <Text style={styles.text}>{item}</Text>
                 </TouchableOpacity>
@@ -34,13 +34,17 @@ class SearchHistoryChild extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    history_box: {
+      width: '100%',
+      borderWidth: 0.5,
+      borderBottomColor: '#7D7D7D',
+    },
     text: {
-      color: '#000',
-      fontSize:20,
-      width:width*0.9,
+      color: '#4D4D4D',
+      fontSize:18,
       textAlign:'left',
-      backgroundColor:'#ef91ee',
-      margin:3,
+      padding: 5,
+      width: '100%',
     }
   });
 

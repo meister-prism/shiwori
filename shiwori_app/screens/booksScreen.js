@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
  */
 class BooksScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        title: "本の検索結果",
+        title: "検索結果",
         headerLeft: <HeaderIcon navigation={navigation} />,
         headerStyle: {
             backgroundColor: '#FAE4EB',
