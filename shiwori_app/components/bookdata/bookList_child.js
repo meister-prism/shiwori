@@ -59,34 +59,40 @@ export default connect(
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom:3,
-        paddingTop:3,
-        paddingHorizontal:6,
+        paddingVertical: 2,
+        paddingHorizontal: 10,
+        borderColor: '#4d4d4d',
+        borderBottomWidth: 0.5,
     },
     container2:{
         flexDirection:'row',
-        backgroundColor: '#f0f0f0',
     },
     img:{
-        backgroundColor: 'powderblue',
     },
     infoContainer:{
-
+        
     },
     info:{
+        width: 220,
+        padding: 10,
         flex:1,
         flexWrap:'wrap',
     },
     title:{
-        fontSize:17,
+        fontSize: 16,
         fontWeight:'bold',
     },
     author:{
         fontSize:13,
         color:'#666666',
+        paddingBottom: 5,
     },
     publisher:{
+        fontSize:13,
+        color:'#666666',
     },
     publiserDate:{
+        fontSize:13,
+        color:'#666666',
     } 
   });
