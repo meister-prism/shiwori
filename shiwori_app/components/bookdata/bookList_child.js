@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         flexWrap:'wrap',
     },
     title:{
-        fontSize: 16,
+        fontSize: 15,
         fontWeight:'bold',
     },
     author:{
