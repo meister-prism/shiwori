@@ -3,6 +3,7 @@ import { StyleSheet, Modal, TouchableHighlight, Text, View, Button, Alert } from
 import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../../redux/store';
+import ReduxCh from '../../components/debug/reduxchecker_userdata';
 import Home_Child from './homeScreen_child';
 
 class HomeScreen extends React.Component {
@@ -18,6 +19,8 @@ class HomeScreen extends React.Component {
             <Provider store={store}>
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                     <Home_Child navigation={this.props.navigation}/>
+                    {/* <ReduxCh /> */}
+                    
                 </View>
             </Provider>
         );
