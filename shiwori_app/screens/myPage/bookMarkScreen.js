@@ -23,7 +23,7 @@ class BookMarkScreen extends React.Component {
         let body = this.props.navigation.getParam('res');
         return (
             <Provider store={store}>
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" , backgroundColor: '#f0f0f0'}}>
                     <BookMark_Child navigation={this.props.navigation} bookmarks={body}/>
                 </View>
             </Provider>

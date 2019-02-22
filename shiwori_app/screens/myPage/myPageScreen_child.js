@@ -75,33 +75,33 @@ class MyPageScreen_Child extends React.Component {
         }               
         return (
             <ScrollView>
-                            <View style={{width:width, alignItems: "center", justifyContent: "center"}}>
-                                <View style={styles.profile}>
-                                    {profile}
-                                    <TouchableOpacity onPress={() => {this._goBookmarkScreen()}}>
-                                        <View style={styles.button}>
-                                            <Text style={styles.button_txt}>ブックマークを読む</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
-                                <View styles={styles.bookdataContainer}>
-                                    {/* 今読んでいる本 */}
-                                    <Text style={styles.List_title}>今読んでいる本</Text>
-                                    <View style={styles.List}>
-                                        <NowReadingList navigation={this.props.navigation}/>
-                                    </View>
-                                    {/* 読み終わった本 */}
-                                    <Text style={styles.List_title}>読み終わった本</Text>
-                                    <View style={styles.List}>
-                                        <FinishedReadingList navigation={this.props.navigation} />
-                                    </View>
-                                    {/* 最近チェックした本 */}
-                                    <Text style={styles.List_title}>最近チェックした本</Text>
-                                    <View style={styles.List}>
-                                        <RecentlyViewedList navigation={this.props.navigation}/>
-                                    </View>
-                                </View>
+                <View style={{width: '100%', alignItems: "center", justifyContent: "center", padding: 5}}>
+                    <View style={styles.profile}>
+                        {profile}
+                        <TouchableOpacity style={styles.button} onPress={() => {this._goBookmarkScreen()}}>
+                            <View >
+                                <Text style={styles.button_txt}>ブックマークを読む</Text>
                             </View>
+                        </TouchableOpacity>
+                    </View>
+                    <View styles={styles.bookdataContainer}>
+                        {/* 今読んでいる本 */}
+                        <Text style={styles.List_title}>今読んでいる本</Text>
+                        <View style={styles.List}>
+                            <NowReadingList navigation={this.props.navigation}/>
+                        </View>
+                        {/* 読み終わった本 */}
+                        <Text style={styles.List_title}>読み終わった本</Text>
+                        <View style={styles.List}>
+                            <FinishedReadingList navigation={this.props.navigation} />
+                        </View>
+                        {/* 最近チェックした本 */}
+                        <Text style={styles.List_title}>最近チェックした本</Text>
+                        <View style={styles.List}>
+                            <RecentlyViewedList navigation={this.props.navigation}/>
+                        </View>
+                    </View>
+                </View>
             </ScrollView>
         );
     }
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
         padding: 20,
         width: '90%',
         borderWidth: 1,
+        borderRadius: 5,
     },
     icon: {
         margin: 10,
@@ -156,7 +157,6 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#67C175' ,
-        margin: 10,
         width: '100%',
     },
     button_txt: {
@@ -170,11 +170,12 @@ const styles = StyleSheet.create({
     },
     List_title:{
         marginTop: 5,
-        paddingLeft: 10,
+        marginHorizontal: 10,
         fontSize: 15,
         color: '#7d7d7d',
     },
     List:{
+        marginHorizontal: 10,
         margin: 2,
     },
   });
