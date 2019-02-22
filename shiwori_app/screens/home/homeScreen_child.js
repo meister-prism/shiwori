@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from '../../redux/store';
 import BarChart from '../../components/charts/barChart';
 import { connect } from 'react-redux';
-import NowReadingList from '../../components/bookdata/nowReadingList';
+import NowReadingBook from '../../components/bookdata/now_reading_book_home';
 
 /**
  * homeScreen.js >> here
@@ -28,7 +28,7 @@ class HomeScreen_Child extends React.Component {
                     />
                     {/* 現在読んでいる本 */}
                     <Text>現在読んでいる本を一冊表示したらいいけど、serverかreduxか迷い中</Text>
-                    
+                    <NowReadingBook navigation={this.props.navigation}/>
                     {/* graph */}
                     <BarChart />
 
