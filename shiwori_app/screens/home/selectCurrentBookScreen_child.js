@@ -4,7 +4,7 @@ import HeaderIcon from '../../components/HeaderIcon';
 import { connect } from 'react-redux';
 import { set_nowBook } from '../../redux/actions/book_data';
 import { set_currentBook } from '../../api/showori_server/userdata';
-
+import NowReadingBook from '../../components/bookdata/now_reading_book';
 /**
  * homeScreen_child.js >> here
  * here >> selectCurrentBookScreen_child.js 
@@ -12,9 +12,11 @@ import { set_currentBook } from '../../api/showori_server/userdata';
 class SelectCurrentBookScreen_Child extends React.Component {
 	// serverへ
 	async _selectToSetServer(item){
-		let res = set_currentBook(	this.props.user_id,this.item.id);
+		let res = set_currentBook(	this.props.user_id,item.id);
 		if(res.status==200){
 			this.props.set_nowBook();
+		}else{
+			alert('ネットワークエラー ('+res.status+') 再度設定してください。')
 		}
 	}
 	_selected(item){
@@ -60,12 +62,13 @@ class SelectCurrentBookScreen_Child extends React.Component {
 				<View style={styles.nowReadingListContainer}>
 					{nowReadingList}
 				</View>
+				{/* <Text>現在読んでいる本</Text> */}
+				{/* <NowReadingBook navigation={this.props.navigation}/> */}
 			</View>
 		);
 	}
 }
 
-// styleとは、nowReadingList.jsとほぼ同じなので参考にすると早いよ
 const styles = StyleSheet.create({
 	itemContainer: {
 
@@ -78,7 +81,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
 	user_id : state.user.id,
-    now_reading: state.bookdata.now_reading_data // [id,id,id,...] 先頭が古く、末尾が新しい
+	now_reading_id : state.bookdata.now_reading_id,
+	now_reading: state.bookdata.now_reading_data // [id,id,id,...] 先頭が古く、末尾が新しい
+	
 })
 
 const mapDispatchToProps = {
