@@ -6,10 +6,9 @@ import {
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
 import { connect } from 'react-redux';
-import RecentlyViewedList from './recentlyViewedList'
 import { get } from '../../api/showori_server/book'
 import { gbapi_search, INITIAL_CONFIG } from '../../api/googleBooks/search';
-import recordRegisterScreen_child from '../../screens/search/recordRegisterScreen_child';
+import { add_nowBook } from '../../redux/actions/book_data'
 /**
  * 本の詳細表示
  * screen/detailsScreen.js >> here
@@ -62,6 +61,19 @@ class BookDetail extends React.Component {
     _goRecordScreen(item) {
         this.props.navigation.navigate('RecordDetail', { bookdata: this.state.records_data.book, record: item });
     }
+    
+    /**
+     * 今読んでいる本のリストに追加する
+     */
+    _addNowReadingBook(imgLink){
+        // this.props.add_nowBook(id,title,author,0,imgLink);
+        this.props.add_nowBook( this.props.google_data.id,
+                                this.props.google_data.title,
+                                this.props.google_data.author,
+                                imgLink
+                                );
+        alert('登録されました')
+    }
     async _getRecords() {
         let res = await get(this.state.reviewbook_id);
         // alert(JSON.stringify(res))
@@ -94,18 +106,23 @@ class BookDetail extends React.Component {
     render() {
         let data = this.props.google_data; //data:(obj)
         let image, modal_image;
+        let imgLink = "none";
         if (data.imageLink_large != null) {
             image = <Image source={{ uri: data.imageLink_large }} style={styles.img} />
             modal_image = <Image source={{ uri: data.imageLink_large }} style={styles.modalimg} />
+            imgLink = data.imageLink_large;
         } else if (data.imageLink_medium != null) {
             image = <Image source={{ uri: data.imageLink_medium }} style={styles.img} />
             modal_image = <Image source={{ uri: data.imageLink_medium }} style={styles.modalimg} />
+            imgLink = data.imageLink_medium;
         } else if (data.imageLink_thumbnail != null) {
             image = <Image source={{ uri: data.imageLink_thumbnail }} style={styles.img} />
             modal_image = <Image source={{ uri: data.imageLink_thumbnail }} style={styles.modalimg} />
+            imgLink = data.imageLink_thumbnail;
         } else if (data.imageLink_smallThumbnail != null) {
             image = <Image source={{ uri: data.imageLink_smallThumbnail }} style={styles.img} />
             modal_image = <Image source={{ uri: data.imageLink_smallThumbnail }} style={styles.modalimg} />
+            imgLink = data.imageLink_smallThumbnail;
         } else {
             image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
             modal_image = <Image source={{ uri: data.imageLink_large }} style={styles.modalimg} />
@@ -161,7 +178,7 @@ class BookDetail extends React.Component {
                                 <Text style={styles.record_txt}>ブックマークを登録</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goBookMarkRegisterScreen()}>
+                        <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._addNowReadingBook(imgLink)}>
                             <View style={ styles.record_button}>
                                 <Text style={styles.record_txt}>読んでいる本に登録</Text>
                             </View>
@@ -229,10 +246,11 @@ class BookDetail extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    // jsonから取って来たデータを代入 
+    // jsonから取って来たデータを代入
 })
 
 const mapDispatchToProps = {
+    add_nowBook,
 }
 
 export default connect(
