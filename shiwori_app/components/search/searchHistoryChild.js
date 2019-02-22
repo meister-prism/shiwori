@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import {gbapi_search,INITIAL_CONFIG} from '../../api/googleBooks/search';
 import {add_searchHistory,delete_searchHistory} from '../../redux/actions/search';
 import { connect } from 'react-redux';
@@ -24,8 +24,9 @@ class SearchHistoryChild extends React.Component {
         let item = this.props.item;
         return (
             <View style={styles.history_box}>
-                <TouchableOpacity
+                <TouchableOpacity style={{flexDirection: 'row'}}
                     onPress = {()=>{this._onPress(item)}} >
+                    <Image source={require('../../assets/icons/search-icon.png')}  style={styles.img} />
                     <Text style={styles.text}>{item}</Text>
                 </TouchableOpacity>
             </View>
@@ -35,16 +36,24 @@ class SearchHistoryChild extends React.Component {
 
 const styles = StyleSheet.create({
     history_box: {
+      borderTopWidth: 2,
+      borderColor: '#f0f0f0',
+      
       width: '100%',
-      borderWidth: 0.5,
-      borderBottomColor: '#7D7D7D',
+      backgroundColor: '#FFF',
+    },
+    img: {
+      margin: 8,
+      width: 18, 
+      height: 18,
+      resizeMode : 'contain',
     },
     text: {
       color: '#4D4D4D',
       fontSize:18,
       textAlign:'left',
       padding: 5,
-      width: '100%',
+      width: '80%',
     }
   });
 

@@ -15,13 +15,15 @@ class KeywordScreen extends React.Component {
     headerLeft: <HeaderIcon navigation={navigation}/>,
     headerStyle: {
       backgroundColor: '#FAE4EB',
+      elevation: 0,
+      shadowOpacity: 0
     },
   });
 
   render() {
     return (
       <Provider  store={store}>
-        <View style={{ flex:1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex:1, alignItems: "center", justifyContent: "center", backgroundColor: '#fff' }}>
           <Key_Child navigation={this.props.navigation}/>
         </View>
       </Provider>
@@ -32,15 +34,4 @@ class KeywordScreen extends React.Component {
 export default KeywordScreen;
 
 const styles = StyleSheet.create({
-  inputStyle: {
-    color: '#000',
-    paddingRight: 5,
-    paddingLeft: 5,
-    fontSize: 18,
-    lineHeight: 23,
-    height: 30,
-    width:200,
-    borderWidth: 1,
-    borderColor: '#333'
-  }
 });
