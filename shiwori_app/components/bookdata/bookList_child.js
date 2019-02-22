@@ -60,14 +60,15 @@ export default connect(
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 2,
-        paddingHorizontal: 10,
         borderColor: '#4d4d4d',
+        width: '100%',
         borderBottomWidth: 0.5,
     },
     container2:{
         flexDirection:'row',
     },
     img:{
+        margin: 5,
     },
     infoContainer:{
         

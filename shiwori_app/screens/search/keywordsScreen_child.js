@@ -79,36 +79,34 @@ class KeywordScreenChild extends React.Component {
 
 const styles = StyleSheet.create({
     search_box:{
-        flex:1, 
-        alignItems: "center", 
-        marginTop:10, 
-        width: '100%', 
-        padding: 10,
+        flex:1,
+        alignItems: "center",
+        margin: 0,
+        width: '100%'
     },
     history_list_box:{
-        marginTop: 20,
+        backgroundColor: '#fff',
         textAlign: 'left',
-        width: '90%',
+        width: '100%',
+        marginTop: 2,  
     },
     button_box: {
         alignItems: 'center',
         width : '100%'
     },
     inputStyle: {
+        backgroundColor: '#FFF',
         color: '#000',
         fontWeight: 'bold',
-        padding: 5,
+        padding: 10,
         fontSize: 20,
-        width: '90%',
-        borderWidth: 1.5,
-        borderColor: '#7d7d7d',
-        borderTopRightRadius: 5,
-        borderTopLeftRadius: 5,
+        width: '100%',
     },
     button: {
         backgroundColor: '#67C175' ,
         width: '90%',
         borderRadius: 10,
+        marginBottom: 10,
     },
     button_txt: {
         fontSize: 12,
