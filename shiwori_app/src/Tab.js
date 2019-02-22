@@ -52,10 +52,10 @@ const HomeStack = createStackNavigator({
 });
 
 const SearchStack = createStackNavigator({
-  Search: SearchScreen,
+  // Search: SearchScreen,
   Keyword: KeywordsScreen,
-  Category: CategoryScreen,
-  CodeScan: CodeScanScreen,
+  // Category: CategoryScreen,
+  // CodeScan: CodeScanScreen,
   Ranking: RankingScreen,
   Details: DetailsScreen,
   Books: BooksScreen,
