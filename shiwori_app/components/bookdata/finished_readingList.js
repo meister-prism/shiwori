@@ -25,23 +25,28 @@ class FinishedReadingList extends React.Component {
 
     _createList(item){
         //* imageLink処理
-        let image,image_uri;
-        if(item.book.imgUrl.large != null){
-            image=<Image source={{uri: item.book.imgUrl.large}} style={styles.img} />
-            image_uri= item.book.imgUrl.large;
-        }else if(item.book.imgUrl.medium !=null){
-            image=<Image source={{uri: item.book.imgUrl.medium}} style={styles.img} />
-            image_uri= item.book.imgUrl.medium;
-        }else if(item.book.imgUrl.thumbnail!=null){
-            image=<Image source={{uri: item.book.imgUrl.thumbnail}} style={styles.img} />
-            image_uri= item.book.imgUrl.thumbnail;
-        }else if(item.book.imgUrl.smallThumbnail!=null){
-            image=<Image source={{uri: item.book.imgUrl.smallThumbnail}} style={styles.img} />
-            image_uri= item.book.imgUrl.smallThumbnail;
-        }else {
-            image = <Text></Text>;
-            image_uri= require('../../assets/img/noimage.png');
+        let image = <Text></Text>;
+        let image_uri= require('../../assets/img/noimage.png');
+        if(item.book!=null){
+            if(item.book.imgUrl.large != null){
+                image=<Image source={{uri: item.book.imgUrl.large}} style={styles.img} />
+                image_uri= item.book.imgUrl.large;
+            }else if(item.book.imgUrl.medium !=null){
+                image=<Image source={{uri: item.book.imgUrl.medium}} style={styles.img} />
+                image_uri= item.book.imgUrl.medium;
+            }else if(item.book.imgUrl.thumbnail!=null){
+                image=<Image source={{uri: item.book.imgUrl.thumbnail}} style={styles.img} />
+                image_uri= item.book.imgUrl.thumbnail;
+            }else if(item.book.imgUrl.smallThumbnail!=null){
+                image=<Image source={{uri: item.book.imgUrl.smallThumbnail}} style={styles.img} />
+                image_uri= item.book.imgUrl.smallThumbnail;
+            }else {
+                image = <Text></Text>;
+                image_uri= require('../../assets/img/noimage.png');
+            }
+
         }
+       
         // alert(image_uri);
         let ret =   <View style={styles.itemContainer}>
                         <TouchableHighlight
@@ -70,6 +75,11 @@ class FinishedReadingList extends React.Component {
             if(this.state.readingList==null){
                 screen = <Text>読み終わった本はありません。</Text> 
             }else{
+                for(let i;i<this.state.readingList.length;i++){
+                    if(this.state.readingList[i].book.item.imgUrl==null){
+                        alert("oioi");
+                    }
+                }
                 screen = <FlatList
                             data={this.state.readingList}
                             renderItem={({item}) => this._createList(item)}

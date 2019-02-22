@@ -90,7 +90,7 @@ export async function get(user_id) {
  * @param {str} memo 
  * @return {json} status , 
  */
-export async function chenge(user_id, bookmark_id, memo) {
+export async function change(user_id, bookmark_id, memo) {
     return fetch(SHIWORI_ROUTE + '/bookmark/change', {
         method: 'POST',
         headers: {
