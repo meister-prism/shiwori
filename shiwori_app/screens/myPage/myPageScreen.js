@@ -4,7 +4,8 @@ import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../../redux/store';
 import Mypage_Child from './myPageScreen_child';
-
+var Dimensions = require('Dimensions');
+var { width, height, scale } = Dimensions.get('window'); //get window size
 /**
  * tabNavigation => MypageScreen(here)
  * here => myPageScreen_child.js
@@ -21,7 +22,7 @@ class MyPageScreen extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <View style={{ width:width,alignItems: "center", justifyContent: "center" }}>
                     <Mypage_Child navigation={this.props.navigation} />
                 </View>
             </Provider>

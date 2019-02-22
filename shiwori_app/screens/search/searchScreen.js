@@ -33,15 +33,6 @@ class SearchScreen extends React.Component {
           title="Search on Category"
           onPress={() => this.props.navigation.navigate('Category')}
         />
-        <Text>Recommended</Text>
-        <Button
-          title="book1"
-          onPress={() => this.props.navigation.navigate('Detail')}
-        />
-        <Button
-          title="book2"
-          onPress={() => this.props.navigation.navigate('Detail')}
-        />
       </View>
       </Provider>
     );

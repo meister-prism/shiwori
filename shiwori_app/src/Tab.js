@@ -9,6 +9,7 @@ import TutorialScreen from '../screens/welcome/tutorialScreen';
 //home
 import HomeScreen from '../screens/home/homeScreen';
 import EditScreen from '../screens/home/editScreen';
+import SelectCurrentBookScreen from '../screens/home/selectCurrentBookScreen';
 
 //search
 import SearchScreen from '../screens/search/searchScreen';
@@ -31,6 +32,7 @@ import ContactScreen from '../screens/hamburger/contactScreen';
 //general screen
 import BookMarkDetailsScreen from '../screens/bookMarkDetailsScreen'
 import BookMarkRegisterScreen from '../screens/bookMarkRegisterScreen'
+import BookMarkChangeScreen from '../screens/myPage/bookMarkChangeScreen'
 import RankingScreen from '../screens/rankingScreen'
 import BooksScreen from '../screens/booksScreen'
 import DetailsScreen from '../screens/detailsScreen'
@@ -39,6 +41,7 @@ import DetailsScreen from '../screens/detailsScreen'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Edit: EditScreen,
+  SelectCurrentBook : SelectCurrentBookScreen,
   Detail: DetailsScreen,
   Welcome: WelcomeScreen,
   Tutorial: TutorialScreen,
@@ -78,6 +81,7 @@ const MyPageStack = createStackNavigator({
   Details: DetailsScreen,
   BookMarkDetails: BookMarkDetailsScreen,
   BookMarkRegister:BookMarkRegisterScreen,
+  BookMarkChange : BookMarkChangeScreen,
   Settings: SettingsScreen,
   Help: HelpScreen,
   Contact: ContactScreen,

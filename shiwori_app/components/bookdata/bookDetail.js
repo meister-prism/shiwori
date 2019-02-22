@@ -10,7 +10,6 @@ import RecentlyViewedList from './recentlyViewedList'
 import { get } from '../../api/showori_server/book'
 import { gbapi_search, INITIAL_CONFIG } from '../../api/googleBooks/search';
 import recordRegisterScreen_child from '../../screens/search/recordRegisterScreen_child';
-
 /**
  * 本の詳細表示
  * screen/detailsScreen.js >> here
@@ -92,10 +91,6 @@ class BookDetail extends React.Component {
     componentDidMount() {
         this._getRecords();
     }
-    /* propsの変更があったら（recentlyView)に入った場合 */
-    componentWillReceiveProps() {
-        alert(this.props.google_data.id)
-    }
     render() {
         let data = this.props.google_data; //data:(obj)
         let image, modal_image;
@@ -159,7 +154,7 @@ class BookDetail extends React.Component {
                             <Text style={styles.info_txt}>{data.publisher}</Text>
                         </View>
                     </View>
-                    {/* user review */}
+                    
                     <View　style={{flex: 1, flexDirection: 'row'}} >
                         <TouchableOpacity style={{width: '31%', margin: 2 }} onPress={() => this._goBookMarkRegisterScreen()}>
                             <View style={ styles.record_button }>
@@ -189,14 +184,14 @@ class BookDetail extends React.Component {
                         </View> */}
                     </View>
 
-                    
-                    
+                    {/* user review */}
                     <View style={{ backgroundColor: '#f0f0f0' }}>
                         <Text style={styles.record}>レビュー</Text>
                         {recordlist}
                     </View>
                     
                     {/* Modal */}
+                    
                     <Modal
                         animationType="none"
                         transparent={true}

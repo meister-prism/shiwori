@@ -3,6 +3,7 @@ import { START_NOW_BOOK,STOP_NOW_BOOK } from '../actions/type';
 import { SET_NOW_BOOK, CLEAR_NOW_BOOK } from '../actions/type';
 
 var moment = require("moment");
+
 const INITIAL_STATE = {
     "now_reading_id":null,
     "now_reading_data":[],
@@ -12,6 +13,7 @@ INITIAL_BOOKDATA = {
     id : '',
     title : '',
     author : '',
+    imgLink : '',
     current_page : 0,
     current_time : undefined,
     page_stack : [],
@@ -38,6 +40,7 @@ const _add = (state,action) =>{
         id : action.id,
         title : action.title,
         author : action.author,
+        imgLink : action.imgLink,
         current_page : 0,
         current_time : undefined,
         page_stack : [0],

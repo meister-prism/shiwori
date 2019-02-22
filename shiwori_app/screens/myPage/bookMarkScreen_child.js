@@ -33,7 +33,7 @@ class BookMarkScreen_Child extends React.Component {
     }
 
     async _delete(item,index){
-        let res = del('6ba7fead-df7e-4aa2-afd8-9c3ac3a77b1a',item.bm_id);
+        let res = del(this.props.user_id,item.bm_id);
         // error処理
         // alert(JSON.stringify(res));
         // refresh
@@ -51,13 +51,22 @@ class BookMarkScreen_Child extends React.Component {
             ]
         )
     }
+    _changeBookMark(item,index){
+        this.props.navigation.navigate('BookMarkChange',{item:item});
+    }
     _renderItem(item,index){
         const swipeoutButtons = [{
                                     text:'削除',
                                     backgroundColor : '#d11a2a',
                                     onPress : ()=>{this._deleteBookMark(item,index)}
                                 }];
+        const swipeoutButtons2 = [{
+                                    text:'変更',
+                                    backgroundColor:'#81C784',
+                                    onPress : ()=>{this._changeBookMark(item,index)}
+                                }];
         let ret =   <Swipeout   right={swipeoutButtons} 
+                                left ={swipeoutButtons2}
                                 autoClose={true}>
                         <View style={styles.container}>
                             <TouchableOpacity onPress={() => {this._goBookMarkDetails(item)}}>
