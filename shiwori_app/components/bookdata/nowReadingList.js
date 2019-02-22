@@ -23,7 +23,7 @@ class NowReadingList extends React.Component {
     _createList(item){
         if(item.img == "none")return <Text></Text>;
         let image;
-        image=  <Image source={{uri: item.imgLink}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        image=  <Image source={{uri: item.imgLink}} style={{width: 70, height: 100,resizeMode : 'contain'}} />
         let ret =   <View style={styles.itemContainer}>
                         <TouchableHighlight
                             onPress={()=>{this._goDetail(item.id,item.img)}}>
@@ -47,7 +47,7 @@ class NowReadingList extends React.Component {
                         />
         }
         return (
-        <View style={{ height:150, alignItems: "center", }}>
+        <View style={{ height:130, alignItems: "center", }}>
             {screen}
         </View>
         );
@@ -56,7 +56,6 @@ class NowReadingList extends React.Component {
 
 const styles = StyleSheet.create({
   itemContainer:{
-    
   },
   nodata:{
 

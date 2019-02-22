@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button,ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button,ScrollView, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { get } from '../../api/showori_server/bookmark'
 import { user_get } from '../../api/showori_server/userdata'
@@ -56,13 +56,21 @@ class MyPageScreen_Child extends React.Component {
                                 </View>
                 }else{
                     profile =   <View>
-                                    <Text>めも：レスポンスを全部表示してるだけなので、全部使わなくていいです。styleはいろいろ未設定。</Text>
-                                    <Text style={styles.user_name}>ユーザー名：{this.state.user_get_res.user_name}</Text>
-                                    <Text style={styles.introduction}>自己紹介：{this.state.user_get_res.introduction}</Text>
-                                    <Text style={styles.introduction}>総読書量：{this.state.user_get_res.all_readbook_count}</Text>
-                                    <Text style={styles.introduction}>総読書時間：{this.state.user_get_res.all_readtime}</Text>
-                                    <Text style={styles.introduction}>登録日時：{this.state.user_get_res.created_date}</Text>
+                                    <View style={styles.float_box}>
+                                    <View style={styles.icon}>
+                                        <Image source={require('../../assets/icons/profile-icon.png')}  />
+                                    </View>
+                                    <View>  
+                                        <Text style={styles.user_name}>{this.state.user_get_res.user_name}</Text>
+                                        <Text style={styles.info}>読んだ本：{this.state.user_get_res.all_readbook_count} 冊</Text>
+                                        <Text style={styles.info}>総読書時間：{this.state.user_get_res.all_readtime} 時間</Text>
+                                    </View>
+                                    </View>
+                                    <View style={styles.float_box}>
+                                        <Text style={styles.note}>{this.state.user_get_res.introduction}</Text>
+                                    </View>
                                 </View>
+
                 }
         }               
         return (
@@ -70,10 +78,11 @@ class MyPageScreen_Child extends React.Component {
                             <View style={{width:width, alignItems: "center", justifyContent: "center"}}>
                                 <View style={styles.profile}>
                                     {profile}
-                                    <Button
-                                        title="ブックマークへ"
-                                        onPress={() => {this._goBookmarkScreen()}}
-                                        />
+                                    <TouchableOpacity onPress={() => {this._goBookmarkScreen()}}>
+                                        <View style={styles.button}>
+                                            <Text style={styles.button_txt}>ブックマークを読む</Text>
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
                                 <View styles={styles.bookdataContainer}>
                                     {/* 今読んでいる本 */}
@@ -119,21 +128,53 @@ const styles = StyleSheet.create({
 
     },
     profile:{
-
+        marginVertical: 10,
+        padding: 20,
+        width: '90%',
+        borderWidth: 1,
+    },
+    icon: {
+        margin: 10,
+    },
+    float_box: {
+        flexDirection: 'row',
     },
     user_name:{
-
+        padding: 5,
+        marginBottom: 5,
+        fontSize: 16,
+        fontWeight: 'bold',
     },
-    introduction:{
-
+    info: {
+        padding: 5,
+        fontSize: 13,
+        color: '#7d7d7d'
+    },
+    note: {
+        padding: 5,
+        fontSize: 13,
+    },
+    button: {
+        backgroundColor: '#67C175' ,
+        margin: 10,
+        width: '100%',
+    },
+    button_txt: {
+        fontSize: 12,
+        textAlign: 'center',
+        color: '#FFFF',
+        padding: 10,
     },
     bookdataContainer:{
-
+        
     },
     List_title:{
-
+        marginTop: 5,
+        paddingLeft: 10,
+        fontSize: 15,
+        color: '#7d7d7d',
     },
     List:{
-
+        margin: 2,
     },
   });

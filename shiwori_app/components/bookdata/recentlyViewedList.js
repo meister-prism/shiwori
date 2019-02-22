@@ -28,7 +28,7 @@ class RecentlyViewedList extends React.Component {
     _createkeyList(item){
         if(item.img == "none")return <Text></Text>;
         let image;
-        image =  <Image source={{uri: item.img}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        image =  <Image source={{uri: item.img}} style={{width: 70, height: 100,resizeMode : 'contain'}} />
         // child
         let ret =  <View style={styles.listContainer}>
                         <TouchableHighlight
@@ -62,11 +62,11 @@ class RecentlyViewedList extends React.Component {
             }
         }
         if(data.length==0 || this.state.recently_img.length==0){
-            screen = <View style={{height: 150, alignItems: "center",justifyContent: "center"}}>
+            screen = <View style={{height: 130, alignItems: "center",justifyContent: "center"}}>
                         <Text>最近チェックした本はありません。</Text>
                     </View>
         }else{
-            screen = <View style={{ height: 150, alignItems: "center", }}>
+            screen = <View style={{ height: 130, alignItems: "center", }}>
                         <FlatList
                             data={data}
                             extraData={data}

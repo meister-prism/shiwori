@@ -90,7 +90,7 @@ class FinishedReadingList extends React.Component {
             }
         }
         return (
-        <View style={{ height:150, alignItems: "center", }}>
+        <View style={{ height:130, alignItems: "center", }}>
             {screen}
         </View>
         );
@@ -99,8 +99,8 @@ class FinishedReadingList extends React.Component {
 
 const styles = StyleSheet.create({
     img:{
-        width: 100, 
-        height: 150,
+        width: 70, 
+        height: 100,
         resizeMode : 'contain',
     },
 });
