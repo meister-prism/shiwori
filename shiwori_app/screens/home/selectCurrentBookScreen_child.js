@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Modal, TouchableHighlight, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Modal, TouchableHighlight, Text, View, Button, Alert,Image,FlatList } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import { connect } from 'react-redux';
 import {set_nowBook} from '../../redux/actions/book_data'
@@ -43,7 +43,7 @@ class SelectCurrentBookScreen_Child extends React.Component {
 			nowReadingList = <Text style={styles.nodata}>現在読んでいる本はありません</Text>
 		} else {
 			nowReadingList = <FlatList
-				data={now_reading}
+				data={this.props.now_reading}
 				renderItem={({ item }) => this._createList(item)}
 				keyExtractor={(item, index) => index.toString()}
 				horizontal={true}
@@ -51,7 +51,7 @@ class SelectCurrentBookScreen_Child extends React.Component {
 			/>
 		}
 		return (
-			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+			<View style={{ flex:1 }}>
 				<Text>現在読んでいる本を選択する</Text>
 				<View style={styles.nowReadingListContainer}>
 					{nowReadingList}

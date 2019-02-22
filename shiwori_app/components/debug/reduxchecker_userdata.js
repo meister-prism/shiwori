@@ -7,8 +7,13 @@ import {
     clear_uid, clear_uname, clear_uemail, clear_upass, clear_udata,
 } from '../../redux/actions/user_data';
 import {add_searchHistory,delete_searchHistory}from  '../../redux/actions/search';
+import {state_clear} from '../../redux/actions/root'
 import {store} from '../../redux/store';
 
+/**
+ * Redux動作確認用
+ * <Provider>で囲ってください。
+ */
 export class reduxChecker extends Component {
   render() {
     return (
@@ -40,6 +45,11 @@ export class reduxChecker extends Component {
             onPress={() => this.props.delete_searchHistory()}
             title="検索履歴を削除"
           /> 
+          <Button
+            onPress={() => this.props.state_clear()}
+            title="reduxStoreを初期化（debug用）"
+          /> 
+
         {/* getState() : storeの情報を表示 */}
         <Text style={{marginBottom: 100}}>store: {JSON.stringify(store.getState())}</Text>
       </View>
@@ -68,6 +78,7 @@ const mapDispatchToProps = {
     clear_upass,
     clear_udata,
     add_searchHistory,delete_searchHistory,
+    state_clear,
 }
   
 export default connect(

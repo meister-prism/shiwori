@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button,TextInput,FlatList,TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, Button,TextInput,Image,FlatList,TouchableHighlight} from 'react-native';
 import {gbapi_search_specific} from '../../api/googleBooks/search'
 import { connect } from 'react-redux';
 import {add_recentlyViewed} from '../../redux/actions/search'

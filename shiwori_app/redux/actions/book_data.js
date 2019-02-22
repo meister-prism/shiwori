@@ -10,8 +10,7 @@ import { CLEAR_NOW_BOOK} from './type';
  * 今読んでいる本を追加する(初回起動、計測開始)
  * @param {str} id 
  * @param {str} title 
- * @param {str} author 
- * @param {int} now_page 
+ * @param {str} author
  * @param {str} imgLink ない場合は'none'
  */
 export const add_nowBook = (id,title,author,imgLink) =>({

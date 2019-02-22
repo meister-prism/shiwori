@@ -66,22 +66,48 @@ export async function signin(email, password) {
  */
 export async function user_get(user_id) {
     let response = { "status": "", "body": "" };
-    return new Promise(function(resolve, reject) {
-        fetch(SHIWORI_ROUTE + '/user?user_id='+user_id,{
-            headers:{
+    return new Promise(function (resolve, reject) {
+        fetch(SHIWORI_ROUTE + '/user?user_id=' + user_id, {
+            headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'X-SHIWORI-Signature': SHIWORI_SIG 
+                'X-SHIWORI-Signature': SHIWORI_SIG
             }
         })
-          .then((res) => {
-            response.status = res.status
-            if(res.status != 200) reject(res.status);
-            return res.json();
-          })
-          .then((resJson) => {
-            response.body = resJson;
-            resolve(response);
-          });
-      });
+            .then((res) => {
+                response.status = res.status
+                if (res.status != 200) reject(res.status);
+                return res.json();
+            })
+            .then((resJson) => {
+                response.body = resJson;
+                resolve(response);
+            });
+    });
+}
+
+/**
+ * サーバー側に現在読んでいる本をセットする
+ * @param {str} user_id 
+ * @param {str} current_book_id 
+ */
+export async function set_currentBook(user_id, current_book_id) {
+    return fetch(SHIWORI_ROUTE + '/user/current_book', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-SHIWORI-Signature': SHIWORI_SIG
+        },
+        body: JSON.stringify({
+            "user_id": user_id,
+            "current_book_id": current_book_id,
+        })
+    })
+        .then((response) => {
+            const status = response.status;
+            const responseJson = response.json();
+            const ret = { "status": status, "json": responseJson };
+            return ret;
+        }).then((ret) => ret);
 }
