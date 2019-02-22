@@ -16,7 +16,7 @@ class NowReadingBook extends React.Component {
     state={ getBookdata : null,
             nowReading_format:null,
             request_finish : false,
-            change : false} 
+            change : true}  // true:able false disable
     async _get_data_andGo(id,img){
         let res = await gbapi_search_specific(id);
         // error処理
@@ -28,22 +28,23 @@ class NowReadingBook extends React.Component {
     }
 
     async _getBookdata(){
-        if(this.props.now_reading_id != '' || this.state.change){
+        // console.log('kita\n')
+        if(this.props.now_reading_id != ''){
             let res = await gbapi_search_specific(this.props.now_reading_id);
             if(res.status_code==200){
                 await this.setState({getBookdata:res.body});
             }
-            this.setState({request_finish:true,change:true})
+            this.setState({request_finish:true,change:false})
         }
     }
 	componentDidMount(){
         this.interval = setInterval(() => {
-                                            if(this.props.navigation.isFocused())this._getBookdata();
-                                            else this.setState({change:false})
+                                            if(this.props.navigation.isFocused() && this.state.change ) this._getBookdata();
+                                            else if(!this.props.navigation.isFocused()) this.setState({change:true})
                                             }, 1000);
 	}
     render() {
-        console.log("rend!\n"+this.state.getBookdata);
+        // console.log("rend!\n"+this.state.getBookdata);
         let screen;
         if(!this.state.request_finish){
             screen = <Text>読み込んでいます。</Text>
