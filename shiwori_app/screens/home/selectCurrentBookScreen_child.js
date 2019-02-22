@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Modal, TouchableHighlight, Text, View, Button, Alert,Image,FlatList } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import { connect } from 'react-redux';
-import {set_nowBook} from '../../redux/actions/book_data'
+import { set_nowBook } from '../../redux/actions/book_data';
+import { set_currentBook } from '../../api/showori_server/userdata';
 
 /**
  * homeScreen_child.js >> here
@@ -10,15 +11,18 @@ import {set_nowBook} from '../../redux/actions/book_data'
  */
 class SelectCurrentBookScreen_Child extends React.Component {
 	// serverへ
-	async _selectToServer(item){
-		alert("サーバー通信処理")
+	async _selectToSetServer(item){
+		let res = set_currentBook(	this.props.user_id,this.item.id);
+		if(res.status==200){
+			this.props.set_nowBook();
+		}
 	}
 	_selected(item){
 		Alert.alert(
-            '現在読んでいる本に設定しますか？','タイトルを表示したい',
+            '現在読んでいる本に設定しますか？',item.title,
             [
                 {text:'キャンセル',style:'cancel'},
-                {text:'確定',onPress:() =>{this._selectToServer(item)}},
+                {text:'確定',onPress:() =>{this._selectToSetServer(item)}},
             ]
         )
 	}
@@ -73,6 +77,7 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = state => ({
+	user_id : state.user.id,
     now_reading: state.bookdata.now_reading_data // [id,id,id,...] 先頭が古く、末尾が新しい
 })
 

@@ -2,7 +2,7 @@ import { ADD_RECENTLY_VIEWED, DELETE_RECENTLY_VIEWED } from '../actions/type';
 import { ADD_SEARCH_HISTORY, DELETE_SEARCH_HISTORY } from '../actions/type';
 
 const MAX_RV = 10; // 最近チェックした本に入れる最大数
-const MAX_ST = 10; // 検索履歴に入れる最大数
+const MAX_ST = 50; // 検索履歴に入れる最大数
 
 // どちらも、先頭が古い、新しい情報は末尾に追加されていく。
 const INITIAL_STATE = {
