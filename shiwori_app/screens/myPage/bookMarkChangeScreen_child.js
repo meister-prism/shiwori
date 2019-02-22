@@ -25,39 +25,27 @@ class BookMarkChangeScreen_Child extends React.Component {
      * ブックマークを登録する
      */
     async _register(){
-        if(this.state.bookmark_page_num > this.props.bookdata.pageCount){
-            alert("ページ数の上限を超えています。");
+        // alert("hel")
+        let res = await change(     this.props.user_id,
+                                    this.props.navigation.getParam('item').bm_id,
+                                    this.state.bookmark_body,
+                                    );
+        // alert(JSON.stringify(res.status));
+        if(res.status==200) {
             this.setBookmark_page('');
-        }else{
-            let res = await change(     this.props.user_id,
-                                        this.props.navigation.getParam('item').memo,
-                                        this.props.navigation.getParam('item').bm_id,);
-            if(res.status==200) {
-                this.setBookmark_page('');
-                this.setBookmark_body('');
-                this.setScreenType('finish');
-            }
-        }
-
-        
+            this.setBookmark_body('');
+            this.setScreenType('finish');
+        }        
     }
     
     _renderConfig(){
         switch(this.state.Screentype){
             case "input":
-                let pageCount = "ページ数(0~" + this.props.bookdata.pageCount +")を入力";
                 return  <View>
-                            <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
-                            <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
+                            <Text style={styles.booktitle}>{this.props.navigation.getParam('item').book.title}</Text>
+                            <Text style={styles.bookauthor}>{this.props.navigation.getParam('item').book.authors}</Text>
                             <View style={{alignItems:"center"}}>
-                                <TextInput
-                                    placeholder={pageCount}
-                                    autoCorrect={false}
-                                    value={this.state.bookmark_page_num}  
-                                    style={styles.inputpage}
-                                    keyboardType='number-pad'
-                                    onChangeText={(num)=>this.setBookmark_page(num)}			
-                                />
+                                <Text>ページ数:{this.props.navigation.getParam('item').book.page}</Text>
                                 <TextInput
                                     placeholder="ブックマークの内容を入力"
                                     autoCorrect={false}
@@ -67,8 +55,8 @@ class BookMarkChangeScreen_Child extends React.Component {
                                     onChangeText={(text)=>this.setBookmark_body(text)}				
                                 />
                                 <Button title="変更"
-                                        onPress={()=>{  if(this.state.bookmark_body == '' || this.state.bookmark_page_num == ''){
-                                                            alert('ページ数とブックマークを入力してください。')    
+                                        onPress={()=>{  if(this.state.bookmark_body == ''){
+                                                            alert('ブックマークを入力してください。')    
                                                         }else{
                                                             this._register();
                                                         }}}/>
