@@ -51,7 +51,7 @@ class SelectCurrentBookScreen_Child extends React.Component {
 			/>
 		}
 		return (
-			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+			<View style={{ flex:1 }}>
 				<Text>現在読んでいる本を選択する</Text>
 				<View style={styles.nowReadingListContainer}>
 					{nowReadingList}
