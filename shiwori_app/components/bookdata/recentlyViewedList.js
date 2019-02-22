@@ -66,7 +66,7 @@ class RecentlyViewedList extends React.Component {
                         <Text>最近チェックした本はありません。</Text>
                     </View>
         }else{
-            screen = <View style={{ height: 150, alignItems: "left", }}>
+            screen = <View style={{ height: 150, alignItems: "center", }}>
                         <FlatList
                             data={data}
                             extraData={data}

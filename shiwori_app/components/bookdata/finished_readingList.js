@@ -90,7 +90,7 @@ class FinishedReadingList extends React.Component {
             }
         }
         return (
-        <View style={{ height:150, alignItems: "left", }}>
+        <View style={{ height:150, alignItems: "center", }}>
             {screen}
         </View>
         );
