@@ -84,7 +84,7 @@ class BookDetail extends React.Component {
     }
     _createRecordList(item) {
         return <View style={styles.recordlistContainer}>
-            <TouchableOpacity onPress={() => { this._goRecordScreen(item) }}>
+            {/* <TouchableOpacity onPress={() => { this._goRecordScreen(item) }}> */}
                 <View styles={styles.recordlistContainer2}>
                     {/* <View styles={{flexDirection:'row',height:100}}> */}
                     <View style={styles.record_infoContainer}>
@@ -96,8 +96,7 @@ class BookDetail extends React.Component {
                         <Text numberOfLines={5} style={styles.record_body}>{item.impression}</Text>
                     </View>
                 </View>
-
-            </TouchableOpacity>
+            {/* </TouchableOpacity> */}
         </View>
     }
     componentDidMount() {
