@@ -62,7 +62,7 @@ class EditScreen_Child extends React.Component {
 				// 読み込めてる
 				screen = 	<View style={{width:'100%',}}>
 								<FlatList
-									data = {this.state.get_data}
+									data = {this.state.get_data.reverse()}
 									renderItem = {({item})=>this._createItem(item)}
 									keyExtractor={(item, index) => index.toString()}
 								/>
