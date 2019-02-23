@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button,FlatList ,TouchableOpacity} from 'react-
 import HeaderIcon from '../../components/HeaderIcon';
 import { connect } from 'react-redux';
 import { device_get } from '../../api/showori_server/device';
+var moment = require("moment");
 /**
  * 読書記録画面の編集(リスト表示)  
  * editScreen.js >> here
@@ -19,16 +20,21 @@ class EditScreen_Child extends React.Component {
 
 	_createItem(item){
 		// itemの中に入ってる情報はほかにも
-		let ret = 	<View style={styles.container}>
-						<TouchableOpacity
-							onPress={()=>{this._goEditDetail(item)}}>
-							<View style={styles.container2}>
-								<Text style={styles.time}>time : {item.timestamp}</Text>
-								<Text style={styles.readtime}>readtime : {item.readtime}</Text>
-								<Text style={styles.reedingspeed}>readingspeed : {item.readingspeed}</Text>								
-								<Text style={styles.page_num}>page_num : {item.page_num}</Text>
-							</View>
-						</TouchableOpacity>
+		let date = moment(item.timestamp,"YYYY-MM-DD-hh-mm-ss");
+		let ret = 	<View style={{}}>
+						<View style={styles.container}>
+							<TouchableOpacity
+								onPress={()=>{this._goEditDetail(item)}}>
+								<View style={styles.container2}>
+									<Text style={styles.time}>{date.format("MM/DD hh時mm分ss秒")}</Text>
+									<Text style={styles.readtime}>読書時間 {(item.readtime/60000).toFixed(1)}分</Text>
+								</View>
+								<View style={styles.container3}>
+									<Text style={styles.page_num}>読書量 {item.page_num}ページ</Text>
+									<Text style={styles.reedingspeed}>{item.readingspeed}</Text>
+								</View>
+							</TouchableOpacity>
+						</View>
 					</View>
 		return ret;
 	}
@@ -55,7 +61,7 @@ class EditScreen_Child extends React.Component {
 				screen = <Text>読書履歴はありません</Text>
 			}else{
 				// 読み込めてる
-				screen = 	<View>
+				screen = 	<View style={{width:'100%',}}>
 								<FlatList
 									data = {this.state.get_data}
 									renderItem = {({item})=>this._createItem(item)}
@@ -66,7 +72,7 @@ class EditScreen_Child extends React.Component {
 		}
 		
 		return (
-			<View style={{ flex:1, alignItems: "center", justifyContent: "center" }}>
+			<View style={{width:'100%', alignItems: "center", justifyContent: "center", }}>
 				{/* <Text>読書中の本の情報を編集</Text> */}
 				{screen}
 			</View>
@@ -89,24 +95,36 @@ export default connect(
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: 2,
+		padding:5,
         borderColor: '#4d4d4d',
         width: '100%',
-        borderBottomWidth: 0.5,
+		borderBottomWidth: 0.5,
+		backgroundColor:'#fff'
     },
     container2:{
-       
-    },
+		paddingTop:2,
+		   flexDirection:'row',
+		   alignItems:'center'
+	},
+	container3:{
+		flexDirection:'row',
+		paddingBottom:4
+	 },
     time:{
-
+		color: '#3C914A',
+		fontSize:18,
+		paddingLeft : 10,
+		textAlign:'center'
 	},
 	readtime:{
-
+		fontSize:20,
+		paddingLeft : '14%',
 	},
 	readingspeed:{
-
+		paddingLeft : 10,
 	},
 	page_num:{
-
+		fontSize:20,
+		paddingLeft : 10,
 	}
   });
