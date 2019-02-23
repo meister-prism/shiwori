@@ -85,17 +85,19 @@ class NowReadingBook extends React.Component {
                     image = <Image source={{ uri: google_data.imageLink_smallThumbnail }} style={styles.img} />
                     imgLink = google_data.imageLink_smallThumbnail;
                 } else {
-                    image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+                    image = <Image onPress={()=>this._goDetail(google_data.id , imgLink)} source={require('../../assets/img/noimage.png')} style={styles.img} />
                     modal_image = <Image source={{ uri: google_data.imageLink_large }} style={styles.modalimg} />
                 }
                 // 画像の存在確認系の処理 --- 
-                screen = <View>
-                            <Text>title : {google_data.title}</Text>
-                            <Text>author : {google_data.authors}</Text>
-                            {image}
+                screen = <View style={styles.container}>
+                            <View style={styles.infoContainer}>
+                                <Text style={styles.title} onPress={()=>this._goDetail(google_data.id , imgLink)} >{google_data.title}</Text>
+                                <Text style={styles.info_txt}>著者：{google_data.authors}</Text>
+                            </View>
+                            <View style={styles.imgContainer}>
+                                {image}
+                            </View>
                             {/* 本の詳細(description)は別途htmlタグ除去の操作が必要（description_convertっていう関数作った） */}
-                            <Button title="本の詳細へ"
-                                    onPress={()=>this._goDetail(google_data.id , imgLink)}/>
                         </View>
             }
         }
@@ -108,11 +110,35 @@ class NowReadingBook extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        backgroundColor: '#f3f3f3',
+        flexDirection: 'row',
+    },
     img:{
         width: 100, 
         height: 150,
         resizeMode : 'contain',
+    }, 
+    infoContainer:{
+        width: '60%',
     },
+    title: {
+        paddingTop: 10,
+        paddingRight: 10,
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+    info_txt: {
+        fontSize: 13,
+        paddingRight: 10,
+        fontWeight: 'bold',
+        color: '#7d7d7d'
+    },
+    imgContainer: {
+        width: '35%',
+        alignItems: 'center',
+    },    
 });
 
 
