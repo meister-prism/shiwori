@@ -17,6 +17,7 @@ class NowReadingBook extends React.Component {
             nowReading_format:null,
             request_finish : false,
             change : true}  // true:able false disable
+    
     async _get_data_andGo(id,img){
         let res = await gbapi_search_specific(id);
         // error処理
