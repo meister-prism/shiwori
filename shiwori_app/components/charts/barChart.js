@@ -55,7 +55,7 @@ class BarGraph extends React.Component {
     }
     render() {
         // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
-        let fill = 'rgb(134, 65, 244)'; // chart color
+        let fill = '#F8BCCF'; // chart color
         // graph描画位置設定項目
         let _Chart_contentInset = { top: 10, bottom: 10 }
         let _Cahrt_spacingInner = 0.05;

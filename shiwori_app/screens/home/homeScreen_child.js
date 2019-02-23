@@ -23,7 +23,7 @@ class HomeScreen_Child extends React.Component {
                             <Text style={styles.title}>読書記録</Text>
                             <View style={styles.buttonContainer}>
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Edit')}>
-                                    <Text style={styles.button}>編集する</Text>
+                                    <Text style={styles.button}>編集</Text>
                                 </TouchableOpacity>
                             </View>    
                         </View>
@@ -35,11 +35,9 @@ class HomeScreen_Child extends React.Component {
                         <View style={styles.titleContainer}>
                             <Text style={styles.title}>購読中の本</Text>
                             <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectCurrentBook')}>
-                                
-                                <Text style={styles.button}>変更する</Text>
-                                
-                            </TouchableOpacity>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectCurrentBook')}>
+                                    <Text style={styles.button}>変更</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <NowReadingBook  navigation={this.props.navigation}/>
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     title: {
-        width: '49%',
+        width: '72%',
         fontSize: 17,
         fontWeight: 'bold',
         padding: 10,
@@ -68,21 +66,22 @@ const styles = StyleSheet.create({
         height: 200,
     },
     currentBookContainer:{
+        marginTop: 20,
         padding: 10,
         backgroundColor: '#f0f0f0',
     },
     buttonContainer: {
         textAlign: 'right',
         margin: 5,
-        width: '49%',
+        width: '25%',
     },
     button: {
         fontSize: 12,
+        borderRadius: 3,
         backgroundColor: '#67C175',
         textAlign: 'center',
         color: '#FFFF',
-        padding: 10,
-        width: '80%',
+        padding: 5,
     },
 });
 
