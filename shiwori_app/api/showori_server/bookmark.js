@@ -105,8 +105,8 @@ export async function change(user_id, bookmark_id, memo) {
     })
         .then((response) => {
             const status = response.status;
-            const responseJson = response.json();
-            const ret = { "status": status, "json": responseJson };
+            // const responseJson = response.json();
+            const ret = { "status": status, "json": '' };
             return ret;
-        }).then((ret) => ret);
+        }).then((ret) => ret.status);
 }

@@ -99,6 +99,7 @@ class BookMarkScreen_Child extends React.Component {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <FlatList   data = {bookmarks} 
+                            extraData={bookmarks}
                             renderItem={({item,index})=> this._renderItem(item,index)}
                             keyExtractor={(item,index)=>index.toString()}
                            />
