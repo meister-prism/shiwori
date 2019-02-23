@@ -12,8 +12,9 @@ import NowReadingBook from '../../components/bookdata/now_reading_book';
 class SelectCurrentBookScreen_Child extends React.Component {
 	// serverへ
 	async _selectToSetServer(item){
-		let res = set_currentBook(	this.props.user_id,item.id);
-		if(res.status==200){
+		let res = set_currentBook(this.props.user_id,item.id);
+		console.log(JSON.stringify(res));
+		if(res==200){
 			this.props.set_nowBook(item.id);
 		}else{
 			// 取得できないので。

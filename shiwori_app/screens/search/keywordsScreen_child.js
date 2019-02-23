@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button,TextInput,FlatList,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button,Alert,TextInput,FlatList,TouchableOpacity } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 // import SHA256 from 'crypto-js/sha256';
 import { connect } from 'react-redux';
@@ -49,6 +49,17 @@ class KeywordScreenChild extends React.Component {
                         searchHistoryUpdate:this.state.searchHistoryUpdate+1});
     }
 
+    _deleteAlert(){
+        Alert.alert(
+            '検索履歴を削除しますか？',
+            '削除すると元に戻せません',
+            [
+                {text:'キャンセル',style:'cancel'},
+                {text:'削除する',onPress:() =>{this._deleteSearchHistory()}},
+            ]
+        )
+    }
+
     render() {
         return (
         <View style={styles.search_box}>
@@ -67,7 +78,7 @@ class KeywordScreenChild extends React.Component {
                     renderItem={({item}) => this._createkeyList(item)}
                     keyExtractor={(item,index)=>index.toString()}
             />
-            <TouchableOpacity　style={styles.button_box} onPress={()=>{this._deleteSearchHistory()}} >
+            <TouchableOpacity　style={styles.button_box} onPress={()=>{this._deleteAlert()}} >
                 <View style={ styles.button }>
                     <Text style={styles.button_txt}>検索履歴を削除する</Text>
                 </View>

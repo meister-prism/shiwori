@@ -19,7 +19,7 @@ class HomeScreen_Child extends React.Component {
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                     <Text>Home Screen</Text>
                     <Button
-                        title="読書記録の編集"
+                        title="読書履歴を見る"
                         onPress={() => this.props.navigation.navigate('Edit')}
                     />
                     <Button

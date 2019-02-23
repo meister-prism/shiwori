@@ -28,7 +28,6 @@ class NowReadingBook extends React.Component {
     }
 
     async _getBookdata(){
-        // console.log('kita\n')
         if(this.props.now_reading_id != ''){
             let res = await gbapi_search_specific(this.props.now_reading_id);
             if(res.status_code==200){
@@ -44,7 +43,6 @@ class NowReadingBook extends React.Component {
                                             }, 1000);
 	}
     render() {
-        // console.log("rend!\n"+this.state.getBookdata);
         let screen;
         if(!this.state.request_finish){
             screen = <Text>読み込んでいます。</Text>

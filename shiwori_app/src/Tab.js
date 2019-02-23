@@ -9,6 +9,7 @@ import TutorialScreen from '../screens/welcome/tutorialScreen';
 //home
 import HomeScreen from '../screens/home/homeScreen';
 import EditScreen from '../screens/home/editScreen';
+import EditDetailScreen from '../screens/home/editDetailScreen';
 import SelectCurrentBookScreen from '../screens/home/selectCurrentBookScreen';
 
 //search
@@ -41,6 +42,7 @@ import DetailsScreen from '../screens/detailsScreen'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Edit: EditScreen,
+  EditDetail : EditDetailScreen,
   SelectCurrentBook : SelectCurrentBookScreen,
   Detail: DetailsScreen,
   Welcome: WelcomeScreen,

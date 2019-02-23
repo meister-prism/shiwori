@@ -24,8 +24,7 @@ export async function device_insert(user_id,page_num,readtime) {
             "readtime" : readtime,
         }),
     })
-        .then((response) =>response.status)
-        .then((ret) => ret);
+        .then((response) =>response.status);
 }
 
 /**

@@ -74,12 +74,15 @@ export async function user_get(user_id) {
                 'X-SHIWORI-Signature': SHIWORI_SIG
             }
         })
-            .then((response) => {
-                const status = response.status;
-                const responseJson = response.json();
-                const ret = { "status": status, "json": responseJson };
-                return ret;
-            }).then((ret) => ret);
+            .then((res) => {
+                response.status = res.status
+                if(res.status != 200) reject(res.status);
+                return res.json();
+            })
+            .then((resJson) => {
+                response.body = resJson;
+                resolve(response);
+            });
     });
 }
 
@@ -99,11 +102,7 @@ export async function set_currentBook(user_id, current_book_id) {
         body: JSON.stringify({
             "user_id": user_id,
             "current_book_id": current_book_id,
-        })
+        }),
     })
-        .then((response) => {
-            const status = response.status;
-            const ret = { "status": status };
-            return ret;
-        }).then((ret) => ret);
+        .then((response) =>response.status);
 }
