@@ -22,23 +22,32 @@ class BookMarkChangeScreen_Child extends React.Component {
         this.setState({bookmark_body:text});
     }
     /**
-     * ブックマークを登録する
+     * ブックマークを変更する
      */
-    async _register(){
+    async _change(){
         console.log(this.props.navigation.getParam('item'));
         let res = await change(     this.props.user_id,
                                     this.props.navigation.getParam('item').bm_id,
                                     this.state.bookmark_body,
                                     );
-        if(res.status==200) {
+        console.log(res);
+        if(res==200) {
+            let index = this.props.navigation.getParam('index');
+            let that = this.props.navigation.getParam('that');
+            let bookmarks = that.state.bookmarks;
+            bookmarks[index].page_num = this.state.bookmark_page_num;
+            bookmarks[index].memo     = this.state.bookmark_body;
+            console.log(bookmarks);
+            that.setState({bookmarks:bookmarks});
             this.setBookmark_page('');
             this.setBookmark_body('');
             this.setScreenType('finish');
-            let tmp = this.props.navigation.getParam('that').state.bookmarks;
+            // this.props.navigation.goBack();
         }        
     }
     
     _renderConfig(){
+        console.log('render');
         switch(this.state.Screentype){
             case "input":
                 return  <View>
@@ -58,7 +67,7 @@ class BookMarkChangeScreen_Child extends React.Component {
                                         onPress={()=>{  if(this.state.bookmark_body == ''){
                                                             alert('ブックマークを入力してください。')    
                                                         }else{
-                                                            this._register();
+                                                            this._change();
                                                         }}}/>
                             </View>
                         </View>

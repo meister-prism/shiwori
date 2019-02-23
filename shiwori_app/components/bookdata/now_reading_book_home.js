@@ -29,8 +29,9 @@ class NowReadingBook extends React.Component {
     }
 
     async _getBookdata(){
-        if(this.props.now_reading_id != ''){
+        if(this.props.now_reading_id != null){
             let res = await gbapi_search_specific(this.props.now_reading_id);
+            res
             if(res.status_code==200){
                 await this.setState({getBookdata:res.body});
             }
@@ -45,65 +46,70 @@ class NowReadingBook extends React.Component {
 	}
     render() {
         let screen;
-        if(!this.state.request_finish){
-            screen = <Text>読み込んでいます。</Text>
+        if(this.props.now_reading_id ==null){
+            screen = <Text>現在読んでいる本に設定されている本はありません。</Text> 
         }else{
-            if(this.state.getBookdata==null){
-                screen = <Text>現在読んでいる本に設定されている本はありません。</Text> 
+            if(!this.state.request_finish){
+                screen = <Text>読み込んでいます。</Text>
             }else{
-                // ここから、読みこんだときの処理
-                /**
-                 google_dataに整形されたデータが入っている。
-                 整形されたデータ形式(resultは整形前のデータ)
-                    google_data = {
-                            id                          : result.id,
-                            SelfLink                    : result.SelfLink,
-                            title                       : result.volumeInfo.title,
-                            subtitle                    : result.volumeInfo.subtitle,
-                            authors                     : authors,
-                            publisher                   : result.volumeInfo.publisher,
-                            publishedDate               : result.volumeInfo.publishedDate,
-                            pageCount                   : result.volumeInfo.pageCount,
-                            imageLink_smallThumbnail    : imageLink_smallThumbnail,
-                            imageLink_thumbnail         : imageLink_thumbnail,
-                            imageLink_small             : imageLink_small,
-                            imageLink_medium            : imageLink_medium,
-                            imageLink_large             : imageLink_large,
-                            imageLink_extraLarge        : imageLink_extraLarge,
-                            description                 : description,
-                        }
-                 */
-                // 画像の存在確認系の処理 ---
-                let google_data = getBooksData_specific(this.state.getBookdata);
-                let image;
-                let imgLink = "none";
-                if (google_data.imageLink_large != null) {
-                    image = <Image source={{ uri: google_data.imageLink_large }} style={styles.img} />
-                    imgLink = google_data.imageLink_large;
-                } else if (google_data.imageLink_medium != null) {
-                    image = <Image source={{ uri: google_data.imageLink_medium }} style={styles.img} />
-                    imgLink = google_data.imageLink_medium;
-                } else if (google_data.imageLink_thumbnail != null) {
-                    image = <Image source={{ uri: google_data.imageLink_thumbnail }} style={styles.img} />
-                    imgLink = google_data.imageLink_thumbnail;
-                } else if (google_data.imageLink_smallThumbnail != null) {
-                    image = <Image source={{ uri: google_data.imageLink_smallThumbnail }} style={styles.img} />
-                    imgLink = google_data.imageLink_smallThumbnail;
-                } else {
-                    image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
-                    modal_image = <Image source={{ uri: google_data.imageLink_large }} style={styles.modalimg} />
+                if(this.state.getBookdata==null){
+                    screen = <Text>現在読んでいる本に設定されている本はありません。</Text> 
+                }else{
+                    // ここから、読みこんだときの処理
+                    /**
+                     google_dataに整形されたデータが入っている。
+                     整形されたデータ形式(resultは整形前のデータ)
+                        google_data = {
+                                id                          : result.id,
+                                SelfLink                    : result.SelfLink,
+                                title                       : result.volumeInfo.title,
+                                subtitle                    : result.volumeInfo.subtitle,
+                                authors                     : authors,
+                                publisher                   : result.volumeInfo.publisher,
+                                publishedDate               : result.volumeInfo.publishedDate,
+                                pageCount                   : result.volumeInfo.pageCount,
+                                imageLink_smallThumbnail    : imageLink_smallThumbnail,
+                                imageLink_thumbnail         : imageLink_thumbnail,
+                                imageLink_small             : imageLink_small,
+                                imageLink_medium            : imageLink_medium,
+                                imageLink_large             : imageLink_large,
+                                imageLink_extraLarge        : imageLink_extraLarge,
+                                description                 : description,
+                            }
+                     */
+                    // 画像の存在確認系の処理 ---
+                    let google_data = getBooksData_specific(this.state.getBookdata);
+                    let image;
+                    let imgLink = "none";
+                    if (google_data.imageLink_large != null) {
+                        image = <Image source={{ uri: google_data.imageLink_large }} style={styles.img} />
+                        imgLink = google_data.imageLink_large;
+                    } else if (google_data.imageLink_medium != null) {
+                        image = <Image source={{ uri: google_data.imageLink_medium }} style={styles.img} />
+                        imgLink = google_data.imageLink_medium;
+                    } else if (google_data.imageLink_thumbnail != null) {
+                        image = <Image source={{ uri: google_data.imageLink_thumbnail }} style={styles.img} />
+                        imgLink = google_data.imageLink_thumbnail;
+                    } else if (google_data.imageLink_smallThumbnail != null) {
+                        image = <Image source={{ uri: google_data.imageLink_smallThumbnail }} style={styles.img} />
+                        imgLink = google_data.imageLink_smallThumbnail;
+                    } else {
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+                        modal_image = <Image source={{ uri: google_data.imageLink_large }} style={styles.modalimg} />
+                    }
+                    // 画像の存在確認系の処理 --- 
+                    screen = <View>
+                                <Text>title : {google_data.title}</Text>
+                                <Text>author : {google_data.authors}</Text>
+                                {image}
+                                {/* 本の詳細(description)は別途htmlタグ除去の操作が必要（description_convertっていう関数作った） */}
+                                <Button title="本の詳細へ"
+                                        onPress={()=>this._goDetail(google_data.id , imgLink)}/>
+                            </View>
                 }
-                // 画像の存在確認系の処理 --- 
-                screen = <View>
-                            <Text>title : {google_data.title}</Text>
-                            <Text>author : {google_data.authors}</Text>
-                            {image}
-                            {/* 本の詳細(description)は別途htmlタグ除去の操作が必要（description_convertっていう関数作った） */}
-                            <Button title="本の詳細へ"
-                                    onPress={()=>this._goDetail(google_data.id , imgLink)}/>
-                        </View>
             }
         }
+        
         return (
         <View style={{ }}>
             {screen}

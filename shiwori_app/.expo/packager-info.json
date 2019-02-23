@@ -1,9 +1,1 @@
-{
-  "expoServerNgrokUrl": "https://rt-n9u.akari.shiwori-app.exp.direct",
-  "packagerNgrokUrl": "https://packager.rt-n9u.akari.shiwori-app.exp.direct",
-  "ngrokPid": 4045,
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19005,
-  "packagerPid": 4033
-}
+{}

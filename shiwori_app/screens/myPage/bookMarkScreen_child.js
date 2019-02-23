@@ -52,7 +52,7 @@ class BookMarkScreen_Child extends React.Component {
         )
     }
     _changeBookMark(item,index){
-        this.props.navigation.navigate('BookMarkChange',{item:item,that:this});
+        this.props.navigation.navigate('BookMarkChange',{item:item,index:index,that:this});
     }
     _renderItem(item,index){
         const swipeoutButtons = [
@@ -99,6 +99,7 @@ class BookMarkScreen_Child extends React.Component {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 <FlatList   data = {bookmarks} 
+                            extraData={bookmarks}
                             renderItem={({item,index})=> this._renderItem(item,index)}
                             keyExtractor={(item,index)=>index.toString()}
                            />
