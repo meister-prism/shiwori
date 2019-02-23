@@ -22,19 +22,18 @@ class EditScreen_Child extends React.Component {
 		// itemの中に入ってる情報はほかにも
 		let date = moment(item.timestamp,"YYYY-MM-DD-hh-mm-ss");
 		let ret = 	<View style={{}}>
-						<View style={styles.container}>
 							<TouchableOpacity
 								onPress={()=>{this._goEditDetail(item)}}>
-								<View style={styles.container2}>
-									<Text style={styles.time}>{date.format("MM/DD hh時mm分ss秒")}</Text>
-									<Text style={styles.readtime}>読書時間 {(item.readtime/60000).toFixed(1)}分</Text>
-								</View>
-								<View style={styles.container3}>
-									<Text style={styles.page_num}>読書量 {item.page_num}ページ</Text>
-									<Text style={styles.reedingspeed}>{item.readingspeed}</Text>
+								<View style={styles.container}>
+									<View style={styles.container2}>
+										<Text style={styles.time}>{date.format("MM/DD hh時mm分ss秒")}</Text>
+										<Text style={styles.readtime}>読書時間 {(item.readtime/60000).toFixed(1)}分</Text>
+									</View>
+									
+									<Text style={styles.txt}>読書量　{item.page_num}ページ</Text>
+									<Text style={styles.txt}>{item.readingspeed}</Text>
 								</View>
 							</TouchableOpacity>
-						</View>
 					</View>
 		return ret;
 	}
@@ -72,7 +71,7 @@ class EditScreen_Child extends React.Component {
 		}
 		
 		return (
-			<View style={{width:'100%', alignItems: "center", justifyContent: "center", }}>
+			<View style={{ width: '100%'}}>
 				{/* <Text>読書中の本の情報を編集</Text> */}
 				{screen}
 			</View>
@@ -94,37 +93,32 @@ export default connect(
 )(EditScreen_Child);
 
 const styles = StyleSheet.create({
-    container: {
-		padding:5,
-        borderColor: '#4d4d4d',
-        width: '100%',
+	container: {
+		paddingVertical: 2,
+		paddingHorizontal: 10,
+		borderColor: '#7d7d7d',
+		width: '100%',
 		borderBottomWidth: 0.5,
 		backgroundColor:'#fff'
-    },
-    container2:{
-		paddingTop:2,
-		   flexDirection:'row',
-		   alignItems:'center'
 	},
-	container3:{
-		flexDirection:'row',
-		paddingBottom:4
-	 },
-    time:{
+	container2:{
+		flexDirection: 'row',
+	},
+  time:{
 		color: '#3C914A',
-		fontSize:18,
-		paddingLeft : 10,
-		textAlign:'center'
+		fontSize:15,
+		padding: 2,
+		fontWeight: 'bold',
 	},
-	readtime:{
-		fontSize:20,
-		paddingLeft : '14%',
+	readtime: {
+		width: '49%',
+		fontSize:16,
+		padding: 2,
+		textAlign: 'right',
 	},
-	readingspeed:{
-		paddingLeft : 10,
-	},
-	page_num:{
-		fontSize:20,
-		paddingLeft : 10,
+	txt:{
+		width: '49%',
+		fontSize:16,
+		padding: 2,
 	}
   });
