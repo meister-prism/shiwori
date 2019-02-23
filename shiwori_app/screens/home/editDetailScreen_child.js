@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button,Alert,Image,TouchableOpacity,TextInput} 
 import { connect } from 'react-redux';
 import {gbapi_search_specific} from '../../api/googleBooks/search';
 import { getBooksData_specific } from '../../api/googleBooks/getBooksData';
-import { device_insert } from '../../api/showori_server/device'
+import { device_update } from '../../api/showori_server/device'
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
 /**
@@ -23,7 +23,9 @@ class EditDetailScreen_Child extends React.Component {
     async _selectToSetServer(){
         // min * 60000 >> ms
         let readtime = 60000*this.state.input_read_time;
-        let res = await device_insert(  this.props.user_id,
+        let res = await device_upate(  this.props.navigation.getParam('item').id,
+                                        this.props.user_id,
+                                        this.props.navigation.getParam('item').book_id,
                                         this.state.input_page,
                                         readtime );
         if(res==200){
