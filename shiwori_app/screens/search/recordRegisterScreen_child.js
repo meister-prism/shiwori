@@ -122,13 +122,13 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     booktitle: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         marginBottom: 5,
         fontWeight: 'bold',
         fontSize: 17,
     },
     bookauthor: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         fontSize: 15,
         color: '#7d7d7d',
         marginBottom: 20,

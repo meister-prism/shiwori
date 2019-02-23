@@ -109,13 +109,13 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     booktitle: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         marginBottom: 5,
         fontWeight: 'bold',
         fontSize: 17,
     },
     bookauthor: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         fontSize: 15,
         color: '#7d7d7d',
         marginBottom: 20,
@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     input_title:{
+        padding: 5,
         marginTop: 10,
         textAlign: 'left',
         color: '#7d7d7d',

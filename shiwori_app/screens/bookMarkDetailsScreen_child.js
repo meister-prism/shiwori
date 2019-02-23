@@ -52,9 +52,12 @@ class BookMarkDitailsScreen_Child extends React.Component {
                         {/* </TouchableOpacity>   */}
                         <Text style={styles.publisher}>{item.book.publication}</Text>
                         <Text style={styles.page_num}>ページ：{item.page_num}</Text>
-                        <Button style={styles.goBookDetail_}
-                        title='本の詳細へ'
-                            onPress={() => { this._goBookDetail(item.book.book_id, image_uri) }} />
+                        <TouchableOpacity
+                            onPress={() => { this._goBookDetail(item.book.book_id, image_uri) }}>
+                            <View style={styles.record_button}>
+                                <Text style={styles.record_txt}>この本のページへ</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.memoContainer}>
@@ -68,15 +71,14 @@ class BookMarkDitailsScreen_Child extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
+        padding: 5,
         width:width,
         height:height
     },
     InfoContainer: {
         flexDirection:'row',
-        backgroundColor: '#f0f0f0',
     },
     imgContainer:{
-        backgroundColor: 'powderblue',
         padding :5,
     },
     img:{
@@ -86,39 +88,54 @@ const styles = StyleSheet.create({
     },
     info:{
         flex:1,
-        padding:10,
+        paddingHorizontal: 10,
+        paddingVertical: 30,
         flexWrap:'wrap',
     },
     title: {
-        fontSize:18,
-        fontWeight:'bold',
+        paddingBottom: 10,
+        fontSize: 17,
+        fontWeight: 'bold',
     },
     author:{
-        fontSize:13,
-        color:'#666666',
+        fontSize: 13,
+        paddingBottom: 2,
+        color: '#666666',
     },
     publisher:{
+        color: '#666666',
+        paddingBottom: 2,
     },
     page_num: {
-        fontSize:15,
+        color: '#666666',
+        paddingBottom: 2,
+        marginBottom: 10,
     },
     goBookDetail_button:{
         fontSize:15,
     },
     memoContainer: {
-        backgroundColor: '#f0f0f0',
-        padding:10,
-        flex:1, 
+        borderTopWidth: 1,
+        borderColor: '#7d7d7d',
+        padding: 10,
     },
     memo: {
         fontSize:18,
         fontWeight:'bold',
         padding:5, 
     },
-    goBack_button_txt:{
-        fontSize:15,
-        textAlign:'right',
+    record_button: {
+        alignItems: 'center',
+        backgroundColor: '#67C175' ,
+        margin: 5,
+        width: '80%',
     },
+    record_txt: {
+        fontSize: 12,
+        textAlign: 'center',
+        color: '#FFFF',
+        padding: 10,
+    }
 });
 
 const mapStateToProps = state => ({
