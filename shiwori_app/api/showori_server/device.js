@@ -36,7 +36,7 @@ export async function device_insert(user_id,page_num,readtime) {
  * @param {str} readtime[ms]
  */
 export async function device_update(id,user_id,book_id,page_num,readtime) {
-    return fetch(SHIWORI_ROUTE + '/device/insert', {
+    return fetch(SHIWORI_ROUTE + '/device/update', {
         method: 'POST',
         headers: {
             Accept: 'application/json',

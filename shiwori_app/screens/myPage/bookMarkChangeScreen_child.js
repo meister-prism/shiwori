@@ -34,7 +34,12 @@ class BookMarkChangeScreen_Child extends React.Component {
             this.setBookmark_page('');
             this.setBookmark_body('');
             this.setScreenType('finish');
-            let tmp = this.props.navigation.getParam('that').state.bookmarks;
+            let index = this.props.navigation.getParam('index');
+            let that = this.props.navigation.getParam('that');
+            let bookmarks = that.state.bookmarks;
+            bookmarks[index].page_num = this.state.bookmark_page_num;
+            bookmarks[index].memo     = this.state.bookmark_body;
+            that.setState({bookamrks:bookamrks});
         }        
     }
     

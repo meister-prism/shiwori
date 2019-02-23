@@ -52,7 +52,7 @@ class BookMarkScreen_Child extends React.Component {
         )
     }
     _changeBookMark(item,index){
-        this.props.navigation.navigate('BookMarkChange',{item:item,that:this});
+        this.props.navigation.navigate('BookMarkChange',{item:item,index:index,that:this});
     }
     _renderItem(item,index){
         const swipeoutButtons = [
