@@ -6,11 +6,11 @@ import { store, persistor } from '../../redux/store';
 import SelectBook_Child from './selectCurrentBookScreen_child'
 class SelectCurrentBookScreen extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        title: '購読する本の選択',
+        title: '購読する本の登録',
         headerLeft: <HeaderIcon navigation={navigation} />,
         headerStyle: {
-            backgroundColor: '#FAE4EB',
-        },
+          backgroundColor: '#FAE4EB',
+        }
     });
     render() {
         return (
@@ -22,3 +22,5 @@ class SelectCurrentBookScreen extends React.Component {
         );
     }
 }
+
+export default SelectCurrentBookScreen;

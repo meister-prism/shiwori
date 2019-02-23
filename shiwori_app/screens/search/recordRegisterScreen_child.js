@@ -110,32 +110,57 @@ export default connect(
 )(RecordRegisterScreen_Child);
 
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
         alignItems: "center", 
         justifyContent: "center",
+        width: '100%',
+    },
+    booktitle: {
+        padding:10,
+        fontWeight: 'bold',
+        fontSize: 17,
+    },
+    bookauthor: {
+        padding:10,
+        fontSize: 13,
+    },
+    input_container: {
+        padding: 10,
+    },
+    input_title:{
+        textAlign: 'left', 
+        width: '100%',
+        fontSize: 15,
+        fontWeight: 'bold',
     },
     inputpage: {
-        color: '#000',
-        paddingRight: 5,
-        paddingLeft: 5,
+        padding: 5,
         fontSize: 18,
-        lineHeight: 23,
-        height: 30,
-        width:width*0.8,
+        width: '90%',
         borderWidth: 1,
-        borderColor: '#333'
+        borderColor: '#f0f0f0'
     },
     inputbody: {
-        color: '#000',
-        paddingRight: 5,
-        paddingLeft: 5,
+        padding: 5,
         fontSize: 18,
         lineHeight: 23,
         height:120,
-        width:width*0.8,
+        width: '90%',
         borderWidth: 1,
-        borderColor: '#333'
-      }
+        borderColor: '#f0f0f0'
+      },
+    button_container: {
+        padding: 10,
+        width: '100%',
+    },
+    button: {
+        padding: 10,
+        width: '100%',
+        textAlign: 'center',
+        color: "#fff",
+        backgroundColor: '#67C175'
+    },
 });
