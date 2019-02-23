@@ -28,7 +28,6 @@ class NowReadingBook extends React.Component {
     }
 
     async _getBookdata(){
-        // console.log('kita\n')
         if(this.props.now_reading_id != ''){
             let res = await gbapi_search_specific(this.props.now_reading_id);
             if(res.status_code==200){
@@ -44,7 +43,6 @@ class NowReadingBook extends React.Component {
                                             }, 1000);
 	}
     render() {
-        // console.log("rend!\n"+this.state.getBookdata);
         let screen;
         if(!this.state.request_finish){
             screen = <Text>読み込んでいます。</Text>
@@ -54,9 +52,9 @@ class NowReadingBook extends React.Component {
             }else{
                 // ここから、読みこんだときの処理
                 /**
-                 this.state.nowReading_formatに整形されたデータが入っている。
+                 google_dataに整形されたデータが入っている。
                  整形されたデータ形式(resultは整形前のデータ)
-                    this.state.nowReading_format = {
+                    google_data = {
                             id                          : result.id,
                             SelfLink                    : result.SelfLink,
                             title                       : result.volumeInfo.title,

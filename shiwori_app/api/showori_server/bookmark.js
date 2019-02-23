@@ -51,8 +51,7 @@ export async function del(user_id, bookmark_id) {
                 "user_id": user_id,
             }), 
         })
-            .then((res) => res.status)
-            .then((stat) => stat);
+            .then((res) => res.status);
 }
 
 /**

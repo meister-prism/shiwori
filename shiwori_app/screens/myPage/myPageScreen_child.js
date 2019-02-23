@@ -19,7 +19,8 @@ class MyPageScreen_Child extends React.Component {
 
     state={
 		user_get_res   :null,
-		fetch_finish : true,
+        fetch_finish : true,
+        change: true, // true >> fetch able false >> fetch disable
 	}
 
      /**
@@ -29,22 +30,28 @@ class MyPageScreen_Child extends React.Component {
     async _goBookmarkScreen() {
         let res = await get(this.props.user_id); // bookmark_get
         //** ここでerorr処理 */
-        alert(res);
         if(res.status == 100) alert('[Err stat:100]　もう一度ボタンを押してください')
         if(res.status == 200) this.props.navigation.navigate('BookMark',{res:res.body}); // >> ブックマーク一覧画面
     }
 
 	async _getUserData(){
+        console.log('hey');
         let res = await user_get(this.props.user_id); // userdata_get
-        // alert(JSON.stringify(res))
+        // console.log(JSON.stringify(res));
         // error処理
         if(res.status==200){
             this.setState({user_get_res:res.body})
         }
-        this.setState({fetch_finish:true})
+        this.setState({fetch_finish:true,change:false})
 	}
 	componentDidMount(){
-		this._getUserData();
+        this._getUserData();
+        /*
+        this.interval = setInterval(() => {
+            if(this.props.navigation.isFocused() && this.state.change ) this._getUserData();
+            else if(!this.props.navigation.isFocused()) this.setState({change:true})
+            }, 1000);
+        */
 	}
     render() {
         let profile;
