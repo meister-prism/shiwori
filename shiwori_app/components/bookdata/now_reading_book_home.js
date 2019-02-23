@@ -54,9 +54,9 @@ class NowReadingBook extends React.Component {
             }else{
                 // ここから、読みこんだときの処理
                 /**
-                 this.state.nowReading_formatに整形されたデータが入っている。
+                 google_dataに整形されたデータが入っている。
                  整形されたデータ形式(resultは整形前のデータ)
-                    this.state.nowReading_format = {
+                    google_data = {
                             id                          : result.id,
                             SelfLink                    : result.SelfLink,
                             title                       : result.volumeInfo.title,
