@@ -28,6 +28,33 @@ export async function device_insert(user_id,page_num,readtime) {
 }
 
 /**
+ * 情報の更新
+ * @param {id} id
+ * @param {str} user_id 
+ * @param {str} book_id
+ * @param {str} page_num 
+ * @param {str} readtime[ms]
+ */
+export async function device_update(id,user_id,book_id,page_num,readtime) {
+    return fetch(SHIWORI_ROUTE + '/device/insert', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-SHIWORI-Signature': SHIWORI_SIG
+        },
+        body: JSON.stringify({
+            "id":id,
+            "user_id":user_id,
+            "book_id":book_id,
+            "page_num" : page_num,
+            "readtime" : readtime,
+        }),
+    })
+        .then((response) =>response.status);
+}
+
+/**
  * デバイスからの情報取得
  * @param {str} user_id
  * @return {json} res

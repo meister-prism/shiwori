@@ -99,7 +99,7 @@ export async function change(user_id, bookmark_id, memo) {
         },
         body: JSON.stringify({
             "user_id": user_id,
-            "insertId" : bookmark_id,
+            "bm_id" : bookmark_id,
             "memo" : memo
         }),
     })

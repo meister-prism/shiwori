@@ -25,16 +25,16 @@ class BookMarkChangeScreen_Child extends React.Component {
      * ブックマークを登録する
      */
     async _register(){
-        // alert("hel")
+        console.log(this.props.navigation.getParam('item'));
         let res = await change(     this.props.user_id,
                                     this.props.navigation.getParam('item').bm_id,
                                     this.state.bookmark_body,
                                     );
-        // alert(JSON.stringify(res.status));
         if(res.status==200) {
             this.setBookmark_page('');
             this.setBookmark_body('');
             this.setScreenType('finish');
+            let tmp = this.props.navigation.getParam('that').state.bookmarks;
         }        
     }
     

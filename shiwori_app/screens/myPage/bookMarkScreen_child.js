@@ -52,21 +52,28 @@ class BookMarkScreen_Child extends React.Component {
         )
     }
     _changeBookMark(item,index){
-        this.props.navigation.navigate('BookMarkChange',{item:item});
+        this.props.navigation.navigate('BookMarkChange',{item:item,that:this});
     }
     _renderItem(item,index){
-        const swipeoutButtons = [{
-                                    text:'削除',
-                                    backgroundColor : '#d11a2a',
-                                    onPress : ()=>{this._deleteBookMark(item,index)}
-                                }];
+        const swipeoutButtons = [
+                                    {
+                                        text:'変更',
+                                        backgroundColor:'#81C784',
+                                        onPress : ()=>{this._changeBookMark(item,index)}
+                                    },
+                                    {
+                                        text:'削除',
+                                        backgroundColor : '#d11a2a',
+                                        onPress : ()=>{this._deleteBookMark(item,index)}
+                                    },
+                                ];
         const swipeoutButtons2 = [{
                                     text:'変更',
                                     backgroundColor:'#81C784',
                                     onPress : ()=>{this._changeBookMark(item,index)}
                                 }];
         let ret =   <Swipeout   right={swipeoutButtons} 
-                                left ={swipeoutButtons2}
+                                // left ={swipeoutButtons2}
                                 autoClose={true}>
                         <View style={styles.container}>
                             <TouchableOpacity onPress={() => {this._goBookMarkDetails(item)}}>

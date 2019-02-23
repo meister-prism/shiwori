@@ -19,7 +19,6 @@ class BarGraph extends React.Component {
         let month_time = [0,0,0,0,0,0,0,0,0,0,0,0];
         let month_count = 0;
         let month_tmp;
-        this.state.devi
         for(let i=0;i<this.state.device_data.length;i++){
             if(i==0){
                 time = moment(this.state.device_data[i].timestamp,"YYYY-MM-DD-hh-mm-ss");
