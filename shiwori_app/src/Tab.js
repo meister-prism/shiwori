@@ -81,6 +81,7 @@ const MyPageStack = createStackNavigator({
   BookMark: BookMarkScreen,
   Books: BooksScreen,
   Details: DetailsScreen,
+  SelectCurrentBook : SelectCurrentBookScreen,
   BookMarkDetails: BookMarkDetailsScreen,
   BookMarkRegister:BookMarkRegisterScreen,
   BookMarkChange : BookMarkChangeScreen,

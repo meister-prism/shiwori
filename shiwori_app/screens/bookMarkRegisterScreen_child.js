@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput,Button,KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, TextInput,Button,KeyboardAvoidingView,TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
@@ -47,10 +47,11 @@ class BookMarkRegisterScreen_Child extends React.Component {
         switch(this.state.Screentype){
             case "input":
                 let pageCount = "ページ数(0~" + this.props.bookdata.pageCount +")を入力";
-                return  <View>
+                return  <View >
                             <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
                             <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
-                            <View style={{alignItems:"center"}}>
+                            <View style={{ borderWidth: 1, borderColor: '#f0f0f0', padding: 10}}>
+                                <Text style={styles.input_title}>登録するページ</Text>
                                 <TextInput
                                     placeholder={pageCount}
                                     autoCorrect={false}
@@ -59,20 +60,27 @@ class BookMarkRegisterScreen_Child extends React.Component {
                                     keyboardType='number-pad'
                                     onChangeText={(num)=>this.setBookmark_page(num)}			
                                 />
+                                 <Text style={styles.input_title}>メモ</Text>
                                 <TextInput
-                                    placeholder="ブックマークの内容を入力"
+                                    placeholder="メモを入力"
                                     autoCorrect={false}
                                     multiline={true}
                                     value={this.state.bookmark_body}  
                                     style={styles.inputbody}
                                     onChangeText={(text)=>this.setBookmark_body(text)}				
                                 />
-                                <Button title="登録"
-                                        onPress={()=>{  if(this.state.bookmark_body == '' || this.state.bookmark_page_num == ''){
-                                                            alert('ページ数とブックマークを入力してください。')    
-                                                        }else{
-                                                            this._register();
-                                                        }}}/>
+                                <TouchableOpacity>
+                                    <View style={styles.button_container}>
+                                        <Text 
+                                            style={styles.button} onPress={()=>{  if(this.state.bookmark_body == '' || this.state.bookmark_page_num == ''){
+                                                    alert('ページ数とブックマークを入力してください。')    
+                                                }else{
+                                                    this._register();
+                                                }}}>
+                                            登録
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>     
                             </View>
                         </View>
             case "finish":
@@ -98,32 +106,54 @@ class BookMarkRegisterScreen_Child extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
-        alignItems: "center", 
-        justifyContent: "center",
+        width: '100%',
+    },
+    booktitle: {
+        paddingHorizontal: 10,
+        marginBottom: 5,
+        fontWeight: 'bold',
+        fontSize: 17,
+    },
+    bookauthor: {
+        paddingHorizontal: 10,
+        fontSize: 15,
+        color: '#7d7d7d',
+        marginBottom: 20,
+    },
+    input_container: {
+        padding: 10,
+    },
+    input_title:{
+        padding: 5,
+        marginTop: 10,
+        textAlign: 'left',
+        color: '#7d7d7d',
+        fontSize: 13,
+        fontWeight: 'bold',
     },
     inputpage: {
-        color: '#000',
-        paddingRight: 5,
-        paddingLeft: 5,
-        fontSize: 18,
-        lineHeight: 23,
-        height: 30,
-        width:width*0.9,
+        padding: 5,
+        fontSize: 15,
         borderWidth: 1,
-        borderColor: '#333'
+        borderColor: '#f0f0f0'
     },
     inputbody: {
-        color: '#000',
-        paddingRight: 5,
-        paddingLeft: 5,
-        fontSize: 18,
-        lineHeight: 23,
+        padding: 5,
+        fontSize: 15,
         height:120,
-        width:width*0.9,
         borderWidth: 1,
-        borderColor: '#333'
-      }
+        borderColor: '#f0f0f0'
+      },
+    button_container: {
+        padding: 10,
+    },
+    button: {
+        padding: 10,
+        width: '100%',
+        textAlign: 'center',
+        color: "#fff",
+        backgroundColor: '#67C175'
+    },
 });
 
 const mapStateToProps = state => ({

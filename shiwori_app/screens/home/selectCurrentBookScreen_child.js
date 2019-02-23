@@ -35,7 +35,7 @@ class SelectCurrentBookScreen_Child extends React.Component {
 	_createList(item){
         if(item.img == "none")return <Text></Text>;
         let image;
-        image=  <Image source={{uri: item.imgLink}} style={{width: 100, height: 150,resizeMode : 'contain'}} />
+        image=  <Image source={{uri: item.imgLink}} style={{width: 90, height: 130,resizeMode : 'contain'}} />
         let ret =   <View style={styles.itemContainer}>
                         <TouchableHighlight
                             onPress={()=>{this._selected(item)}}>
@@ -62,11 +62,13 @@ class SelectCurrentBookScreen_Child extends React.Component {
 		return (
 			<View style={{ flex:1 }}>
 				{/* メモ：現在読んでいる本を下にしたら見えなくなった */}
-				<Text>現在読んでいる本</Text>
-				<NowReadingBook navigation={this.props.navigation}/>
-				<Text>現在読んでいる本を選択する</Text>
-				<View style={styles.nowReadingListContainer}>
+				<View style={styles.readingListContainer}>
+					<Text style={{ paddingBottom: 10 }} >購読する本を選択してください</Text>
 					{nowReadingList}
+				</View>
+				<View style={styles.currentBookContainer}>
+					<Text>購読中の本</Text>
+					<NowReadingBook avigation={this.props.navigation}/>
 				</View>
 			</View>
 		);
@@ -75,8 +77,25 @@ class SelectCurrentBookScreen_Child extends React.Component {
 
 // styleとは、nowReadingList.jsとほぼ同じなので参考にすると早いよ
 const styles = StyleSheet.create({
+	readingListContainer: {
+		fontSize: 17,
+		fontWeight: 'bold',
+		marginTop: 20,
+		height: 200,
+		padding: 10,
+	},
 	itemContainer: {
-
+		
+	},
+	currentBookContainer: {
+		marginTop: 30,
+		marginHorizontal: 10,
+		padding: 10,
+		fontSize: 15,
+		fontWeight: 'bold',
+		backgroundColor: '#f3f3f3',
+		borderWidth: 1,
+		borderColor: '#7d7d7d',
 	},
 	nodata: {
 
