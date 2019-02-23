@@ -73,7 +73,7 @@ class BarGraph extends React.Component {
                 // data加工処理を入れる
                 data = this._create_data();
                 // console.log(this._create_data());
-                screen = <View style={{ flex: 1, marginLeft: 10 }}>
+                screen = <View style={{ flex: 1, margin: 10 }}>
                             <BarChart
                                 style={{ flex: 1 }}
                                 data={data}
@@ -89,7 +89,7 @@ class BarGraph extends React.Component {
             }
         }
         return (
-            <View style={{ height: 200, flexDirection: 'row' }}>
+            <View style={{ height: 150 }}>
                 {screen}
             </View>
         )

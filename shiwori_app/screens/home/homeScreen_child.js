@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Modal, TouchableHighlight, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Modal, TouchableOpacity, Text, View, Button, Alert } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../../redux/store';
@@ -16,22 +16,34 @@ class HomeScreen_Child extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <Text>Home Screen</Text>
-                    <Button
-                        title="読書履歴を見る"
-                        onPress={() => this.props.navigation.navigate('Edit')}
-                    />
-                    <Button
-                        title="現在読んでいる本の変更"
-                        onPress={() => this.props.navigation.navigate('SelectCurrentBook')}
-                    />
-                    {/* 現在読んでいる本 */}
-                    <Text>現在読んでいる本を一冊表示したらいいけど、serverかreduxか迷い中</Text>
-                    <NowReadingBook navigation={this.props.navigation}/>
+                <View style={styles.container}>
                     {/* graph */}
-                    <BarChart />
-
+                    <View style={styles.chartContainer}>
+                        <View style={styles.titleContainer}>
+                            <Text style={styles.title}>読書記録</Text>
+                            <View style={styles.buttonContainer}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Edit')}>
+                                    <Text style={styles.button}>編集する</Text>
+                                </TouchableOpacity>
+                            </View>    
+                        </View>
+                        <BarChart/>
+                    </View>
+                    
+                    {/* 現在読んでいる本 */}
+                    <View style={styles.currentBookContainer}>
+                        <View style={styles.titleContainer}>
+                            <Text style={styles.title}>購読中の本</Text>
+                            <View style={styles.buttonContainer}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('SelectCurrentBook')}>
+                                
+                                <Text style={styles.button}>変更する</Text>
+                                
+                            </TouchableOpacity>
+                            </View>
+                        </View>
+                        <NowReadingBook  navigation={this.props.navigation}/>
+                    </View>
                 </View>
             </Provider>
         );
@@ -40,13 +52,38 @@ class HomeScreen_Child extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
-        alignItems: "center", 
-        justifyContent: "center",
     },
-    nowReadingListContainer:{
-
-    }
+    titleContainer: {
+        flexDirection: 'row',
+        width: '100%',
+    },
+    title: {
+        width: '49%',
+        fontSize: 17,
+        fontWeight: 'bold',
+        padding: 10,
+    },
+    chartContainer: {
+        padding: 10,
+        height: 200,
+    },
+    currentBookContainer:{
+        padding: 10,
+        backgroundColor: '#f0f0f0',
+    },
+    buttonContainer: {
+        textAlign: 'right',
+        margin: 5,
+        width: '49%',
+    },
+    button: {
+        fontSize: 12,
+        backgroundColor: '#67C175',
+        textAlign: 'center',
+        color: '#FFFF',
+        padding: 10,
+        width: '80%',
+    },
 });
 
 const mapStateToProps = state => ({

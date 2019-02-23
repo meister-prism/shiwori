@@ -112,14 +112,38 @@ class NowReadingBook extends React.Component {
     }
 }
 
+
 const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        backgroundColor: '#f3f3f3',
+        flexDirection: 'row',
+    },
     img:{
         width: 100, 
         height: 150,
         resizeMode : 'contain',
+    }, 
+    infoContainer:{
+        width: '60%',
     },
+    title: {
+        paddingTop: 10,
+        paddingRight: 10,
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+    info_txt: {
+        fontSize: 13,
+        paddingRight: 10,
+        fontWeight: 'bold',
+        color: '#7d7d7d'
+    },
+    imgContainer: {
+        width: '35%',
+        alignItems: 'center',
+    },    
 });
-
 
 const mapStateToProps = state => ({
     now_reading_id : state.bookdata.now_reading_id
