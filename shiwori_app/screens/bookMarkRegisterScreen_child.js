@@ -109,14 +109,16 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     booktitle: {
-        padding:10,
+        paddingHorizontal: 20,
+        marginBottom: 5,
         fontWeight: 'bold',
         fontSize: 17,
     },
     bookauthor: {
-        padding:10,
+        paddingHorizontal: 20,
         fontSize: 15,
-        color: '#7d7d7d'
+        color: '#7d7d7d',
+        marginBottom: 20,
     },
     input_container: {
         padding: 10,

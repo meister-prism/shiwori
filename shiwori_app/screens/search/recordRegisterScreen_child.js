@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button ,TextInput,KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, Button , TextInput, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import {insert} from '../../api/showori_server/record'
 var Dimensions = require('Dimensions');
@@ -49,15 +49,17 @@ class RecordRegisterScreen_Child extends React.Component {
                 return  <View>
                             <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
                             <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
-                            <View style={{ alignItems:"center" }}>
+                            <View style={{ borderWidth: 1, borderColor: '#f0f0f0', padding: 10 }}>
+                                <Text style={styles.input_title}>評価</Text>
                                 <TextInput
-                                    placeholder="評価値を入力(0.0~5.0)"
+                                    placeholder="0.0~5.0を入力"
                                     autoCorrect={false}
                                     value={this.state.record_page_num}  
                                     style={styles.inputpage}
                                     keyboardType='numeric'
                                     onChangeText={(num)=>this.setRecord_star(num)}			
                                 />
+                                <Text style={styles.input_title}>レビュー</Text>
                                 <TextInput
                                     placeholder="感想・レビューを入力"
                                     autoCorrect={false}
@@ -66,12 +68,18 @@ class RecordRegisterScreen_Child extends React.Component {
                                     style={styles.inputbody}
                                     onChangeText={(text)=>this.setRecord_body(text)}				
                                 />
-                                <Button title="登録"
-                                         onPress={()=>{  if(this.state.record_star != '' || this.state.record_body != ''){
-                                                            this._register();
-                                                        }else{
-                                                            alert('評価値と感想を入力してください。')    
-                                                        }}}/>
+                                <TouchableOpacity>
+                                    <View style={styles.button_container}>
+                                        <Text 
+                                            style={styles.button} onPress={()=>{  if(this.state.record_star != '' || this.state.record_body != ''){
+                                                this._register();
+                                            }else{
+                                                alert('評価値と感想を入力してください。')    
+                                            }}}>
+                                            登録
+                                        </Text>
+                                    </View>
+                                </TouchableOpacity>
                             </View>
                         </View>
             case "finish":
@@ -109,52 +117,47 @@ export default connect(
     mapDispatchToProps
 )(RecordRegisterScreen_Child);
 
-
-
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
-        alignItems: "center", 
-        justifyContent: "center",
         width: '100%',
     },
     booktitle: {
-        padding:10,
+        paddingHorizontal: 20,
+        marginBottom: 5,
         fontWeight: 'bold',
         fontSize: 17,
     },
     bookauthor: {
-        padding:10,
-        fontSize: 13,
+        paddingHorizontal: 20,
+        fontSize: 15,
+        color: '#7d7d7d',
+        marginBottom: 20,
     },
     input_container: {
         padding: 10,
     },
     input_title:{
-        textAlign: 'left', 
-        width: '100%',
-        fontSize: 15,
+        marginTop: 10,
+        textAlign: 'left',
+        color: '#7d7d7d',
+        fontSize: 13,
         fontWeight: 'bold',
     },
     inputpage: {
         padding: 5,
-        fontSize: 18,
-        width: '90%',
+        fontSize: 15,
         borderWidth: 1,
         borderColor: '#f0f0f0'
     },
     inputbody: {
         padding: 5,
-        fontSize: 18,
-        lineHeight: 23,
+        fontSize: 15,
         height:120,
-        width: '90%',
         borderWidth: 1,
         borderColor: '#f0f0f0'
       },
     button_container: {
         padding: 10,
-        width: '100%',
     },
     button: {
         padding: 10,
