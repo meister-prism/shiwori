@@ -18,40 +18,10 @@ export class reduxChecker extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <Text> id   : {this.props.id}.</Text>
-        <Text> name : {this.props.name}.</Text>
-        <Text> email: {this.props.email}.</Text>
-        <Text> pass : {this.props.pass}.</Text>
-
-        <View style={{flexDirection: 'row'}}>
-          <Button
-            onPress={() => this.props.set_udata('sho0126hiro','sho hirose','happy@gmail.com','password')}
-            title="set_userdata"
-          />
-          <Button
-            onPress={() => this.props.set_uid('userID')}
-            title="set_user_id"
-          />
-          <Button
-            onPress={() => this.props.set_uname('userNAME')}
-            title="set_user_name"
-          />
-        </View>
-        <Button
-            onPress={() => this.props.add_searchHistory('aaa')}
-            title="検索履歴を追加aaa"
-          /> 
-          <Button
-            onPress={() => this.props.delete_searchHistory()}
-            title="検索履歴を削除"
-          /> 
           <Button
             onPress={() => this.props.state_clear()}
             title="reduxStoreを初期化（debug用）"
           /> 
-
-        {/* getState() : storeの情報を表示 */}
-        <Text style={{marginBottom: 100}}>store: {JSON.stringify(store.getState())}</Text>
       </View>
     )
   }
