@@ -55,7 +55,7 @@ class BarGraph extends React.Component {
     }
     render() {
         // const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
-        let fill = 'rgb(134, 65, 244)'; // chart color
+        let fill = '#F8BCCF'; // chart color
         // graph描画位置設定項目
         let _Chart_contentInset = { top: 10, bottom: 10 }
         let _Cahrt_spacingInner = 0.05;
@@ -73,7 +73,7 @@ class BarGraph extends React.Component {
                 // data加工処理を入れる
                 data = this._create_data();
                 // console.log(this._create_data());
-                screen = <View style={{ flex: 1, marginLeft: 10 }}>
+                screen = <View style={{ flex: 1, margin: 10 }}>
                             <BarChart
                                 style={{ flex: 1 }}
                                 data={data}
@@ -89,7 +89,7 @@ class BarGraph extends React.Component {
             }
         }
         return (
-            <View style={{ height: 200, flexDirection: 'row' }}>
+            <View style={{ height: 150 }}>
                 {screen}
             </View>
         )
