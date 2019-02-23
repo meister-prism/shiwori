@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button,Alert,Image,TouchableOpacity,TextInput} from 'react-native';
+import { StyleSheet, Text, View, Button,Alert,Image,TouchableOpacity,TextInput,KeyboardAvoidingView} from 'react-native';
 import { connect } from 'react-redux';
 import {gbapi_search_specific} from '../../api/googleBooks/search';
 import { getBooksData_specific } from '../../api/googleBooks/getBooksData';
 import { device_update } from '../../api/showori_server/device'
 var Dimensions = require('Dimensions');
 var { width, height, scale } = Dimensions.get('window'); //get window size
+var moment = require("moment");
+
 /**
  * 読書記録画面の編集(詳細表示)  
  * editDetailScreen.js >> here
@@ -23,11 +25,12 @@ class EditDetailScreen_Child extends React.Component {
     async _selectToSetServer(){
         // min * 60000 >> ms
         let readtime = 60000*this.state.input_read_time;
-        let res = await device_upate(  this.props.navigation.getParam('item').id,
+        let res = await device_update(  this.props.navigation.getParam('item').id,
                                         this.props.user_id,
                                         this.props.navigation.getParam('item').book_id,
                                         this.state.input_page,
                                         readtime );
+        alert(res);
         if(res==200){
             this.setState({change_finish:true});
         } else{
@@ -39,6 +42,9 @@ class EditDetailScreen_Child extends React.Component {
         let msg='';
         if(this.state.input_page > pageCount){
             msg+='ページ数が範囲外です\n'
+        }
+        if(this.state.input_page == '' || this.state.input_read_time==''){
+            msg+='ページ数または時間を入力してください。'
         }
         if(msg!=''){
             alert(msg);
@@ -104,27 +110,32 @@ class EditDetailScreen_Child extends React.Component {
                         image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         modal_image = <Image source={{ uri: google_data.imageLink_large }} style={styles.modalimg} />
                     }
+                    let time = moment(readingRecord.timestamp,"YYYY-MM-DD-hh-mm-ss");
+                    let speed=''
+                    if(readingRecord.readspead!=undefined)speed ='分速' +readingRecord.readspead+'ページ'
+
                     // 画像存在確認処理　---
                     // 配置は本の詳細ページ（component/book/bookdetails.js l160)に似てる
-                    screen = 	<View style={styles.container}>
+                    screen =    <View style={styles.container}>
                                     {/* 今の情報 */}
-                                    <Text>現在のデータ</Text>
+                                    <Text style={styles.bold_txt}>現在のデータ</Text>
                                     <View style={styles.container2}>
                                         <View style={styles.imgContainer}>
                                             {image}
                                         </View>
                                         <View styles={styles.info}>
-                                            <Text style={styles.title}>title:{google_data.title}</Text>
-                                            <Text style={styles.author}>author:{google_data.author}</Text>
-                                            <Text style={styles.title}>読書終了時間：{readingRecord.timestamp}</Text>
-                                            <Text style={styles.title}>ページ数：{readingRecord.page_num}</Text>
-                                            <Text style={styles.title}>時間：{readingRecord.readtime}</Text>
-                                            <Text style={styles.title}>分速：{readingRecord.readspead}</Text>
+                                            <Text style={styles.title}>{google_data.title}</Text>
+                                            <Text style={styles.author}>{google_data.author}</Text>
+                                            <Text style={styles.timestamp}>読書終了時間{'\n'}{time.format("MM/DD hh時mm分ss秒")}</Text>
+                                            <Text style={styles.page}>{readingRecord.page_num} ページ読了</Text>
+                                            <Text style={styles.time}>読書時間 {(readingRecord.readtime/60000).toFixed(1)} 分</Text>
+                                            <Text style={styles.speed}>{speed}</Text>
                                         </View>
                                     </View>
                                     {/* 読書履歴の変更 */}
-                                    <Text>読書履歴の変更</Text>
-                                    <View styles={styles.changeContainer}>
+                                    
+                                    <Text style={styles.bold_txt}>読書履歴の変更</Text>
+                                    <View style={styles.changeContainer}>
                                         <TextInput
                                             style={styles.inputStyle}
                                             onChangeText={text=>{this.setState({input_page:text})}}
@@ -135,22 +146,23 @@ class EditDetailScreen_Child extends React.Component {
                                         <TextInput
                                             style={styles.inputStyle}
                                             onChangeText={text=>{this.setState({input_read_time:text})}}
-                                            placeholder='読んだ時間を入力（分数を入力してください。）'
+                                            placeholder='読んだ時間を入力（単位は分です）'
                                             keyboardType='numeric'
                                             autoCorrect = {false}
                                             />
-                                        <Button title="変更"
-                                                onPress={()=>{this._changeAlert(pageCount)}} />
+                                        <View style={styles.button_container}>
+                                            <Text style={styles.button} onPress={()=>{this._changeAlert(pageCount)}} >変更する</Text>
+                                        </View>
                                     </View>
                                 </View>
                 }
             }
         }
 		return (
-			<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-				<Text>読書中の本の情報を編集（詳細）</Text>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                 {screen}
 			</View>
+            
 		);
 	}
 }
@@ -175,6 +187,12 @@ const styles = StyleSheet.create({
         width: width,
         height: height
     },
+    bold_txt:{
+        fontSize:18,
+        padding :5,
+        marginLeft : 10,
+        fontWeight:'bold'
+    },
     container2:{
         flexDirection: 'row',
     },
@@ -183,19 +201,55 @@ const styles = StyleSheet.create({
     },
     img: {
         width: 150,
-        height: 250,
+        height: 200,
         resizeMode: 'contain',
     },
+    info: {
+        flex: 1,
+        paddingHorizontal: 10,
+        paddingVertical: 30,
+        flexWrap: 'wrap',
+    },
+    title: {
+        paddingBottom: 10,
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    author: {
+        fontSize: 13,
+        paddingBottom: 2,
+        color: '#666666',
+    },
+    timestamp:{
+        color: '#3C914A',
+        paddingBottom: 5,
+    },
+    page:{
+        fontSize: 15,
+    },
     time:{
-
-	},
-	readtime:{
-
-	},
-	readingspeed:{
-
-	},
-	page_num:{
-
-	}
+        fontSize: 15,
+    },
+    speed:{
+        fontSize: 15,
+    },
+    changeContainer:{
+        padding: 10,
+    },
+    inputStyle:{
+        padding: 5,
+        fontSize: 15,
+        borderWidth: 1,
+        borderColor: '#f0f0f0'
+    },
+    button_container: {
+        padding: 10,
+    },
+    button: {
+        padding: 10,
+        width: '100%',
+        textAlign: 'center',
+        color: "#fff",
+        backgroundColor: '#67C175'
+    },
   });

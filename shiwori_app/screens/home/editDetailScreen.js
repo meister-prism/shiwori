@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button,KeyboardAvoidingView } from 'react-native';
 import HeaderIcon from '../../components/HeaderIcon';
 import EditDetailScreen_Child from './editDetailScreen_child';
 import { Provider } from 'react-redux';
@@ -21,7 +21,9 @@ class EditDetailScreen extends React.Component {
 		return (
 			<Provider store={store}>
 				<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+			<KeyboardAvoidingView behavior="padding" enabled>
 					<EditDetailScreen_Child navigation={this.props.navigation}/>
+					</KeyboardAvoidingView>
 				</View>
 			</Provider>
 		);

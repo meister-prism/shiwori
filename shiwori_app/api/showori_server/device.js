@@ -51,7 +51,8 @@ export async function device_update(id,user_id,book_id,page_num,readtime) {
             "readtime" : readtime,
         }),
     })
-        .then((response) =>response.status);
+        .then((response) =>response.status)
+        .then((res)=>res);
 }
 
 /**
