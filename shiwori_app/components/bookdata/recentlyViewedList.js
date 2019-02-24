@@ -28,7 +28,7 @@ class RecentlyViewedList extends React.Component {
     _createkeyList(item){
         if(item.img == "none")return <Text></Text>;
         let image;
-        image =  <Image source={{uri: item.img}} style={{width: 70, height: 100,resizeMode : 'contain'}} />
+        image =  <Image source={require('../../assets/img/noimage.png')} style={{width: 70, height: 100,resizeMode : 'contain'}} />
         // child
         let ret =  <View style={styles.listContainer}>
                         <TouchableHighlight

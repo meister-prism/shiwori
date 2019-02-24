@@ -48,8 +48,8 @@ class BookMarkRegisterScreen_Child extends React.Component {
             case "input":
                 let pageCount = "ページ数(0~" + this.props.bookdata.pageCount +")を入力";
                 return  <View >
-                            <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
-                            <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
+                            <Text style={styles.booktitle}>タイトル</Text>
+                            <Text style={styles.bookauthor}>著者</Text>
                             <View style={{ borderWidth: 1, borderColor: '#f0f0f0', padding: 10}}>
                                 <Text style={styles.input_title}>登録するページ</Text>
                                 <TextInput

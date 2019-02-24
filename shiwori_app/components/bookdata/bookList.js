@@ -12,16 +12,16 @@ export default class BookList extends React.Component{
         if(item == "none")return <Text>見つかりませんでした</Text>;
         let image,img_uri="none";
         if(item.imageLink_large != null){
-            image=<Image source={{uri: item.imageLink_large}} style={{width: 90, height: 130,resizeMode : 'contain'}} />
+            image=<Image  source={require('../../assets/img/noimage.png')} style={{width: 90, height: 130,resizeMode : 'contain'}} />
             img_uri = item.imageLink_large;
         }else if(item.imageLink_medium !=null){
-            image=<Image source={{uri: item.imageLink_medium}} style={{width: 90, height: 130,resizeMode : 'contain'}} />
+            image=<Image  source={require('../../assets/img/noimage.png')} style={{width: 90, height: 130,resizeMode : 'contain'}} />
             img_uri = item.imageLink_medium;
         }else if(item.imageLink_thumbnail!=null){
-            image=<Image source={{uri: item.imageLink_thumbnail}} style={{width: 90, height: 130,resizeMode : 'contain'}} />
+            image=<Image  source={require('../../assets/img/noimage.png')} style={{width: 90, height: 130,resizeMode : 'contain'}} />
             img_uri = item.imageLink_thumbnail;
         }else if(item.imageLink_smallThumbnail!=null){
-            image=<Image source={{uri: item.imageLink_smallThumbnail}} style={{width: 90, height: 130,resizeMode : 'contain'}} />
+            image=<Image  source={require('../../assets/img/noimage.png')} style={{width: 90, height: 130,resizeMode : 'contain'}} />
             img_uri = item.imageLink_smallThumbnail;
         }else {
             image= <Image source={require('../../assets/img/noimage.png')} style={{width: 90, height: 130,resizeMode : 'contain'}} />

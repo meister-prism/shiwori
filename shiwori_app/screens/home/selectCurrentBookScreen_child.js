@@ -35,7 +35,7 @@ class SelectCurrentBookScreen_Child extends React.Component {
 	_createList(item){
         if(item.img == "none")return <Text></Text>;
         let image;
-        image=  <Image source={{uri: item.imgLink}} style={{width: 90, height: 130,resizeMode : 'contain'}} />
+        image=  <Image source={require('../../assets/img/noimage.png')} style={{width: 90, height: 130,resizeMode : 'contain'}} />
         let ret =   <View style={styles.itemContainer}>
                         <TouchableHighlight
                             onPress={()=>{this._selected(item)}}>

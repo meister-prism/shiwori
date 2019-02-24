@@ -23,16 +23,16 @@ class BookMarkDitailsScreen_Child extends React.Component {
         //** imageLink処理
         let image,image_uri;
         if(item.book.imgUrl.large != null){
-            image=<Image source={{uri: item.book.imgUrl.large}} style={styles.img} />
+            image=<Image source={require('../assets/img/noimage.png')} style={styles.img} />
             image_uri= item.book.imgUrl.large;
         }else if(item.book.imgUrl.medium !=null){
-            image=<Image source={{uri: item.book.imgUrl.medium}} style={styles.img} />
+            image=<Image source={require('../assets/img/noimage.png')} style={styles.img} />
             image_uri= item.book.imgUrl.medium;
         }else if(item.book.imgUrl.thumbnail!=null){
-            image=<Image source={{uri: item.book.imgUrl.thumbnail}} style={styles.img} />
+            image=<Image source={require('../assets/img/noimage.png')} style={styles.img} />
             image_uri= item.book.imgUrl.thumbnail;
         }else if(item.book.imgUrl.smallThumbnail!=null){
-            image=<Image source={{uri: item.book.imgUrl.smallThumbnail}} style={styles.img} />
+            image=<Image source={require('../assets/img/noimage.png')} style={styles.img} />
             image_uri= item.book.imgUrl.smallThumbnail;
         }else {
             image= <Image source={require('../assets/img/noimage.png')} style={styles.img} />
@@ -46,11 +46,11 @@ class BookMarkDitailsScreen_Child extends React.Component {
                         {image}
                     </View>
                     <View style={styles.info}>
-                        <Text style={styles.title}>{item.book.title}</Text>
+                        <Text style={styles.title}>タイトル</Text>
                         {/* <TouchableOpacity onPress={()=>{this._authorSearch(item.book.authors)}}> */}
-                        <Text style={styles.author}>{item.book.author}</Text>
+                        <Text style={styles.author}>著者</Text>
                         {/* </TouchableOpacity>   */}
-                        <Text style={styles.publisher}>{item.book.publication}</Text>
+                        <Text style={styles.publisher}>出版社</Text>
                         <Text style={styles.page_num}>ページ：{item.page_num}</Text>
                         <TouchableOpacity
                             onPress={() => { this._goBookDetail(item.book.book_id, image_uri) }}>

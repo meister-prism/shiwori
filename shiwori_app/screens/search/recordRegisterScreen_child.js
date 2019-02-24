@@ -47,8 +47,8 @@ class RecordRegisterScreen_Child extends React.Component {
         switch(this.state.Screentype){
             case "input":
                 return  <View>
-                            <Text style={styles.booktitle}>{this.props.bookdata.title}</Text>
-                            <Text style={styles.bookauthor}>{this.props.bookdata.authors}</Text>
+                            <Text style={styles.booktitle}>タイトル</Text>
+                            <Text style={styles.bookauthor}>著者</Text>
                             <View style={{ borderWidth: 1, borderColor: '#f0f0f0', padding: 10 }}>
                                 <Text style={styles.input_title}>評価</Text>
                                 <TextInput

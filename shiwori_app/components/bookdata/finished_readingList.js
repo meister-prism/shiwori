@@ -29,16 +29,16 @@ class FinishedReadingList extends React.Component {
         let image_uri= require('../../assets/img/noimage.png');
         if(item.book!=null){
             if(item.book.imgUrl.large != null){
-                image=<Image source={{uri: item.book.imgUrl.large}} style={styles.img} />
+                image=<Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                 image_uri= item.book.imgUrl.large;
             }else if(item.book.imgUrl.medium !=null){
-                image=<Image source={{uri: item.book.imgUrl.medium}} style={styles.img} />
+                image=<Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                 image_uri= item.book.imgUrl.medium;
             }else if(item.book.imgUrl.thumbnail!=null){
-                image=<Image source={{uri: item.book.imgUrl.thumbnail}} style={styles.img} />
+                image=<Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                 image_uri= item.book.imgUrl.thumbnail;
             }else if(item.book.imgUrl.smallThumbnail!=null){
-                image=<Image source={{uri: item.book.imgUrl.smallThumbnail}} style={styles.img} />
+                image=<Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                 image_uri= item.book.imgUrl.smallThumbnail;
             }else {
                 image = <Text></Text>;

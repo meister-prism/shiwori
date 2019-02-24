@@ -82,16 +82,16 @@ class NowReadingBook extends React.Component {
                     let image;
                     let imgLink = "none";
                     if (google_data.imageLink_large != null) {
-                        image = <Image source={{ uri: google_data.imageLink_large }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_large;
                     } else if (google_data.imageLink_medium != null) {
-                        image = <Image source={{ uri: google_data.imageLink_medium }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_medium;
                     } else if (google_data.imageLink_thumbnail != null) {
-                        image = <Image source={{ uri: google_data.imageLink_thumbnail }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_thumbnail;
                     } else if (google_data.imageLink_smallThumbnail != null) {
-                        image = <Image source={{ uri: google_data.imageLink_smallThumbnail }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_smallThumbnail;
                     } else {
                         image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
@@ -100,8 +100,8 @@ class NowReadingBook extends React.Component {
                     // 画像の存在確認系の処理 --- 
                     screen = <View style={styles.container}>
                                 <View style={styles.infoContainer}>
-                                    <Text style={styles.title} onPress={()=>this._goDetail(google_data.id , imgLink)} >{google_data.title}</Text>
-                                    <Text style={styles.info_txt}>著者：{google_data.authors}</Text>
+                                    <Text style={styles.title} onPress={()=>this._goDetail(google_data.id , imgLink)} >タイトル</Text>
+                                    <Text style={styles.info_txt}>著者：高専太郎</Text>
                                 </View>
                                 <View style={styles.imgContainer}>
                                     {image}

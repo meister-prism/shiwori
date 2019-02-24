@@ -95,16 +95,16 @@ class EditDetailScreen_Child extends React.Component {
                     let google_data = getBooksData_specific(this.state.book_data);
                     let pageCount = google_data.pageCount;
                     if (google_data.imageLink_large != null) {
-                        image = <Image source={{ uri: google_data.imageLink_large }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_large;
                     } else if (google_data.imageLink_medium != null) {
-                        image = <Image source={{ uri: google_data.imageLink_medium }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_medium;
                     } else if (google_data.imageLink_thumbnail != null) {
-                        image = <Image source={{ uri: google_data.imageLink_thumbnail }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_thumbnail;
                     } else if (google_data.imageLink_smallThumbnail != null) {
-                        image = <Image source={{ uri: google_data.imageLink_smallThumbnail }} style={styles.img} />
+                        image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
                         imgLink = google_data.imageLink_smallThumbnail;
                     } else {
                         image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
@@ -124,8 +124,8 @@ class EditDetailScreen_Child extends React.Component {
                                             {image}
                                         </View>
                                         <View styles={styles.info}>
-                                            <Text style={styles.title}>{google_data.title}</Text>
-                                            <Text style={styles.author}>{google_data.author}</Text>
+                                            <Text style={styles.title}>タイトル</Text>
+                                            <Text style={styles.author}>prism</Text>
                                             <Text style={styles.timestamp}>読書終了時間{'\n'}{time.format("MM/DD hh時mm分ss秒")}</Text>
                                             <Text style={styles.page}>{readingRecord.page_num} ページ読了</Text>
                                             <Text style={styles.time}>読書時間 {(readingRecord.readtime/60000).toFixed(1)} 分</Text>

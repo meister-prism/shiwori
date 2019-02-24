@@ -21,8 +21,8 @@ class changeColorButton extends React.Component {
     render() {
         let style = this.props.style;
         if(style==undefined)style ={}
-        let title = this.props.title;
-        let pushed_title = this.props.pushed_title;
+        let title = "title";
+        let pushed_title = "東京高専";
         let color = this.props.color;
         let pushed_color  = this.props.pushed_color; 
         return (
@@ -30,7 +30,7 @@ class changeColorButton extends React.Component {
             <Button
                 style = {style}
                 onPress={()=>this._onPress(title,pushed_title,color,pushed_color)}
-                title= {this.state.title}
+                title= "タイトル"
                 color={this.state.color}
             />
         </View>

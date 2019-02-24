@@ -30,10 +30,10 @@ class BookList_Child extends React.Component{
                         <View style={styles.img}>{image}</View>
                         <View style={styles.infoContainer}>
                             <View style={styles.info}>
-                                <Text style={styles.title}>{item.title}</Text>
-                                <Text style={styles.author}>{item.authors}</Text>
+                                <Text style={styles.title}>タイトル</Text>
+                                <Text style={styles.author}>prism</Text>
                                 <Text style={styles.publiserDate}>{item.publishedDate}</Text>
-                                <Text style={styles.publisher}>{item.publisher}</Text>
+                                <Text style={styles.publisher}>東京高専</Text>
                             </View>
                         </View>
                     </View>

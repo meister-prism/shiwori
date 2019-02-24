@@ -69,7 +69,7 @@ class BookDetail extends React.Component {
         // this.props.add_nowBook(id,title,author,0,imgLink);
         this.props.add_nowBook( this.props.google_data.id,
                                 this.props.google_data.title,
-                                this.props.google_data.author,
+                                prism,
                                 imgLink
                                 );
         alert('登録されました')
@@ -107,24 +107,24 @@ class BookDetail extends React.Component {
         let image, modal_image;
         let imgLink = "none";
         if (data.imageLink_large != null) {
-            image = <Image source={{ uri: data.imageLink_large }} style={styles.img} />
-            modal_image = <Image source={{ uri: data.imageLink_large }} style={styles.modalimg} />
+            image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+            modal_image = <Image source={require('../../assets/img/noimage.png')} style={styles.modalimg} />
             imgLink = data.imageLink_large;
         } else if (data.imageLink_medium != null) {
-            image = <Image source={{ uri: data.imageLink_medium }} style={styles.img} />
-            modal_image = <Image source={{ uri: data.imageLink_medium }} style={styles.modalimg} />
+            image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+            modal_image = <Image source={require('../../assets/img/noimage.png')} style={styles.modalimg} />
             imgLink = data.imageLink_medium;
         } else if (data.imageLink_thumbnail != null) {
-            image = <Image source={{ uri: data.imageLink_thumbnail }} style={styles.img} />
-            modal_image = <Image source={{ uri: data.imageLink_thumbnail }} style={styles.modalimg} />
+            image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+            modal_image = <Image source={require('../../assets/img/noimage.png')} style={styles.modalimg} />
             imgLink = data.imageLink_thumbnail;
         } else if (data.imageLink_smallThumbnail != null) {
-            image = <Image source={{ uri: data.imageLink_smallThumbnail }} style={styles.img} />
-            modal_image = <Image source={{ uri: data.imageLink_smallThumbnail }} style={styles.modalimg} />
+            image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
+            modal_image = <Image source={require('../../assets/img/noimage.png')} style={styles.modalimg} />
             imgLink = data.imageLink_smallThumbnail;
         } else {
             image = <Image source={require('../../assets/img/noimage.png')} style={styles.img} />
-            modal_image = <Image source={{ uri: data.imageLink_large }} style={styles.modalimg} />
+            modal_image = <Image source={require('../../assets/img/noimage.png')} style={styles.modalimg} />
         }
         // 初期状態の設定
         let ave, recordlist;
@@ -161,13 +161,13 @@ class BookDetail extends React.Component {
                             <View style={styles.imgContainer}>{image}</View>
                         </TouchableOpacity>
                         <View style={styles.info}>
-                            <Text style={styles.title}>{data.title}</Text>
+                            <Text style={styles.title}>タイトル</Text>
                             <Text style={styles.star_average}>平均評価 : {ave}</Text>
                             <TouchableOpacity onPress={() => { this._authorSearch(data.authors) }}>
-                                <Text style={styles.author}>{data.authors} >> </Text>
+                                <Text style={styles.author}>高専太郎 >> </Text>
                             </TouchableOpacity>
                             <Text style={styles.info_txt}>{data.publishedDate}</Text>
-                            <Text style={styles.info_txt}>{data.publisher}</Text>
+                            <Text style={styles.info_txt}>東京高専</Text>
                         </View>
                     </View>
                     
